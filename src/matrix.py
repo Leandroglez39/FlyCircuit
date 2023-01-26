@@ -100,7 +100,7 @@ if __name__ == '__main__':
     #m.load_matrix_obj()
     #m.export_graph_to_adjlist()
     m.insert_nodes()
-    m.read_adym(path='./data/adym_0.pkl')
+    m.read_adym(path='./data/adym_30.pkl')
     #m.load_ady_matrix(30)    
     m.insert_weighted_edges()
     # m.sava_matrix_obj()
@@ -126,4 +126,8 @@ if __name__ == '__main__':
 
     coms = algorithms.infomap(m.G)
 
-    print(coms.communities)
+    a = []
+    for x in coms.communities:       
+        a.append(len(x))
+        a.sort()
+    print(a)    
