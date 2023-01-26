@@ -98,12 +98,12 @@ class Matrix:
 if __name__ == '__main__':
     
     m = Matrix([], {},[])
-    #m.load_matrix_obj()
+    m.load_matrix_obj()
     #m.export_graph_to_adjlist()
-    m.insert_nodes()
-    m.read_adym(path='./data/adym_30.pkl')
+    #m.insert_nodes()
+    #m.read_adym(path='./data/adym_30.pkl')
     #m.load_ady_matrix(30)    
-    m.insert_weighted_edges()
+    #m.insert_weighted_edges()
     # m.sava_matrix_obj()
     print(m.G.number_of_edges())
 
