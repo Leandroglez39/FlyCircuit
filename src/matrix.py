@@ -2,6 +2,7 @@ import pandas as pd
 import pickle
 from dataclasses import dataclass
 import networkx as nx
+import networkx.algorithms.community as nx_comm
 import os
 
 @dataclass
@@ -105,6 +106,34 @@ if __name__ == '__main__':
     m.insert_weighted_edges()
     # m.sava_matrix_obj()
     print(m.G.number_of_edges())
+
+    #ouliers = [['E0585-F-300022'], ['Gad1-F-300464'], ['VGlut-F-100031'], ['VGlut-F-100283'], ['VGlut-F-400694']]
+
+    # for node in ouliers:
+    #     id = m.pos_code_nodes[node[0]]
+    #     row = m.ady_list[id]
+    #     value = 0
+    #     suma = 0
+    #     for x in row:
+    #         value += x[1]
+    #     print(f'Node: {node} sum values: {value} : len : {len(m.ady_list[id])}' )
+    #     print(len(m.G.adj[node[0]].items()))
+    # a = []
+    # comm = nx_comm.asyn_lpa_communities(m.G, weight='weight')
+    
+    # for x in comm:       
+    #     a.append(len(x))
+    #     a.sort()
+    # print(a)
+
+    a = []
+    # comm = nx_comm.greedy_modularity_communities(m.G, weight='weight')
+
+    # for x in comm:       
+    #     a.append(len(x))
+    #     a.sort()
+    # print(a)
+
     #m.export_graph_to_csv()
     # m.load_ady_matrix(30)
     # for node in m.list_nodes:
@@ -122,12 +151,18 @@ if __name__ == '__main__':
 
     # print(len(list(nx.strongly_connected_components(m.G))))
 
-    from cdlib import algorithms
+    # from cdlib import algorithms
 
-    coms = algorithms.infomap(m.G)
+    # coms = algorithms.infomap(m.G)
 
-    a = []
-    for x in coms.communities:       
+    
+    # for x in coms.communities:       
+    #     a.append(len(x))
+    #     a.sort()
+    # print(a)
+    b = nx_comm.louvain_communities(m.G, seed=123)    
+    for x in b:       
         a.append(len(x))
         a.sort()
-    print(a)    
+    
+    print(a)
