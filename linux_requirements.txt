@@ -22,6 +22,7 @@ FuzzyTM==2.0.5
 gensim==4.3.0
 gmpy2==2.1.5
 graph-tools==1.5
+GraphRicciCurvature==0.5.3.1
 idna==3.4
 igraph==0.10.3
 infomap==2.6.1
@@ -34,6 +35,7 @@ markov-clustering==0.0.6.dev0
 matplotlib==3.6.3
 miniful==0.0.6
 multivalued-dict==2.0.1
+networkit==10.0
 networkx==2.6.3
 nf1==0.0.4
 numpy==1.22.4
@@ -42,10 +44,13 @@ pandas==1.3.5
 perlcompat==1.1
 Pillow==9.4.0
 pooch==1.6.0
+POT==0.8.2
 PuLP==2.7.0
 pure-nrng==1.1.0
 pure-prng==2.9.0
+pybind11==2.10.3
 pyclustering==0.10.1.2
+pycombo==0.1.7
 pyFUME==0.2.25
 PyGSP==0.5.1
 pyparsing==3.0.9
