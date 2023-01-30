@@ -4,6 +4,6 @@ virtualenv envNX
 source envCDLib/bin/activate
 pip install -r cdlib_requirements.txt
 deactivate
-source envCDLib/bin/activate
+source envNX/bin/activate
 pip install -r nx_requirements.txt
 deactivate
