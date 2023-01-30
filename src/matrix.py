@@ -151,18 +151,18 @@ if __name__ == '__main__':
 
     # print(len(list(nx.strongly_connected_components(m.G))))
 
-    from cdlib import algorithms
+    # from cdlib import algorithms
 
-    coms = algorithms.infomap(m.G)
+    # coms = algorithms.infomap(m.G)
 
     
     # for x in coms.communities:       
     #     a.append(len(x))
     #     a.sort()
     # print(a)
-    # b = nx_comm.louvain_communities(m.G, seed=123)    
-    # for x in b:       
-    #     a.append(len(x))
-    #     a.sort()
+    b = nx_comm.louvain_communities(m.G, seed=123)    
+    for x in b:       
+        a.append(len(x))
+        a.sort()
     
-    # print(a)
+    print(a)
