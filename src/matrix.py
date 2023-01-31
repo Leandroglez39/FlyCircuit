@@ -16,8 +16,8 @@ class Matrix:
     
     def __post_init__(self):
         
-        self.list_nodes = pickle.load(open('./data/nodes.pkl', 'rb'))
-        self.pos_code_nodes = pickle.load(open('./data/pos_code_nodes.pkl', 'rb'))
+        self.list_nodes = pickle.load(open('./dataset/nodes.pkl', 'rb'))
+        self.pos_code_nodes = pickle.load(open('./dataset/pos_code_nodes.pkl', 'rb'))
         self.ady_list = [[] for _ in range(len(self.list_nodes))]
         
 
@@ -32,14 +32,14 @@ class Matrix:
                 self.G.add_edge(self.list_nodes[y], self.list_nodes[i], weight=weight)
     
     def export_graph_to_csv(self):
-        nx.write_edgelist(self.G, "./data/30set.csv", delimiter=",", data=['weight'])
+        nx.write_edgelist(self.G, "./dataset/30set.csv", delimiter=",", data=['weight'])
 
     def export_graph_to_csv_size(self, size):
 
         G = nx.DiGraph()
         G.add_nodes_from(self.list_nodes[:size])
 
-        df = pd.read_csv('./data/matrix/0 file.csv')
+        df = pd.read_csv('./dataset/matrix/0 file.csv')
         
 
         ady_list = [[] for _ in range(size)]
@@ -61,17 +61,17 @@ class Matrix:
         nx.write_edgelist(G, f"0set_size{str(size)}.csv", delimiter=",", data=['weight'])
         nx.write_gexf(G, f"0set_size{str(size)}.gexf")
     
-    def export_graph_to_graphml(self, path = "./data/graph_19k_3.5m.gml"):
+    def export_graph_to_graphml(self, path = "./dataset/graph_19k_3.5m.gml"):
         nx.write_graphml(self.G, path)
 
-    def export_graph_to_adjlist(self, path = "./data/graph_19k_3.5m.adyl"):
+    def export_graph_to_adjlist(self, path = "./dataset/graph_19k_3.5m.adyl"):
         nx.write_adjlist(self.G, path)
 
     def load_ady_matrix(self, count = 0):
 
         for x in range(count+1):
             print(f'Loading: {x} file.csv')
-            df = pd.read_csv(f'./data/matrix/{x} file.csv')            
+            df = pd.read_csv(f'./dataset/matrix/{x} file.csv')            
             for i in range(df.shape[0]):
                 row = df.loc[i].to_list()
                 for j in range(len(row)):
@@ -80,18 +80,18 @@ class Matrix:
             print(f'Finished: {x} file.csv')
 
 
-        with open(f'./data/adym_{count}.pkl', 'wb') as f:
+        with open(f'./dataset/adym_{count}.pkl', 'wb') as f:
             pickle.dump(self.ady_list, f)
    
-    def sava_matrix_obj(self, path = './data/graph_19k_3.5m.pkl'):
+    def sava_matrix_obj(self, path = './dataset/graph_19k_3.5m.pkl'):
         
         with open(path, 'wb') as f:
             pickle.dump(self.G, f)
 
-    def load_matrix_obj(self, path = './data/graph_19k_3.5m.pkl'):
+    def load_matrix_obj(self, path = './dataset/graph_19k_3.5m.pkl'):
         self.G = pickle.load(open(path, 'rb'))
     
-    def read_adym(self, path = './data/adym_30.pkl'):
+    def read_adym(self, path = './dataset/adym_30.pkl'):
         self.ady_list = pickle.load(open(path, 'rb'))
         
 
@@ -101,7 +101,7 @@ if __name__ == '__main__':
     m.load_matrix_obj()
     #m.export_graph_to_adjlist()
     #m.insert_nodes()
-    #m.read_adym(path='./data/adym_30.pkl')
+    #m.read_adym(path='./datset/adym_30.pkl')
     #m.load_ady_matrix(30)    
     #m.insert_weighted_edges()
     # m.sava_matrix_obj()
