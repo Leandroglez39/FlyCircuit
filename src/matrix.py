@@ -2,6 +2,7 @@ import pandas as pd
 import pickle
 from dataclasses import dataclass
 import networkx as nx
+import networkx.algorithms.community as nx_comm
 import os
 
 @dataclass
@@ -128,6 +129,9 @@ if __name__ == '__main__':
 
     a = []
     for x in coms.communities:       
-        a.append(len(x))
-        a.sort()
-    print(a)    
+        if len(x) == 1:
+            a.append(x)
+        
+    print(a)
+    
+    
