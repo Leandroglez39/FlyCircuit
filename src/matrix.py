@@ -163,8 +163,8 @@ if __name__ == '__main__':
 
     coms = algorithms.infomap(m.G)
     
-    for x in coms.communities:       
-        a.append(len(x))
+    for q in coms.communities:       
+        a.append(len(q))
         a.sort()
 
     # print(a)
