@@ -3,10 +3,19 @@ import pickle
 from dataclasses import dataclass
 import networkx as nx
 import networkx.algorithms.community as nx_comm
-import os
 
 @dataclass
 class Matrix:
+    """    
+    Class to create a matrix from a csv file and export it to a graphml file    
+    
+    Attributes:
+        list_nodes (list): list of nodes
+        pos_code_nodes (dict): dictionary with the position of each node
+        G (nx.DiGraph): graph
+        ady_list (list): list of adyacents nodes
+        G_small (nx.DiGraph): small graph
+    """
 
     list_nodes: list
     pos_code_nodes: dict
@@ -14,8 +23,7 @@ class Matrix:
     ady_list : list 
     G_small = nx.DiGraph()
     
-    def __post_init__(self):
-        
+    def __post_init__(self):        
         self.list_nodes = pickle.load(open('./dataset/nodes.pkl', 'rb'))
         self.pos_code_nodes = pickle.load(open('./dataset/pos_code_nodes.pkl', 'rb'))
         self.ady_list = [[] for _ in range(len(self.list_nodes))]
@@ -151,18 +159,18 @@ if __name__ == '__main__':
 
     # print(len(list(nx.strongly_connected_components(m.G))))
 
-    # from cdlib import algorithms
+    from cdlib import algorithms
 
-    # coms = algorithms.infomap(m.G)
-
+    coms = algorithms.infomap(m.G)
     
-    # for x in coms.communities:       
-    #     a.append(len(x))
-    #     a.sort()
-    # print(a)
-    b = nx_comm.louvain_communities(m.G, seed=123)    
-    for x in b:       
+    for x in coms.communities:       
         a.append(len(x))
         a.sort()
+
+    # print(a)
+    # b = nx_comm.louvain_communities(m.G, seed=123)    
+    # for g in b:       
+    #     a.append(len(g))
+    #     a.sort()
     
     print(a)
