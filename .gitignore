@@ -5,3 +5,4 @@ venvlinux/
 envCDLib
 envNX
 .vscode/
+*.png
