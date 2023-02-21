@@ -4,3 +4,4 @@ venvlinux/
 .devcontainer/
 envCDLib
 envNX
+.vscode/
