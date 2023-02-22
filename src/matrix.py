@@ -3,6 +3,8 @@ import pickle
 from dataclasses import dataclass
 import networkx as nx
 import networkx.algorithms.community as nx_comm
+import matplotlib.pyplot as plt
+
 
 @dataclass
 class Matrix:
@@ -106,14 +108,70 @@ class Matrix:
 if __name__ == '__main__':
     
     m = Matrix([], {},[])
-    m.load_matrix_obj()
+    #m.load_matrix_obj()
     #m.export_graph_to_adjlist()
-    #m.insert_nodes()
-    #m.read_adym(path='./datset/adym_30.pkl')
+    m.insert_nodes()
+    #m.read_adym(path='data/adym_0.pkl')
+    m.read_adym(path='dataset/adym_30.pkl')
     #m.load_ady_matrix(30)    
-    #m.insert_weighted_edges()
+    m.insert_weighted_edges()
     # m.sava_matrix_obj()
     print(m.G.number_of_edges())
+
+
+    #de_cen = nx.degree_centrality(m.G)
+
+    #print(de_cen)
+    #print(sorted(de_cen.items(), key=lambda x: x[1]))
+
+    print(m.G.degree('TH-F-300002'))
+
+    a = m.G.degree(weight='weight')
+
+    #print(sorted(list(a), key=lambda x: x[1], reverse=True))
+
+    print(nx.betweenness_centrality(m.G))
+
+    #print(sorted(a., key=lambda x: x[1]))
+    #hist = nx.degree_histogram(m.G)
+    #print(hist)
+
+    # co = 0
+    # for i in range(len(hist)):
+    #     if hist[i] != 0:
+    #         co += hist[i]*i
+    # print(co)
+
+    # list_hist = []
+
+    # for i in range(len(hist)):
+    #     if hist[i] != 0:
+    #         list_hist.append(i)
+
+    # plt.hist(list_hist)
+    # plt.savefig('hist.png')
+
+    # var = []
+
+    # for i in range(len(list_hist)):
+    #     if list_hist[i] >= 1500:
+    #         var.append(i)
+
+    # list_hist = []
+
+    # for i in range(len(hist)):
+    #     if hist[i] != 0:
+    #         if hist[i] == 1:
+    #             list_hist.append(i)
+    #         else:
+    #             list_hist.append(i * hist[i] / 2)
+    #     else:
+    #         list_hist.append(0)
+    
+    # print(sum(list_hist))
+    # print(len(var))
+    # print(sum(var) / 2)
+    #print(nx.function.degree_histogram(m.G))
 
     #ouliers = [['E0585-F-300022'], ['Gad1-F-300464'], ['VGlut-F-100031'], ['VGlut-F-100283'], ['VGlut-F-400694']]
 
@@ -159,13 +217,13 @@ if __name__ == '__main__':
 
     # print(len(list(nx.strongly_connected_components(m.G))))
 
-    from cdlib import algorithms
+    # from cdlib import algorithms
 
-    coms = algorithms.infomap(m.G)
+    # coms = algorithms.infomap(m.G)
     
-    for q in coms.communities:       
-        a.append(len(q))
-        a.sort()
+    # for q in coms.communities:       
+    #     a.append(len(q))
+    #     a.sort()
 
     # print(a)
     # b = nx_comm.louvain_communities(m.G, seed=123)    
@@ -173,4 +231,4 @@ if __name__ == '__main__':
     #     a.append(len(g))
     #     a.sort()
     
-    print(a)
+    #print(a)
