@@ -32,14 +32,24 @@ def find_sums(numbers):
     with multiprocessing.Pool(8) as pool:
         pool.map(cpu_bound, numbers)
 
+def mdouble(x):
+    return x * 2
+
 if __name__ == '__main__':
     
-    numbers = [5000000 + x for x in range(20)]
 
-    start_time = time.time()
-    find_sums(numbers)
-    duration = time.time() - start_time
-    print(f"Duration {duration} seconds")
+    with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+        A = pool.map(mdouble, [1, 2, 3])
+
+    print(A)
+    print(type(A))
+    # numbers = [5000000 + x for x in range(20)]
+
+    # start_time = time.time()
+    # find_sums(numbers)
+    # duration = time.time() - start_time
+    # print(f"Duration {duration} seconds")
+
     
     
   
