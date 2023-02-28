@@ -48,3 +48,4 @@
 * El algoritmo de InfoMap es consistente en cuanto al número de comunidades y la cantidad de nodos en la mismas siempre.
 * El tiempo de ejecución del algoritmo de InfoMap es de 54 segundos en promedio para el el grafo completo.
 * El algoritmo de InfoMap se ejecuta en un solo core del CPU.
+* Las comunidades de solo un nodos en corridas con el mismo seed son las mismas.

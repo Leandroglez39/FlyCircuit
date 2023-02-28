@@ -230,26 +230,26 @@ if __name__ == '__main__':
 
     from cdlib import algorithms
 
-    with mp.Pool(processes=mp.cpu_count()) as pool:
-        output = pool.map(algorithms.infomap, [m.G for _ in range(3)])
+    # with mp.Pool(processes=mp.cpu_count()) as pool:
+    #     output = pool.map(algorithms.infomap, [m.G for _ in range(1)])
     
-    #coms = algorithms.infomap(m.G)
+    coms = algorithms.infomap(m.G)
     
     time2 = time.time()
     print(time2 - time1)
 
     singles_nodes = []
 
-    for coms in output:
-        for q in coms.communities:       
-            a.append(len(q))
-            a.sort()
-            if len(q) == 1:
-                singles_nodes.append(q)
-        print(a)
-        a = []
-        print(singles_nodes)
-        singles_nodes = []
+    
+    for q in coms.communities:       
+        a.append(len(q))
+        a.sort()
+        if len(q) == 1:
+            singles_nodes.append(q)
+    print(a)
+    a = []
+    print(singles_nodes)
+    singles_nodes = []
     
     
     
