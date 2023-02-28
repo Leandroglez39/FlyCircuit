@@ -1,9 +1,11 @@
+import time
 import pandas as pd
 import pickle
 from dataclasses import dataclass
 import networkx as nx
 import networkx.algorithms.community as nx_comm
 import matplotlib.pyplot as plt
+import multiprocessing as mp
 
 
 @dataclass
@@ -124,13 +126,13 @@ if __name__ == '__main__':
     #print(de_cen)
     #print(sorted(de_cen.items(), key=lambda x: x[1]))
 
-    print(m.G.degree('TH-F-300002'))
+    #print(m.G.degree('TH-F-300002'))
 
-    a = m.G.degree(weight='weight')
+    #a = m.G.degree(weight='weight')
 
     #print(sorted(list(a), key=lambda x: x[1], reverse=True))
 
-    print(nx.betweenness_centrality(m.G))
+    #print(nx.betweenness_centrality(m.G))
 
     #print(sorted(a., key=lambda x: x[1]))
     #hist = nx.degree_histogram(m.G)
@@ -184,16 +186,25 @@ if __name__ == '__main__':
     #         value += x[1]
     #     print(f'Node: {node} sum values: {value} : len : {len(m.ady_list[id])}' )
     #     print(len(m.G.adj[node[0]].items()))
-    # a = []
+    a = []
+    
+    time1 = time.time()
+
     # comm = nx_comm.asyn_lpa_communities(m.G, weight='weight')
     
+    
+
     # for x in comm:       
     #     a.append(len(x))
     #     a.sort()
     # print(a)
-
-    a = []
+    # time2 = time.time()
+    # print(time2 - time1)
+    
     # comm = nx_comm.greedy_modularity_communities(m.G, weight='weight')
+
+    # time2 = time.time()
+    # print(time2 - time1)
 
     # for x in comm:       
     #     a.append(len(x))
@@ -217,18 +228,38 @@ if __name__ == '__main__':
 
     # print(len(list(nx.strongly_connected_components(m.G))))
 
-    # from cdlib import algorithms
+    from cdlib import algorithms
 
-    # coms = algorithms.infomap(m.G)
+    with mp.Pool(processes=mp.cpu_count()) as pool:
+        output = pool.map(algorithms.infomap, [m.G for _ in range(3)])
     
-    # for q in coms.communities:       
-    #     a.append(len(q))
-    #     a.sort()
+    #coms = algorithms.infomap(m.G)
+    
+    time2 = time.time()
+    print(time2 - time1)
 
-    # print(a)
-    # b = nx_comm.louvain_communities(m.G, seed=123)    
+    singles_nodes = []
+
+    for coms in output:
+        for q in coms.communities:       
+            a.append(len(q))
+            a.sort()
+            if len(q) == 1:
+                singles_nodes.append(q)
+        print(a)
+        a = []
+        print(singles_nodes)
+        singles_nodes = []
+    
+    
+    
+    # start = time.time()
+    # b = nx_comm.louvain_communities(m.G)
+    # end = time.time()
+    # print(end - start)
+
     # for g in b:       
     #     a.append(len(g))
     #     a.sort()
     
-    #print(a)
+    # print(a)
