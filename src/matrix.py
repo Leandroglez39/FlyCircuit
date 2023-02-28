@@ -106,6 +106,11 @@ class Matrix:
     def read_adym(self, path = './dataset/adym_30.pkl'):
         self.ady_list = pickle.load(open(path, 'rb'))
         
+def writter(lis, name):
+
+    with open('./dataset/outputs/' + name, 'w') as f:
+        for (id, value) in lis:
+            f.write(f'{id}, {value}\n')  
 
 if __name__ == '__main__':
     
@@ -128,8 +133,18 @@ if __name__ == '__main__':
 
     #print(m.G.degree('TH-F-300002'))
 
-    #a = m.G.degree(weight='weight')
+    a = m.G.degree(weight='weight')
+    
+    writter(a, 'weight_degree_30.csv')
+    
+    a = m.G.in_degree(weight='weight')
+    
+    writter(a, 'weight_in_degree_30.csv')    
 
+    a = m.G.out_degree(weight='weight')
+    
+    writter(a, 'weight_out_degree_30.csv')
+    
     #print(sorted(list(a), key=lambda x: x[1], reverse=True))
 
     #print(nx.betweenness_centrality(m.G))
@@ -228,28 +243,63 @@ if __name__ == '__main__':
 
     # print(len(list(nx.strongly_connected_components(m.G))))
 
-    from cdlib import algorithms
+    #from cdlib import algorithms
 
     # with mp.Pool(processes=mp.cpu_count()) as pool:
     #     output = pool.map(algorithms.infomap, [m.G for _ in range(1)])
     
-    coms = algorithms.infomap(m.G)
     
-    time2 = time.time()
-    print(time2 - time1)
 
-    singles_nodes = []
+    # args = [m.G for _ in range(2)]
+
+    # pool = mp.Pool(processes=4)
+
+    # results = pool.map_async(tool2, args)
+
+    # pool.close()
+
+    # print(len(results.get()))
+    # procs = []
+
+    # q = mp.Queue()
+
+    # proc = mp.Process(target=tool, args=(m.G, q))
+    
+    # procs.append(proc)
+    # proc.start()
+
+    # proc1 = mp.Process(target=tool, args=(m.G, q))
+    
+    # procs.append(proc1)
+    # proc1.start()
+
+    #coms = algorithms.infomap(m.G)
+    
+    
+   
+    # print(len(q.get().communities))
+    # print(q.get().method_name)
+
+    # print(len(q.get().communities))
+    # print(q.get().method_name)
+
+    # for pro in procs:
+    #     pro.join()
+
+    # time2 = time.time()
+    # print(time2 - time1)
+    # singles_nodes = []
 
     
-    for q in coms.communities:       
-        a.append(len(q))
-        a.sort()
-        if len(q) == 1:
-            singles_nodes.append(q)
-    print(a)
-    a = []
-    print(singles_nodes)
-    singles_nodes = []
+    # for q in coms.communities:       
+    #     a.append(len(q))
+    #     a.sort()
+    #     if len(q) == 1:
+    #         singles_nodes.append(q)
+    # print(a)
+    # a = []
+    # print(singles_nodes)
+    # singles_nodes = []
     
     
     
