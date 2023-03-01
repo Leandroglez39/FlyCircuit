@@ -35,14 +35,155 @@ def find_sums(numbers):
 def mdouble(x):
     return x * 2
 
-if __name__ == '__main__':
+def lovain_concurrent(G, weight = 'weight', resolution = 1, threshold = 1e-07, seed = 1 , n = 10):
+
+    '''
+    This functiosn is for execute louvain algorithm in parallel.
+
+    Parameters
+    ----------
+    G : NetworkX graph
+    weight : string or None, optional (default="weight")
+        The name of an edge attribute that holds the numerical value
+        used as a weight. If None then each edge has weight 1.
+    resolution : float, optional (default=1)
+        If resolution is less than 1, the algorithm favors larger communities.
+        Greater than 1 favors smaller communities
+    threshold : float, optional (default=0.0000001)
+        Modularity gain threshold for each level. If the gain of modularity
+        between 2 levels of the algorithm is less than the given threshold
+        then the algorithm stops and returns the resulting communities.
+    seed : integer, random_state, or None (default)
+        Indicator of random number generation state.
+        See :ref:`Randomness<randomness>`.
+    n :int, optional (default=10)
+        Number of times to execute the algorithm.
+
+    Returns
+    -------
+    list 
+        A list of sets (partition of `G`). Each set represents one community and contains
+        all the nodes that constitute it.
+    '''
+
+    import networkx.algorithms.community as nx_comm
+
+    with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+        communities = pool.starmap(nx_comm.louvain_communities, [(G, weight, resolution, threshold, seed) for _ in range(n)])
+    return communities
+
+
+def lpa_wrapper(G, weight = 'weight', seed = 1):
+
+    import networkx.algorithms.community as nx_comm
+    return list(nx_comm.asyn_lpa_communities(G, weight, seed))
+
+def asyn_lpa_concurrent(G, weight = 'weight', seed = 1 , n = 10):
     
 
     with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-        A = pool.map(mdouble, [1, 2, 3])
+        communities = pool.starmap(lpa_wrapper, [(G, weight, seed) for _ in range(n)])
+    
 
-    print(A)
-    print(type(A))
+    return [com for com in communities]
+
+def greedy_modularity_concurrent(G, weight=None, resolution=1, cutoff=1, best_n=None, n = 10):
+    
+    '''
+    This functiosn is for execute greedy modularity algorithm in parallel.
+
+    Parameters
+    ----------
+    G : NetworkX graph
+
+    weight : string or None, optional (default=None)
+        The name of an edge attribute that holds the numerical value used
+        as a weight.  If None, then each edge has weight 1.
+        The degree is the sum of the edge weights adjacent to the node.
+
+    resolution : float, optional (default=1)
+        If resolution is less than 1, modularity favors larger communities.
+        Greater than 1 favors smaller communities.
+
+    cutoff : int, optional (default=1)
+        A minimum number of communities below which the merging process stops.
+        The process stops at this number of communities even if modularity
+        is not maximized. The goal is to let the user stop the process early.
+        The process stops before the cutoff if it finds a maximum of modularity.
+
+    best_n : int or None, optional (default=None)
+        A maximum number of communities above which the merging process will
+        not stop. This forces community merging to continue after modularity
+        starts to decrease until `best_n` communities remain.
+        If ``None``, don't force it to continue beyond a maximum.
+
+    n :int, optional (default=10) 
+        Number of times to execute the algorithm. 
+    
+    Returns:
+        list (frozenset): A list of sets (partition of G). Each set represents one community and contains all the nodes that constitute it.
+    
+    '''
+    
+    
+    import networkx.algorithms.community as nx_comm
+
+    with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+        communities = pool.starmap(nx_comm.greedy_modularity_communities, [(G, weight ,resolution, cutoff,best_n) for _ in range(n)])
+    return communities
+
+def infomap_concurrent(G, n = 10):
+
+    '''
+    This functiosn is for execute infomap algorithm in parallel.
+
+    Args:
+        G (networkx.Graph): Graph to be clustered.
+        n (int, optional): Number of times to execute the algorithm. Defaults to 10.
+    Returns:
+        list (cdlib.classes.node_clustering.NodeClustering): List of communities.
+            
+    NodeClustering type Properties:
+
+        communities: List of communities
+        graph: A networkx/igraph object
+        method_name: Community discovery algorithm name
+        method_parameters: Configuration for the community discovery algorithm used
+        overlap: Boolean, whether the partition is overlapping or not
+
+    '''
+    
+    from cdlib import algorithms
+
+    with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+        communities = pool.map(algorithms.infomap, [G for _ in range(n)])
+    return communities
+
+if __name__ == '__main__':
+    
+
+    import networkx.algorithms.community as nx_comm
+    import networkx as nx
+    
+    #G = nx.karate_club_graph()
+    G = nx.complete_graph(100)
+
+    '''Region Concurrent Communities Algorithms'''
+    
+    #communities = lovain_concurrent(G)
+    
+    communities = asyn_lpa_concurrent(G)  #TODO
+
+    #communities = greedy_modularity_concurrent(G)
+
+    print(communities)
+
+    
+    #communities = infomap_concurrent(G)
+
+    #print(communities[0].communities )
+
+    ''' End Region Concurrent Communities Algorithms '''
     # numbers = [5000000 + x for x in range(20)]
 
     # start_time = time.time()
