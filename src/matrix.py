@@ -133,17 +133,17 @@ if __name__ == '__main__':
 
     #print(m.G.degree('TH-F-300002'))
 
-    a = m.G.degree(weight='weight')
+    # a = m.G.degree(weight='weight')
     
-    writter(a, 'weight_degree_30.csv')
+    # writter(a, 'weight_degree_30.csv')
     
-    a = m.G.in_degree(weight='weight')
+    # a = m.G.in_degree(weight='weight')
     
-    writter(a, 'weight_in_degree_30.csv')    
+    # writter(a, 'weight_in_degree_30.csv')    
 
-    a = m.G.out_degree(weight='weight')
+    # a = m.G.out_degree(weight='weight')
     
-    writter(a, 'weight_out_degree_30.csv')
+    # writter(a, 'weight_out_degree_30.csv')
     
     #print(sorted(list(a), key=lambda x: x[1], reverse=True))
 
@@ -205,9 +205,8 @@ if __name__ == '__main__':
     
     time1 = time.time()
 
-    # comm = nx_comm.asyn_lpa_communities(m.G, weight='weight')
-    
-    
+    #comm = nx_comm.asyn_lpa_communities(m.G, weight='weight', seed=5)
+     
 
     # for x in comm:       
     #     a.append(len(x))
@@ -216,15 +215,25 @@ if __name__ == '__main__':
     # time2 = time.time()
     # print(time2 - time1)
     
-    # comm = nx_comm.greedy_modularity_communities(m.G, weight='weight')
+    comm = nx_comm.greedy_modularity_communities(m.G, weight='weight')
 
-    # time2 = time.time()
-    # print(time2 - time1)
+    time2 = time.time()
+    print(time2 - time1)
 
-    # for x in comm:       
-    #     a.append(len(x))
-    #     a.sort()
-    # print(a)
+    for x in comm:       
+        a.append(len(x))
+        a.sort()
+    print(a)
+
+    comm = nx_comm.greedy_modularity_communities(m.G, weight=None)
+
+    time2 = time.time()
+    print(time2 - time1)
+
+    for x in comm:       
+        a.append(len(x))
+        a.sort()
+    print(a)
 
     #m.export_graph_to_csv()
     # m.load_ady_matrix(30)
@@ -304,7 +313,7 @@ if __name__ == '__main__':
     
     
     # start = time.time()
-    # b = nx_comm.louvain_communities(m.G)
+    # b = nx_comm.louvain_communities(m.G, seed= 1)
     # end = time.time()
     # print(end - start)
 

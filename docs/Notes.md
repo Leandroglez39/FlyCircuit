@@ -30,18 +30,27 @@
 * El algoritmo de Louvain es consistente en cuanto al número de comunidades y la cantidad de nodos en la mismas si se utiliza un mismo seed.
 * El tiempo de ejecución del algoritmo de Louvain es de 57.5 segundos en promedio para el el grafo completo.
 * El algoritmo de Louvain se ejecuta en un solo core del CPU.
+* El algoritmo por defecto `si` evalua el peso de la arista, solo el grado de los nodos.
+* Weighted `[17, 44, 85, 98, 102, 116, 116, 371, 499, 527, 531, 541, 598, 610, 623, 716, 827, 1096, 1512, 1625, 1718, 1866, 2767, 2897]`
+* Unweighted `[102, 211, 397, 431, 454, 455, 561, 595, 1141, 1339, 1399, 1436, 2379, 2613, 2881, 3508]`
 
 ***
 
 * El algoritmo de LPA (version asynchrone) es consistente en cuanto al número de comunidades y la cantidad de nodos en la mismas si se utiliza un mismo seed.
 * El tiempo de ejecución del algoritmo de LPA es de 70 segundos en promedio para el el grafo completo. Se observan tambien variaciones del tiempo según el seed.
 * El algoritmo de LPA se ejecuta en un solo core del CPU.
+* El algoritmo por defecto `no` evalua el peso de la arista, solo el grado de los nodos.
+* Weighted `[19, 59, 97, 2039, 2768, 3648, 11272]`
+* Unweighted `[96, 2054, 2097, 4913, 10742]`
 
 ***
 
 * El algoritmo de Greedy Modularity Optimization no es consistente en cuanto al número de comunidades y la cantidad de nodos. No cuenta con un seed.
-* El tiempo de ejecución del algoritmo de Greedy Modularity Optimization es de `X` segundos en promedio para el el grafo completo.
+* El tiempo de ejecución del algoritmo de Greedy Modularity Optimization es de `2100` segundos (`35min`) en promedio para el el grafo completo.
 * El algoritmo de Greedy Modularity Optimization se ejecuta en un solo core del CPU.
+* El algoritmo por defecto `no` evalua el peso de la arista, solo el grado de los nodos.
+* Weighted `[1011, 1962, 2337, 6141, 8451]`
+* Unweighted `[2214, 6443, 11245]` 
 
 ***
 
@@ -49,3 +58,4 @@
 * El tiempo de ejecución del algoritmo de InfoMap es de 54 segundos en promedio para el el grafo completo.
 * El algoritmo de InfoMap se ejecuta en un solo core del CPU.
 * Las comunidades de solo un nodos en corridas con el mismo seed son las mismas.
+* Analizar el tratamiento de los pesos de las aristas.
