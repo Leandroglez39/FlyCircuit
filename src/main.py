@@ -166,24 +166,36 @@ if __name__ == '__main__':
     import networkx as nx
     
     #G = nx.karate_club_graph()
-    G = nx.complete_graph(100)
+    G = nx.complete_graph(10)
+
+    G = nx.Graph()    
 
     '''Region Concurrent Communities Algorithms'''
     
     #communities = lovain_concurrent(G)
     
-    communities = asyn_lpa_concurrent(G)  #TODO
+    #communities = asyn_lpa_concurrent(G)  #TODO
 
     #communities = greedy_modularity_concurrent(G)
 
-    print(communities)
+    #print(communities)
 
     
+
     #communities = infomap_concurrent(G)
 
     #print(communities[0].communities )
 
     ''' End Region Concurrent Communities Algorithms '''
+
+    from infomap import Infomap 
+
+    from cdlib import algorithms
+
+    nx_communities = algorithms.infomap(G)
+
+    print(nx_communities.communities)
+
     # numbers = [5000000 + x for x in range(20)]
 
     # start_time = time.time()
