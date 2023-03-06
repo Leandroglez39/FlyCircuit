@@ -59,3 +59,6 @@
 * El algoritmo de InfoMap se ejecuta en un solo core del CPU.
 * Las comunidades de solo un nodos en corridas con el mismo seed son las mismas.
 * Analizar el tratamiento de los pesos de las aristas.
+* Por defecto el algoritmo evalua el peso de la aristas, pero el atributo tiene que estar normbrado `weight`.
+* Para mejores resultados se recomiendo que los valores de los pesos de las aristas esten normalizados entre 0 y 1. Lo cual no es el caso, por lo tanto hay que hacer una normalización manual.
+ 
