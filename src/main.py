@@ -72,7 +72,6 @@ def lovain_concurrent(G, weight = 'weight', resolution = 1, threshold = 1e-07, s
         communities = pool.starmap(nx_comm.louvain_communities, [(G, weight, resolution, threshold, seed) for _ in range(n)])
     return communities
 
-
 def lpa_wrapper(G, weight = 'weight', seed = 1):
 
     import networkx.algorithms.community as nx_comm
@@ -174,7 +173,7 @@ if __name__ == '__main__':
     
     #communities = lovain_concurrent(G)
     
-    #communities = asyn_lpa_concurrent(G)  #TODO
+    #communities = asyn_lpa_concurrent(G) 
 
     #communities = greedy_modularity_concurrent(G)
 

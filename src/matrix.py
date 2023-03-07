@@ -109,7 +109,7 @@ class Matrix:
 
     # ALGORITMOS DE COMUNIDADES
 
-    def lovain_concurrent(self, G, weight = 'weight', resolution = 1, threshold = 1e-07, seed = 1 , n = 10):
+    def lovain_concurrent(self, weight = 'weight', resolution = 1, threshold = 1e-07, seed = False , n = 10):
 
         '''
         This functiosn is for execute louvain algorithm in parallel.
@@ -142,8 +142,13 @@ class Matrix:
 
         import networkx.algorithms.community as nx_comm
 
-        with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-            communities = pool.starmap(nx_comm.louvain_communities, [(G, weight, resolution, threshold, seed) for _ in range(n)])
+        if seed:
+            with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+                communities = pool.starmap(nx_comm.louvain_communities, [(self.G, weight, resolution, threshold, seed) for _ in range(n)])
+        else:            
+            with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+                communities = pool.starmap(nx_comm.louvain_communities, [(self.G, weight, resolution, threshold) for _ in range(n)])
+
         return communities
 
     def lpa_wrapper(self, G, weight = 'weight', seed = 1):
@@ -232,7 +237,16 @@ class Matrix:
             communities = pool.map(algorithms.infomap, [G for _ in range(n)])
         return communities
 
+    def communities_length(self, communities):
 
+        '''
+        This function is for calculate the length of each partition in the community.
+        '''
+
+        a = [len(com) for com in communities]
+        a.sort(reverse=True)
+
+        return a
 def writter(lis, name):
 
     with open('./dataset/outputs/' + name, 'w') as f:
@@ -252,6 +266,12 @@ if __name__ == '__main__':
     # m.sava_matrix_obj()
     print(m.G.number_of_edges())
 
+    communities = m.lovain_concurrent(n=2)
+
+    for com in communities:
+        print(m.communities_length(com))
+        
+    
 
     #de_cen = nx.degree_centrality(m.G)
 
@@ -342,25 +362,25 @@ if __name__ == '__main__':
     # time2 = time.time()
     # print(time2 - time1)
     
-    comm = nx_comm.greedy_modularity_communities(m.G, weight='weight')
+    # comm = nx_comm.greedy_modularity_communities(m.G, weight='weight')
 
-    time2 = time.time()
-    print(time2 - time1)
+    # time2 = time.time()
+    # print(time2 - time1)
 
-    for x in comm:       
-        a.append(len(x))
-        a.sort()
-    print(a)
+    # for x in comm:       
+    #     a.append(len(x))
+    #     a.sort()
+    # print(a)
 
-    comm = nx_comm.greedy_modularity_communities(m.G, weight=None)
+    # comm = nx_comm.greedy_modularity_communities(m.G, weight=None)
 
-    time2 = time.time()
-    print(time2 - time1)
+    # time2 = time.time()
+    # print(time2 - time1)
 
-    for x in comm:       
-        a.append(len(x))
-        a.sort()
-    print(a)
+    # for x in comm:       
+    #     a.append(len(x))
+    #     a.sort()
+    # print(a)
 
     #m.export_graph_to_csv()
     # m.load_ady_matrix(30)
