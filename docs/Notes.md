@@ -61,4 +61,20 @@
 * Analizar el tratamiento de los pesos de las aristas.
 * Por defecto el algoritmo evalua el peso de la aristas, pero el atributo tiene que estar normbrado `weight`.
 * Para mejores resultados se recomiendo que los valores de los pesos de las aristas esten normalizados entre 0 y 1. Lo cual no es el caso, por lo tanto hay que hacer una normalización manual.
- 
+
+***
+
+## 6 de marzo de 2023
+
+***
+
+* Si se hace una lista ordenada de los nodos por su grado, se tiene que para llegar al `80%` del grado total de la network se necesitan `~ 9700` nodos, lo cual representa el `48%` de los nodos totales (`19902`).
+* Si se hace una lista ordenada de los nodos por su grado, se tiene que si tomamos una muestra del `20%`, `~ 4000` nodos, la suma total de sus grados representan el `~ 50%` de todos los grados de la network (`3586332`).
+* Si se hace una lista ordenada de los nodos por su weight, se tiene que para llegar al `80%` (`22483022`) del grado total de la network se necesitan `~ 7200` nodos, lo cual representa el `36%` de los nodos totales (`19902`).
+* Si se hace una lista ordenada de los nodos por su weight, se tiene que si tomamos una muestra del `20%`, `~ 4000` nodos, la suma total de sus weight representan el `~ 64%` de todos los grados de la network (`27952618`).
+
+***
+
+* Tomando el `20%` de los nodos con mayor grado y tambien el `20%` de los nodos con mayor weight, se tiene que coinciden `3251` nodos, lo cual representa el `82%` de los nodos en común.
+* Si tomamos de la lista ordenada de los weight que representa el `80%` del peso total de la network (los `7200` primeros nodos), y tomamos de la lista ordenada de los grados esta misma cantidad de nodos, se tiene que coinciden `~ 6577` nodos, lo cual representa el `91%` de los nodos en común.   
+* Si tomamos de la lista ordenada de los degree que representa el `80%` del degree total de la network (los `9700` primeros nodos), y tomamos de la lista ordenada de los weight esta misma cantidad de nodos, se tiene que coinciden `~ 8971` nodos, lo cual representa el `92%` de los nodos en común.  

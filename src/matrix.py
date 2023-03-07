@@ -266,12 +266,31 @@ if __name__ == '__main__':
     # m.sava_matrix_obj()
     print(m.G.number_of_edges())
 
-    communities = m.lovain_concurrent(n=2)
+    # communities = m.lovain_concurrent(n=2)
 
-    for com in communities:
-        print(m.communities_length(com))
+    # for com in communities:
+    #     print(m.communities_length(com))
         
     
+
+    sorted_degree = sorted(list(m.G.degree()), key=lambda x: x[1], reverse=True)
+
+    sorted_weighted = sorted(list(m.G.degree(weight='weight')), key=lambda x: x[1], reverse=True)
+
+    set_degree = set()
+    
+    for i in range(0, 9700):
+        set_degree.add(sorted_degree[i][0])
+
+    coun = 0
+
+    for i in range(0, 9700):
+        if sorted_weighted[i][0] in set_degree:
+            coun += 1
+
+    print(coun)
+    
+    #print(sum([x[1] for x in sorted_degree[0:3995]]))
 
     #de_cen = nx.degree_centrality(m.G)
 
