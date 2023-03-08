@@ -209,34 +209,7 @@ class Matrix:
         with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
             communities = pool.starmap(nx_comm.greedy_modularity_communities, [(G, weight ,resolution, cutoff,best_n) for _ in range(n)])
         return communities
-
-    def infomap_concurrent(self, G, n = 10):
-
-        '''
-        This functiosn is for execute infomap algorithm in parallel.
-
-        Args:
-            G (networkx.Graph): Graph to be clustered.
-            n (int, optional): Number of times to execute the algorithm. Defaults to 10.
-        Returns:
-            list (cdlib.classes.node_clustering.NodeClustering): List of communities.
-                
-        NodeClustering type Properties:
-
-            communities: List of communities
-            graph: A networkx/igraph object
-            method_name: Community discovery algorithm name
-            method_parameters: Configuration for the community discovery algorithm used
-            overlap: Boolean, whether the partition is overlapping or not
-
-        '''
-        
-        from cdlib import algorithms
-
-        with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-            communities = pool.map(algorithms.infomap, [G for _ in range(n)])
-        return communities
-
+    
     def communities_length(self, communities):
 
         '''
@@ -450,40 +423,7 @@ if __name__ == '__main__':
     # print(len(list(m.G.neighbors('104198-F-000000'))))
 
     # print(len(list(nx.strongly_connected_components(m.G))))
-
-    #from cdlib import algorithms
-
-    # with mp.Pool(processes=mp.cpu_count()) as pool:
-    #     output = pool.map(algorithms.infomap, [m.G for _ in range(1)])
-    
-    
-
-    # args = [m.G for _ in range(2)]
-
-    # pool = mp.Pool(processes=4)
-
-    # results = pool.map_async(tool2, args)
-
-    # pool.close()
-
-    # print(len(results.get()))
-    # procs = []
-
-    # q = mp.Queue()
-
-    # proc = mp.Process(target=tool, args=(m.G, q))
-    
-    # procs.append(proc)
-    # proc.start()
-
-    # proc1 = mp.Process(target=tool, args=(m.G, q))
-    
-    # procs.append(proc1)
-    # proc1.start()
-
-    #coms = algorithms.infomap(m.G)
-    
-    
+      
    
     # print(len(q.get().communities))
     # print(q.get().method_name)
