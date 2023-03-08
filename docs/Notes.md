@@ -68,9 +68,9 @@
 
 ***
 
-* Si se hace una lista ordenada de los nodos por su grado, se tiene que para llegar al `80%` del grado total de la network se necesitan `~ 9700` nodos, lo cual representa el `48%` de los nodos totales (`19902`).
+* Si se hace una lista ordenada de los nodos por su grado, se tiene que para llegar al `80%` del grado total de la network se necesitan `~ 9700` nodos, lo cual representa el `48%` de los nodos totales (`19902`). Esto provoca que estos `9700` nodos con mayor grado tengan como promedio un grado de `~ 295` y los `10200` restante cuentan con un promedio de `~ 70`.
 * Si se hace una lista ordenada de los nodos por su grado, se tiene que si tomamos una muestra del `20%`, `~ 4000` nodos, la suma total de sus grados representan el `~ 50%` de todos los grados de la network (`3586332`).
-* Si se hace una lista ordenada de los nodos por su weight, se tiene que para llegar al `80%` (`22483022`) del grado total de la network se necesitan `~ 7200` nodos, lo cual representa el `36%` de los nodos totales (`19902`).
+* Si se hace una lista ordenada de los nodos por su weight, se tiene que para llegar al `80%` (`22483022`) del grado total de la network se necesitan `~ 7200` nodos, lo cual representa el `36%` de los nodos totales (`19902`). Esto provoca que estos `7200` nodos con mayor grado tengan como promedio un grado de `~ 3100` y los `12900` restante cuentan con un promedio de `~ 175`.
 * Si se hace una lista ordenada de los nodos por su weight, se tiene que si tomamos una muestra del `20%`, `~ 4000` nodos, la suma total de sus weight representan el `~ 64%` de todos los grados de la network (`27952618`).
 
 ***
