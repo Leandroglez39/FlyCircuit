@@ -109,7 +109,7 @@ class Matrix:
 
     # ALGORITMOS DE COMUNIDADES
 
-    def lovain_concurrent(self, weight = 'weight', resolution = 1, threshold = 1e-07, seed = False , n = 10):
+    def lovain_concurrent(self, weight = 'weight', resolution = 1, threshold = 1e-07, seed = None , n = 10):
 
         '''
         This functiosn is for execute louvain algorithm in parallel.
@@ -127,7 +127,7 @@ class Matrix:
             Modularity gain threshold for each level. If the gain of modularity
             between 2 levels of the algorithm is less than the given threshold
             then the algorithm stops and returns the resulting communities.
-        seed : integer, random_state, or None (default)
+        seed : list (lenght=n), random_state, or None (default)
             Indicator of random number generation state.
             See :ref:`Randomness<randomness>`.
         n :int, optional (default=10)
@@ -144,7 +144,7 @@ class Matrix:
 
         if seed:
             with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-                communities = pool.starmap(nx_comm.louvain_communities, [(self.G, weight, resolution, threshold, seed) for _ in range(n)])
+                communities = pool.starmap(nx_comm.louvain_communities, [(self.G, weight, resolution, threshold, seed[i]) for i in range(n)])
         else:            
             with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
                 communities = pool.starmap(nx_comm.louvain_communities, [(self.G, weight, resolution, threshold) for _ in range(n)])
@@ -247,11 +247,26 @@ class Matrix:
         a.sort(reverse=True)
 
         return a
+    
+    def save_communities(self, communities, algorithm : str, params: list = [], seed = None):
+
+        if algorithm == 'louvain' and params == []:
+            params = [1, 1e-07, None]
+
+        for i in range(len(communities)):
+            params_name = ''.join(['_' + str(param) for param in params])
+            params_name += '_seed_' + str(seed[i]) if seed else ''
+
+            with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
+                pickle.dump(communities[i], f)
+
 def writter(lis, name):
 
     with open('./dataset/outputs/' + name, 'w') as f:
         for (id, value) in lis:
             f.write(f'{id}, {value}\n')  
+
+
 
 if __name__ == '__main__':
     
@@ -266,29 +281,47 @@ if __name__ == '__main__':
     # m.sava_matrix_obj()
     print(m.G.number_of_edges())
 
-    # communities = m.lovain_concurrent(n=2)
+    communities = m.lovain_concurrent(seed= [1,2,3,4,5,6,7,8,9,10],  n=10)
 
-    # for com in communities:
-    #     print(m.communities_length(com))
+    for com in communities:
+        print(m.communities_length(com))
+
+    m.save_communities(communities, 'louvain', params=[1, 1e-07], seed= [1,2,3,4,5,6,7,8,9,10])
+
+    # c = pickle.load(open('./dataset/outputs/louvain/louvain_1_1e-07_seed_1_iter_0', 'rb'))
+
+    # print(m.communities_length(c))
         
+    # coun_int = 0
+    # coun_out = 0    
     
-
-    sorted_degree = sorted(list(m.G.degree()), key=lambda x: x[1], reverse=True)
-
-    sorted_weighted = sorted(list(m.G.degree(weight='weight')), key=lambda x: x[1], reverse=True)
-
-    set_degree = set()
     
-    for i in range(0, 9700):
-        set_degree.add(sorted_degree[i][0])
+    # sorted_degree = sorted(list(m.G.degree()), key=lambda x: x[1], reverse=True)
 
-    coun = 0
+    # for i in range(0, 9700):
+    #     node = sorted_degree[i][0]
+    #     if m.G.in_degree(node) >  m.G.out_degree(node):
+    #         coun_int += 1
+    #     else:
+    #         coun_out += 1
 
-    for i in range(0, 9700):
-        if sorted_weighted[i][0] in set_degree:
-            coun += 1
+    # print(coun_int, coun_out)
 
-    print(coun)
+
+    # sorted_weighted = sorted(list(m.G.degree(weight='weight')), key=lambda x: x[1], reverse=True)
+
+    # set_degree = set()
+    
+    # for i in range(0, 9700):
+    #     set_degree.add(sorted_degree[i][0])
+
+    # coun = 0
+
+    # for i in range(0, 9700):
+    #     if sorted_weighted[i][0] in set_degree:
+    #         coun += 1
+
+    # print(coun)
     
     #print(sum([x[1] for x in sorted_degree[0:3995]]))
 
