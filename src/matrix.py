@@ -287,7 +287,7 @@ class Matrix:
             A list of elemments .
         '''
 
-        return [com for com in communities if len(com) > limit]
+        return None
 
 def writter(lis, name):
 
