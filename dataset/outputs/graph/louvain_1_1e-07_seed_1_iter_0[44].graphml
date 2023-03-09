@@ -1,0 +1,1705 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d1" for="edge" attr.name="weight" attr.type="long"/>
+<key id="d0" for="node" attr.name="degree" attr.type="long"/>
+<graph edgedefault="directed"><node id="Gad1-F-700201">
+  <data key="d0">17</data>
+</node>
+<node id="VGlut-F-100169">
+  <data key="d0">27</data>
+</node>
+<node id="Gad1-F-200565">
+  <data key="d0">26</data>
+</node>
+<node id="VGlut-F-000149">
+  <data key="d0">22</data>
+</node>
+<node id="Gad1-F-300197">
+  <data key="d0">19</data>
+</node>
+<node id="VGlut-F-700010">
+  <data key="d0">25</data>
+</node>
+<node id="Gad1-F-700455">
+  <data key="d0">8</data>
+</node>
+<node id="Gad1-F-700729">
+  <data key="d0">23</data>
+</node>
+<node id="fru-F-000242">
+  <data key="d0">28</data>
+</node>
+<node id="Gad1-F-800284">
+  <data key="d0">31</data>
+</node>
+<node id="Gad1-F-600531">
+  <data key="d0">38</data>
+</node>
+<node id="Gad1-F-500765">
+  <data key="d0">34</data>
+</node>
+<node id="Gad1-F-400891">
+  <data key="d0">20</data>
+</node>
+<node id="Cha-F-800049">
+  <data key="d0">26</data>
+</node>
+<node id="Cha-F-400132">
+  <data key="d0">9</data>
+</node>
+<node id="VGlut-F-000062">
+  <data key="d0">39</data>
+</node>
+<node id="VGlut-F-300303">
+  <data key="d0">18</data>
+</node>
+<node id="VGlut-F-000495">
+  <data key="d0">31</data>
+</node>
+<node id="Gad1-F-800432">
+  <data key="d0">25</data>
+</node>
+<node id="Gad1-F-700122">
+  <data key="d0">33</data>
+</node>
+<node id="Gad1-F-400849">
+  <data key="d0">29</data>
+</node>
+<node id="VGlut-F-200184">
+  <data key="d0">16</data>
+</node>
+<node id="Cha-F-100116">
+  <data key="d0">10</data>
+</node>
+<node id="VGlut-F-900008">
+  <data key="d0">18</data>
+</node>
+<node id="Cha-F-000090">
+  <data key="d0">35</data>
+</node>
+<node id="Cha-F-100193">
+  <data key="d0">47</data>
+</node>
+<node id="Cha-F-000359">
+  <data key="d0">13</data>
+</node>
+<node id="VGlut-F-200519">
+  <data key="d0">15</data>
+</node>
+<node id="VGlut-F-000100">
+  <data key="d0">17</data>
+</node>
+<node id="Cha-F-500264">
+  <data key="d0">17</data>
+</node>
+<node id="Gad1-F-200125">
+  <data key="d0">42</data>
+</node>
+<node id="Gad1-F-800240">
+  <data key="d0">32</data>
+</node>
+<node id="Gad1-F-100871">
+  <data key="d0">8</data>
+</node>
+<node id="Gad1-F-600002">
+  <data key="d0">25</data>
+</node>
+<node id="Gad1-F-600357">
+  <data key="d0">16</data>
+</node>
+<node id="Gad1-F-100516">
+  <data key="d0">26</data>
+</node>
+<node id="Cha-F-200057">
+  <data key="d0">26</data>
+</node>
+<node id="VGlut-F-200602">
+  <data key="d0">28</data>
+</node>
+<node id="TH-F-000054">
+  <data key="d0">12</data>
+</node>
+<node id="Gad1-F-100861">
+  <data key="d0">22</data>
+</node>
+<node id="Gad1-F-000664">
+  <data key="d0">7</data>
+</node>
+<node id="VGlut-F-100153">
+  <data key="d0">16</data>
+</node>
+<node id="Cha-F-200225">
+  <data key="d0">32</data>
+</node>
+<node id="VGlut-F-300404">
+  <data key="d0">38</data>
+</node>
+<edge source="Gad1-F-700201" target="Cha-F-800049">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-700201" target="Gad1-F-100861">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-700201" target="Gad1-F-700729">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-700201" target="VGlut-F-200184">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-100169" target="Cha-F-100193">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-100169" target="Cha-F-200057">
+  <data key="d1">15</data>
+</edge>
+<edge source="VGlut-F-100169" target="Gad1-F-200125">
+  <data key="d1">73</data>
+</edge>
+<edge source="VGlut-F-100169" target="Gad1-F-200565">
+  <data key="d1">8</data>
+</edge>
+<edge source="VGlut-F-100169" target="Gad1-F-600531">
+  <data key="d1">22</data>
+</edge>
+<edge source="VGlut-F-100169" target="Gad1-F-700455">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-100169" target="Gad1-F-800284">
+  <data key="d1">15</data>
+</edge>
+<edge source="VGlut-F-100169" target="Gad1-F-800432">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-100169" target="VGlut-F-000062">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-100169" target="VGlut-F-200602">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-100169" target="VGlut-F-300404">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-200565" target="Cha-F-000090">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-200565" target="Cha-F-100193">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-200565" target="Cha-F-200057">
+  <data key="d1">10</data>
+</edge>
+<edge source="Gad1-F-200565" target="Gad1-F-100516">
+  <data key="d1">16</data>
+</edge>
+<edge source="Gad1-F-200565" target="Gad1-F-200125">
+  <data key="d1">20</data>
+</edge>
+<edge source="Gad1-F-200565" target="Gad1-F-400849">
+  <data key="d1">31</data>
+</edge>
+<edge source="Gad1-F-200565" target="Gad1-F-600531">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-200565" target="Gad1-F-700122">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-200565" target="VGlut-F-000062">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-200565" target="VGlut-F-100169">
+  <data key="d1">15</data>
+</edge>
+<edge source="Gad1-F-200565" target="VGlut-F-200602">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-200565" target="VGlut-F-300303">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-200565" target="VGlut-F-300404">
+  <data key="d1">26</data>
+</edge>
+<edge source="VGlut-F-000149" target="Cha-F-100193">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-000149" target="Cha-F-200057">
+  <data key="d1">28</data>
+</edge>
+<edge source="VGlut-F-000149" target="Gad1-F-200125">
+  <data key="d1">107</data>
+</edge>
+<edge source="VGlut-F-000149" target="Gad1-F-200565">
+  <data key="d1">17</data>
+</edge>
+<edge source="VGlut-F-000149" target="Gad1-F-400891">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000149" target="Gad1-F-500765">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-000149" target="Gad1-F-600531">
+  <data key="d1">47</data>
+</edge>
+<edge source="VGlut-F-000149" target="Gad1-F-700122">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-000149" target="Gad1-F-700729">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-000149" target="Gad1-F-800432">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-000149" target="VGlut-F-000062">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000149" target="VGlut-F-000495">
+  <data key="d1">11</data>
+</edge>
+<edge source="VGlut-F-000149" target="VGlut-F-100169">
+  <data key="d1">8</data>
+</edge>
+<edge source="VGlut-F-000149" target="VGlut-F-200519">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000149" target="VGlut-F-200602">
+  <data key="d1">10</data>
+</edge>
+<edge source="VGlut-F-000149" target="VGlut-F-300404">
+  <data key="d1">43</data>
+</edge>
+<edge source="VGlut-F-000149" target="VGlut-F-700010">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-300197" target="Gad1-F-800284">
+  <data key="d1">18</data>
+</edge>
+<edge source="Gad1-F-300197" target="Gad1-F-800432">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-700010" target="Cha-F-200057">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-700010" target="fru-F-000242">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-100516">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-200125">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-300197">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-400891">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-500765">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-700122">
+  <data key="d1">18</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-700201">
+  <data key="d1">9</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-700729">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-800240">
+  <data key="d1">8</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-800284">
+  <data key="d1">14</data>
+</edge>
+<edge source="VGlut-F-700010" target="Gad1-F-800432">
+  <data key="d1">7</data>
+</edge>
+<edge source="VGlut-F-700010" target="VGlut-F-000495">
+  <data key="d1">8</data>
+</edge>
+<edge source="VGlut-F-700010" target="VGlut-F-300404">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-700455" target="Cha-F-100116">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-700455" target="Cha-F-800049">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-700455" target="Gad1-F-300197">
+  <data key="d1">41</data>
+</edge>
+<edge source="Gad1-F-700455" target="VGlut-F-100153">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-700455" target="VGlut-F-900008">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-700729" target="Cha-F-000090">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-700729" target="Cha-F-100193">
+  <data key="d1">27</data>
+</edge>
+<edge source="Gad1-F-700729" target="fru-F-000242">
+  <data key="d1">3</data>
+</edge>
+<edge source="fru-F-000242" target="Cha-F-000090">
+  <data key="d1">3</data>
+</edge>
+<edge source="fru-F-000242" target="Cha-F-000359">
+  <data key="d1">4</data>
+</edge>
+<edge source="fru-F-000242" target="Cha-F-100193">
+  <data key="d1">2</data>
+</edge>
+<edge source="fru-F-000242" target="Cha-F-800049">
+  <data key="d1">24</data>
+</edge>
+<edge source="fru-F-000242" target="Gad1-F-300197">
+  <data key="d1">13</data>
+</edge>
+<edge source="fru-F-000242" target="Gad1-F-500765">
+  <data key="d1">2</data>
+</edge>
+<edge source="fru-F-000242" target="Gad1-F-600002">
+  <data key="d1">1</data>
+</edge>
+<edge source="fru-F-000242" target="Gad1-F-700201">
+  <data key="d1">4</data>
+</edge>
+<edge source="fru-F-000242" target="Gad1-F-700729">
+  <data key="d1">20</data>
+</edge>
+<edge source="fru-F-000242" target="Gad1-F-800284">
+  <data key="d1">2</data>
+</edge>
+<edge source="fru-F-000242" target="Gad1-F-800432">
+  <data key="d1">1</data>
+</edge>
+<edge source="fru-F-000242" target="VGlut-F-000062">
+  <data key="d1">1</data>
+</edge>
+<edge source="fru-F-000242" target="VGlut-F-000495">
+  <data key="d1">3</data>
+</edge>
+<edge source="fru-F-000242" target="VGlut-F-200184">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-800284" target="Cha-F-000359">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-800284" target="Cha-F-100193">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-800284" target="Cha-F-200225">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-800284" target="Cha-F-800049">
+  <data key="d1">29</data>
+</edge>
+<edge source="Gad1-F-800284" target="fru-F-000242">
+  <data key="d1">7</data>
+</edge>
+<edge source="Gad1-F-800284" target="Gad1-F-100861">
+  <data key="d1">20</data>
+</edge>
+<edge source="Gad1-F-800284" target="Gad1-F-100871">
+  <data key="d1">14</data>
+</edge>
+<edge source="Gad1-F-800284" target="Gad1-F-300197">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-800284" target="Gad1-F-600002">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-800284" target="Gad1-F-700201">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-800284" target="Gad1-F-700729">
+  <data key="d1">39</data>
+</edge>
+<edge source="Gad1-F-800284" target="Gad1-F-800240">
+  <data key="d1">33</data>
+</edge>
+<edge source="Gad1-F-800284" target="VGlut-F-000062">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-800284" target="VGlut-F-000495">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-600531" target="Cha-F-000090">
+  <data key="d1">7</data>
+</edge>
+<edge source="Gad1-F-600531" target="Cha-F-100193">
+  <data key="d1">57</data>
+</edge>
+<edge source="Gad1-F-600531" target="Cha-F-200057">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-600531" target="Cha-F-200225">
+  <data key="d1">21</data>
+</edge>
+<edge source="Gad1-F-600531" target="Cha-F-800049">
+  <data key="d1">18</data>
+</edge>
+<edge source="Gad1-F-600531" target="fru-F-000242">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-000664">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-100516">
+  <data key="d1">15</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-200125">
+  <data key="d1">14</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-400849">
+  <data key="d1">53</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-500765">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-600002">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-700122">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-700729">
+  <data key="d1">17</data>
+</edge>
+<edge source="Gad1-F-600531" target="Gad1-F-800240">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-600531" target="VGlut-F-000062">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-600531" target="VGlut-F-000495">
+  <data key="d1">10</data>
+</edge>
+<edge source="Gad1-F-600531" target="VGlut-F-100169">
+  <data key="d1">14</data>
+</edge>
+<edge source="Gad1-F-600531" target="VGlut-F-200602">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-600531" target="VGlut-F-300404">
+  <data key="d1">40</data>
+</edge>
+<edge source="Gad1-F-600531" target="VGlut-F-700010">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-500765" target="Cha-F-800049">
+  <data key="d1">10</data>
+</edge>
+<edge source="Gad1-F-500765" target="fru-F-000242">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-500765" target="Gad1-F-200125">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-500765" target="Gad1-F-300197">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-500765" target="Gad1-F-400849">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-500765" target="Gad1-F-400891">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-500765" target="Gad1-F-700122">
+  <data key="d1">16</data>
+</edge>
+<edge source="Gad1-F-500765" target="Gad1-F-700729">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-500765" target="Gad1-F-800284">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-500765" target="VGlut-F-000062">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-500765" target="VGlut-F-000495">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-500765" target="VGlut-F-100169">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-500765" target="VGlut-F-300303">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-500765" target="VGlut-F-300404">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-400891" target="Cha-F-000090">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-400891" target="Cha-F-100193">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-400891" target="Gad1-F-100516">
+  <data key="d1">10</data>
+</edge>
+<edge source="Gad1-F-400891" target="Gad1-F-400849">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-400891" target="Gad1-F-500765">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-400891" target="Gad1-F-600002">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-400891" target="Gad1-F-600357">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-400891" target="Gad1-F-700122">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-400891" target="VGlut-F-100169">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-400891" target="VGlut-F-300303">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-400891" target="VGlut-F-300404">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-800049" target="Cha-F-100193">
+  <data key="d1">17</data>
+</edge>
+<edge source="Cha-F-800049" target="fru-F-000242">
+  <data key="d1">18</data>
+</edge>
+<edge source="Cha-F-800049" target="Gad1-F-100861">
+  <data key="d1">10</data>
+</edge>
+<edge source="Cha-F-800049" target="Gad1-F-700201">
+  <data key="d1">25</data>
+</edge>
+<edge source="Cha-F-800049" target="Gad1-F-700729">
+  <data key="d1">28</data>
+</edge>
+<edge source="Cha-F-800049" target="Gad1-F-800240">
+  <data key="d1">16</data>
+</edge>
+<edge source="Cha-F-800049" target="VGlut-F-000495">
+  <data key="d1">12</data>
+</edge>
+<edge source="Cha-F-800049" target="VGlut-F-300404">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-800049" target="VGlut-F-700010">
+  <data key="d1">14</data>
+</edge>
+<edge source="Cha-F-400132" target="Cha-F-000359">
+  <data key="d1">7</data>
+</edge>
+<edge source="Cha-F-400132" target="Cha-F-800049">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-400132" target="Gad1-F-100861">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-400132" target="Gad1-F-300197">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-400132" target="Gad1-F-700201">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-400132" target="Gad1-F-700729">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-400132" target="Gad1-F-800240">
+  <data key="d1">9</data>
+</edge>
+<edge source="VGlut-F-000062" target="Cha-F-000090">
+  <data key="d1">13</data>
+</edge>
+<edge source="VGlut-F-000062" target="Cha-F-100193">
+  <data key="d1">27</data>
+</edge>
+<edge source="VGlut-F-000062" target="Cha-F-200225">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-000062" target="Gad1-F-000664">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000062" target="Gad1-F-100516">
+  <data key="d1">9</data>
+</edge>
+<edge source="VGlut-F-000062" target="Gad1-F-200125">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-000062" target="Gad1-F-400849">
+  <data key="d1">46</data>
+</edge>
+<edge source="VGlut-F-000062" target="Gad1-F-400891">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-000062" target="Gad1-F-500765">
+  <data key="d1">10</data>
+</edge>
+<edge source="VGlut-F-000062" target="Gad1-F-600002">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-000062" target="Gad1-F-700122">
+  <data key="d1">17</data>
+</edge>
+<edge source="VGlut-F-000062" target="VGlut-F-000149">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-000062" target="VGlut-F-000495">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-000062" target="VGlut-F-100169">
+  <data key="d1">46</data>
+</edge>
+<edge source="VGlut-F-000062" target="VGlut-F-200602">
+  <data key="d1">9</data>
+</edge>
+<edge source="VGlut-F-000062" target="VGlut-F-300303">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000062" target="VGlut-F-300404">
+  <data key="d1">24</data>
+</edge>
+<edge source="VGlut-F-000062" target="VGlut-F-700010">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-300303" target="Gad1-F-100516">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-300303" target="Gad1-F-200125">
+  <data key="d1">12</data>
+</edge>
+<edge source="VGlut-F-300303" target="Gad1-F-200565">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-300303" target="Gad1-F-600531">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-300303" target="Gad1-F-700122">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-300303" target="VGlut-F-000062">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-300303" target="VGlut-F-200602">
+  <data key="d1">20</data>
+</edge>
+<edge source="VGlut-F-000495" target="Cha-F-100193">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-000495" target="Cha-F-200057">
+  <data key="d1">44</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-100516">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-200125">
+  <data key="d1">87</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-200565">
+  <data key="d1">13</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-400849">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-400891">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-600357">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-600531">
+  <data key="d1">27</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-700122">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-000495" target="Gad1-F-800432">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-000495" target="VGlut-F-000062">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000495" target="VGlut-F-200602">
+  <data key="d1">15</data>
+</edge>
+<edge source="VGlut-F-000495" target="VGlut-F-300404">
+  <data key="d1">13</data>
+</edge>
+<edge source="Gad1-F-800432" target="Cha-F-200057">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-800432" target="Gad1-F-200125">
+  <data key="d1">37</data>
+</edge>
+<edge source="Gad1-F-800432" target="Gad1-F-300197">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-800432" target="Gad1-F-400849">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-800432" target="Gad1-F-600531">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-800432" target="Gad1-F-800284">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-800432" target="VGlut-F-300404">
+  <data key="d1">20</data>
+</edge>
+<edge source="Gad1-F-700122" target="Cha-F-100193">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-700122" target="fru-F-000242">
+  <data key="d1">21</data>
+</edge>
+<edge source="Gad1-F-700122" target="Gad1-F-100516">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-700122" target="Gad1-F-500765">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-700122" target="Gad1-F-600357">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-700122" target="Gad1-F-700201">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-700122" target="Gad1-F-700729">
+  <data key="d1">18</data>
+</edge>
+<edge source="Gad1-F-700122" target="Gad1-F-800240">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-700122" target="VGlut-F-000495">
+  <data key="d1">22</data>
+</edge>
+<edge source="Gad1-F-700122" target="VGlut-F-100169">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-700122" target="VGlut-F-300303">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-400849" target="Cha-F-100193">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-400849" target="Cha-F-200057">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-400849" target="Gad1-F-200125">
+  <data key="d1">63</data>
+</edge>
+<edge source="Gad1-F-400849" target="Gad1-F-200565">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-400849" target="Gad1-F-600531">
+  <data key="d1">21</data>
+</edge>
+<edge source="Gad1-F-400849" target="Gad1-F-800432">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-400849" target="VGlut-F-000062">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-400849" target="VGlut-F-200602">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-400849" target="VGlut-F-300404">
+  <data key="d1">16</data>
+</edge>
+<edge source="VGlut-F-200184" target="Cha-F-100193">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-200184" target="fru-F-000242">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-200184" target="Gad1-F-500765">
+  <data key="d1">7</data>
+</edge>
+<edge source="VGlut-F-200184" target="Gad1-F-600357">
+  <data key="d1">10</data>
+</edge>
+<edge source="VGlut-F-200184" target="Gad1-F-700122">
+  <data key="d1">22</data>
+</edge>
+<edge source="VGlut-F-200184" target="Gad1-F-700201">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-200184" target="Gad1-F-700729">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-200184" target="Gad1-F-800240">
+  <data key="d1">13</data>
+</edge>
+<edge source="VGlut-F-200184" target="VGlut-F-000495">
+  <data key="d1">21</data>
+</edge>
+<edge source="VGlut-F-200184" target="VGlut-F-100169">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-200184" target="VGlut-F-300303">
+  <data key="d1">9</data>
+</edge>
+<edge source="VGlut-F-200184" target="VGlut-F-300404">
+  <data key="d1">16</data>
+</edge>
+<edge source="VGlut-F-200184" target="VGlut-F-700010">
+  <data key="d1">18</data>
+</edge>
+<edge source="Cha-F-100116" target="Cha-F-200057">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-100116" target="Gad1-F-300197">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-100116" target="Gad1-F-600002">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-100116" target="Gad1-F-600531">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-100116" target="Gad1-F-800284">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-100116" target="Gad1-F-800432">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-100116" target="VGlut-F-100153">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-900008" target="Cha-F-100193">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-900008" target="Cha-F-200225">
+  <data key="d1">7</data>
+</edge>
+<edge source="VGlut-F-900008" target="Cha-F-800049">
+  <data key="d1">30</data>
+</edge>
+<edge source="VGlut-F-900008" target="fru-F-000242">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-200125">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-300197">
+  <data key="d1">10</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-500765">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-600002">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-700122">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-700201">
+  <data key="d1">15</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-700729">
+  <data key="d1">17</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-800284">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-900008" target="Gad1-F-800432">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-900008" target="VGlut-F-000062">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-900008" target="VGlut-F-000495">
+  <data key="d1">14</data>
+</edge>
+<edge source="VGlut-F-900008" target="VGlut-F-300404">
+  <data key="d1">10</data>
+</edge>
+<edge source="Cha-F-000090" target="Cha-F-100193">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-000090" target="Cha-F-200057">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-000090" target="Cha-F-800049">
+  <data key="d1">24</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-100516">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-200125">
+  <data key="d1">48</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-200565">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-300197">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-400849">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-400891">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-500765">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-600531">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-700122">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-700729">
+  <data key="d1">7</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-800240">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-800284">
+  <data key="d1">12</data>
+</edge>
+<edge source="Cha-F-000090" target="Gad1-F-800432">
+  <data key="d1">8</data>
+</edge>
+<edge source="Cha-F-000090" target="VGlut-F-000062">
+  <data key="d1">12</data>
+</edge>
+<edge source="Cha-F-000090" target="VGlut-F-000495">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-000090" target="VGlut-F-100169">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-000090" target="VGlut-F-200519">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-000090" target="VGlut-F-200602">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-000090" target="VGlut-F-300404">
+  <data key="d1">18</data>
+</edge>
+<edge source="Cha-F-100193" target="Cha-F-200057">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-100193" target="Cha-F-800049">
+  <data key="d1">13</data>
+</edge>
+<edge source="Cha-F-100193" target="fru-F-000242">
+  <data key="d1">16</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-200125">
+  <data key="d1">34</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-300197">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-500765">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-600002">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-600531">
+  <data key="d1">13</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-700122">
+  <data key="d1">18</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-700201">
+  <data key="d1">9</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-700455">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-700729">
+  <data key="d1">31</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-800240">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-800284">
+  <data key="d1">31</data>
+</edge>
+<edge source="Cha-F-100193" target="Gad1-F-800432">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-100193" target="VGlut-F-000062">
+  <data key="d1">19</data>
+</edge>
+<edge source="Cha-F-100193" target="VGlut-F-000495">
+  <data key="d1">9</data>
+</edge>
+<edge source="Cha-F-100193" target="VGlut-F-200519">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-100193" target="VGlut-F-200602">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-100193" target="VGlut-F-300404">
+  <data key="d1">25</data>
+</edge>
+<edge source="Cha-F-100193" target="VGlut-F-700010">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-000359" target="Cha-F-000090">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-000359" target="Cha-F-100193">
+  <data key="d1">20</data>
+</edge>
+<edge source="Cha-F-000359" target="Cha-F-800049">
+  <data key="d1">22</data>
+</edge>
+<edge source="Cha-F-000359" target="Gad1-F-500765">
+  <data key="d1">12</data>
+</edge>
+<edge source="Cha-F-000359" target="Gad1-F-700729">
+  <data key="d1">11</data>
+</edge>
+<edge source="Cha-F-000359" target="Gad1-F-800240">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-000359" target="VGlut-F-000062">
+  <data key="d1">12</data>
+</edge>
+<edge source="Cha-F-000359" target="VGlut-F-000495">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-000359" target="VGlut-F-300404">
+  <data key="d1">8</data>
+</edge>
+<edge source="VGlut-F-200519" target="Cha-F-200057">
+  <data key="d1">10</data>
+</edge>
+<edge source="VGlut-F-200519" target="Cha-F-800049">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-200519" target="Gad1-F-200125">
+  <data key="d1">85</data>
+</edge>
+<edge source="VGlut-F-200519" target="Gad1-F-200565">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-200519" target="Gad1-F-400849">
+  <data key="d1">11</data>
+</edge>
+<edge source="VGlut-F-200519" target="Gad1-F-600002">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-200519" target="Gad1-F-600531">
+  <data key="d1">8</data>
+</edge>
+<edge source="VGlut-F-200519" target="Gad1-F-700122">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-200519" target="Gad1-F-800284">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-200519" target="Gad1-F-800432">
+  <data key="d1">5</data>
+</edge>
+<edge source="VGlut-F-200519" target="VGlut-F-000062">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-200519" target="VGlut-F-300404">
+  <data key="d1">17</data>
+</edge>
+<edge source="VGlut-F-000100" target="Cha-F-000090">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-000100" target="Cha-F-000359">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000100" target="Cha-F-100193">
+  <data key="d1">7</data>
+</edge>
+<edge source="VGlut-F-000100" target="Cha-F-200225">
+  <data key="d1">25</data>
+</edge>
+<edge source="VGlut-F-000100" target="Cha-F-800049">
+  <data key="d1">16</data>
+</edge>
+<edge source="VGlut-F-000100" target="fru-F-000242">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-000100" target="Gad1-F-000664">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000100" target="Gad1-F-100516">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-000100" target="Gad1-F-100871">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-000100" target="Gad1-F-300197">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-000100" target="Gad1-F-500765">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000100" target="Gad1-F-700201">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-000100" target="Gad1-F-700729">
+  <data key="d1">20</data>
+</edge>
+<edge source="VGlut-F-000100" target="Gad1-F-800240">
+  <data key="d1">8</data>
+</edge>
+<edge source="VGlut-F-000100" target="VGlut-F-100169">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-000100" target="VGlut-F-200184">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-000100" target="VGlut-F-300404">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-500264" target="Cha-F-000090">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-500264" target="Cha-F-100193">
+  <data key="d1">13</data>
+</edge>
+<edge source="Cha-F-500264" target="Cha-F-200057">
+  <data key="d1">57</data>
+</edge>
+<edge source="Cha-F-500264" target="Cha-F-200225">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-100516">
+  <data key="d1">11</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-200125">
+  <data key="d1">160</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-200565">
+  <data key="d1">8</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-400849">
+  <data key="d1">39</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-500765">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-600002">
+  <data key="d1">7</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-600531">
+  <data key="d1">30</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-700122">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-500264" target="Gad1-F-800240">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-500264" target="VGlut-F-000062">
+  <data key="d1">36</data>
+</edge>
+<edge source="Cha-F-500264" target="VGlut-F-100169">
+  <data key="d1">9</data>
+</edge>
+<edge source="Cha-F-500264" target="VGlut-F-200602">
+  <data key="d1">10</data>
+</edge>
+<edge source="Cha-F-500264" target="VGlut-F-300404">
+  <data key="d1">45</data>
+</edge>
+<edge source="Gad1-F-200125" target="Cha-F-000090">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-200125" target="Cha-F-100193">
+  <data key="d1">20</data>
+</edge>
+<edge source="Gad1-F-200125" target="fru-F-000242">
+  <data key="d1">13</data>
+</edge>
+<edge source="Gad1-F-200125" target="Gad1-F-100516">
+  <data key="d1">23</data>
+</edge>
+<edge source="Gad1-F-200125" target="Gad1-F-400849">
+  <data key="d1">15</data>
+</edge>
+<edge source="Gad1-F-200125" target="Gad1-F-400891">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-200125" target="Gad1-F-500765">
+  <data key="d1">15</data>
+</edge>
+<edge source="Gad1-F-200125" target="Gad1-F-600357">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-200125" target="Gad1-F-700122">
+  <data key="d1">28</data>
+</edge>
+<edge source="Gad1-F-200125" target="Gad1-F-800240">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-200125" target="VGlut-F-000149">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-200125" target="VGlut-F-100169">
+  <data key="d1">41</data>
+</edge>
+<edge source="Gad1-F-200125" target="VGlut-F-300303">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-200125" target="VGlut-F-300404">
+  <data key="d1">43</data>
+</edge>
+<edge source="Gad1-F-200125" target="VGlut-F-700010">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-800240" target="Cha-F-000090">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-800240" target="Cha-F-100193">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-800240" target="fru-F-000242">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-800240" target="Gad1-F-100516">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-800240" target="Gad1-F-200125">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-800240" target="Gad1-F-400849">
+  <data key="d1">7</data>
+</edge>
+<edge source="Gad1-F-800240" target="Gad1-F-500765">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-800240" target="Gad1-F-600357">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-800240" target="Gad1-F-700122">
+  <data key="d1">31</data>
+</edge>
+<edge source="Gad1-F-800240" target="Gad1-F-700729">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-800240" target="VGlut-F-000062">
+  <data key="d1">6</data>
+</edge>
+<edge source="Gad1-F-800240" target="VGlut-F-000149">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-800240" target="VGlut-F-000495">
+  <data key="d1">23</data>
+</edge>
+<edge source="Gad1-F-800240" target="VGlut-F-100169">
+  <data key="d1">11</data>
+</edge>
+<edge source="Gad1-F-800240" target="VGlut-F-300303">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-800240" target="VGlut-F-300404">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-800240" target="VGlut-F-700010">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-100871" target="Cha-F-800049">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-100871" target="Gad1-F-200125">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-100871" target="Gad1-F-300197">
+  <data key="d1">11</data>
+</edge>
+<edge source="Gad1-F-100871" target="Gad1-F-700729">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-100871" target="Gad1-F-800284">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-600002" target="Cha-F-100193">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-600002" target="Cha-F-200057">
+  <data key="d1">7</data>
+</edge>
+<edge source="Gad1-F-600002" target="Gad1-F-200125">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-600002" target="Gad1-F-200565">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-600002" target="Gad1-F-400849">
+  <data key="d1">7</data>
+</edge>
+<edge source="Gad1-F-600002" target="Gad1-F-400891">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-600002" target="Gad1-F-800284">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-600002" target="VGlut-F-000062">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-600002" target="VGlut-F-200602">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-600002" target="VGlut-F-300404">
+  <data key="d1">9</data>
+</edge>
+<edge source="Gad1-F-600357" target="Cha-F-100193">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-600357" target="Gad1-F-100516">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-600357" target="Gad1-F-200125">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-600357" target="Gad1-F-400849">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-600357" target="Gad1-F-600002">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-600357" target="Gad1-F-700122">
+  <data key="d1">27</data>
+</edge>
+<edge source="Gad1-F-600357" target="VGlut-F-000149">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-600357" target="VGlut-F-000495">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-600357" target="VGlut-F-300303">
+  <data key="d1">10</data>
+</edge>
+<edge source="Gad1-F-100516" target="Cha-F-200057">
+  <data key="d1">22</data>
+</edge>
+<edge source="Gad1-F-100516" target="Gad1-F-200125">
+  <data key="d1">135</data>
+</edge>
+<edge source="Gad1-F-100516" target="Gad1-F-200565">
+  <data key="d1">18</data>
+</edge>
+<edge source="Gad1-F-100516" target="Gad1-F-400849">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-100516" target="Gad1-F-600531">
+  <data key="d1">13</data>
+</edge>
+<edge source="Gad1-F-100516" target="Gad1-F-700122">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-100516" target="Gad1-F-800432">
+  <data key="d1">7</data>
+</edge>
+<edge source="Gad1-F-100516" target="VGlut-F-000062">
+  <data key="d1">15</data>
+</edge>
+<edge source="Gad1-F-100516" target="VGlut-F-200602">
+  <data key="d1">12</data>
+</edge>
+<edge source="Gad1-F-100516" target="VGlut-F-300404">
+  <data key="d1">9</data>
+</edge>
+<edge source="Cha-F-200057" target="Cha-F-100193">
+  <data key="d1">9</data>
+</edge>
+<edge source="Cha-F-200057" target="Gad1-F-100516">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-200057" target="Gad1-F-200125">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-200057" target="Gad1-F-400849">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-200057" target="Gad1-F-600002">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-200057" target="VGlut-F-100169">
+  <data key="d1">22</data>
+</edge>
+<edge source="Cha-F-200057" target="VGlut-F-300404">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-200602" target="Cha-F-200057">
+  <data key="d1">30</data>
+</edge>
+<edge source="VGlut-F-200602" target="Cha-F-800049">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-200602" target="Gad1-F-200125">
+  <data key="d1">67</data>
+</edge>
+<edge source="VGlut-F-200602" target="Gad1-F-200565">
+  <data key="d1">10</data>
+</edge>
+<edge source="VGlut-F-200602" target="Gad1-F-300197">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-200602" target="Gad1-F-500765">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-200602" target="Gad1-F-600002">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-200602" target="Gad1-F-600531">
+  <data key="d1">11</data>
+</edge>
+<edge source="VGlut-F-200602" target="Gad1-F-800284">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-200602" target="Gad1-F-800432">
+  <data key="d1">15</data>
+</edge>
+<edge source="VGlut-F-200602" target="TH-F-000054">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-200602" target="VGlut-F-000062">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-200602" target="VGlut-F-300404">
+  <data key="d1">25</data>
+</edge>
+<edge source="TH-F-000054" target="Cha-F-200057">
+  <data key="d1">2</data>
+</edge>
+<edge source="TH-F-000054" target="Gad1-F-200125">
+  <data key="d1">11</data>
+</edge>
+<edge source="TH-F-000054" target="Gad1-F-300197">
+  <data key="d1">20</data>
+</edge>
+<edge source="TH-F-000054" target="Gad1-F-400849">
+  <data key="d1">1</data>
+</edge>
+<edge source="TH-F-000054" target="Gad1-F-500765">
+  <data key="d1">3</data>
+</edge>
+<edge source="TH-F-000054" target="Gad1-F-600002">
+  <data key="d1">1</data>
+</edge>
+<edge source="TH-F-000054" target="Gad1-F-600531">
+  <data key="d1">4</data>
+</edge>
+<edge source="TH-F-000054" target="Gad1-F-800284">
+  <data key="d1">10</data>
+</edge>
+<edge source="TH-F-000054" target="Gad1-F-800432">
+  <data key="d1">14</data>
+</edge>
+<edge source="TH-F-000054" target="VGlut-F-300404">
+  <data key="d1">8</data>
+</edge>
+<edge source="Gad1-F-100861" target="Cha-F-000090">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-100861" target="Cha-F-100193">
+  <data key="d1">11</data>
+</edge>
+<edge source="Gad1-F-100861" target="Cha-F-800049">
+  <data key="d1">15</data>
+</edge>
+<edge source="Gad1-F-100861" target="fru-F-000242">
+  <data key="d1">14</data>
+</edge>
+<edge source="Gad1-F-100861" target="Gad1-F-400891">
+  <data key="d1">3</data>
+</edge>
+<edge source="Gad1-F-100861" target="Gad1-F-500765">
+  <data key="d1">7</data>
+</edge>
+<edge source="Gad1-F-100861" target="Gad1-F-600357">
+  <data key="d1">5</data>
+</edge>
+<edge source="Gad1-F-100861" target="Gad1-F-700122">
+  <data key="d1">11</data>
+</edge>
+<edge source="Gad1-F-100861" target="Gad1-F-700201">
+  <data key="d1">19</data>
+</edge>
+<edge source="Gad1-F-100861" target="Gad1-F-700729">
+  <data key="d1">32</data>
+</edge>
+<edge source="Gad1-F-100861" target="Gad1-F-800240">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-100861" target="VGlut-F-000149">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-100861" target="VGlut-F-000495">
+  <data key="d1">33</data>
+</edge>
+<edge source="Gad1-F-100861" target="VGlut-F-100169">
+  <data key="d1">4</data>
+</edge>
+<edge source="Gad1-F-100861" target="VGlut-F-300303">
+  <data key="d1">33</data>
+</edge>
+<edge source="Gad1-F-100861" target="VGlut-F-300404">
+  <data key="d1">1</data>
+</edge>
+<edge source="Gad1-F-100861" target="VGlut-F-700010">
+  <data key="d1">2</data>
+</edge>
+<edge source="Gad1-F-000664" target="Cha-F-200225">
+  <data key="d1">31</data>
+</edge>
+<edge source="Gad1-F-000664" target="Gad1-F-100861">
+  <data key="d1">39</data>
+</edge>
+<edge source="Gad1-F-000664" target="Gad1-F-100871">
+  <data key="d1">10</data>
+</edge>
+<edge source="Gad1-F-000664" target="Gad1-F-700201">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-100153" target="Cha-F-100116">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-100153" target="Cha-F-200225">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-100153" target="Cha-F-400132">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-100153" target="Cha-F-800049">
+  <data key="d1">17</data>
+</edge>
+<edge source="VGlut-F-100153" target="Gad1-F-200125">
+  <data key="d1">2</data>
+</edge>
+<edge source="VGlut-F-100153" target="Gad1-F-300197">
+  <data key="d1">16</data>
+</edge>
+<edge source="VGlut-F-100153" target="Gad1-F-400849">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-100153" target="Gad1-F-600002">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-100153" target="Gad1-F-700122">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-100153" target="Gad1-F-700729">
+  <data key="d1">6</data>
+</edge>
+<edge source="VGlut-F-100153" target="Gad1-F-800284">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-100153" target="Gad1-F-800432">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-100153" target="VGlut-F-000062">
+  <data key="d1">8</data>
+</edge>
+<edge source="VGlut-F-100153" target="VGlut-F-300404">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-200225" target="Cha-F-000090">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-200225" target="Cha-F-100116">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-200225" target="Cha-F-100193">
+  <data key="d1">5</data>
+</edge>
+<edge source="Cha-F-200225" target="Cha-F-200057">
+  <data key="d1">27</data>
+</edge>
+<edge source="Cha-F-200225" target="Cha-F-400132">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-100516">
+  <data key="d1">10</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-200125">
+  <data key="d1">33</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-200565">
+  <data key="d1">6</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-300197">
+  <data key="d1">28</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-400849">
+  <data key="d1">11</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-500765">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-600531">
+  <data key="d1">22</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-700122">
+  <data key="d1">3</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-700201">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-800240">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-800284">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-200225" target="Gad1-F-800432">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-200225" target="TH-F-000054">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-200225" target="VGlut-F-100169">
+  <data key="d1">10</data>
+</edge>
+<edge source="Cha-F-200225" target="VGlut-F-200602">
+  <data key="d1">4</data>
+</edge>
+<edge source="Cha-F-200225" target="VGlut-F-300303">
+  <data key="d1">2</data>
+</edge>
+<edge source="Cha-F-200225" target="VGlut-F-300404">
+  <data key="d1">17</data>
+</edge>
+<edge source="Cha-F-200225" target="VGlut-F-700010">
+  <data key="d1">1</data>
+</edge>
+<edge source="Cha-F-200225" target="VGlut-F-900008">
+  <data key="d1">1</data>
+</edge>
+<edge source="VGlut-F-300404" target="Cha-F-200057">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-300404" target="Gad1-F-200125">
+  <data key="d1">94</data>
+</edge>
+<edge source="VGlut-F-300404" target="Gad1-F-200565">
+  <data key="d1">7</data>
+</edge>
+<edge source="VGlut-F-300404" target="Gad1-F-400849">
+  <data key="d1">4</data>
+</edge>
+<edge source="VGlut-F-300404" target="Gad1-F-600531">
+  <data key="d1">37</data>
+</edge>
+<edge source="VGlut-F-300404" target="Gad1-F-700455">
+  <data key="d1">3</data>
+</edge>
+<edge source="VGlut-F-300404" target="Gad1-F-800432">
+  <data key="d1">13</data>
+</edge>
+<edge source="VGlut-F-300404" target="VGlut-F-200602">
+  <data key="d1">13</data>
+</edge>
+</graph></graphml>
