@@ -44,8 +44,8 @@ class Matrix:
                 weight = self.ady_list[i][j][1]
                 self.G.add_edge(self.list_nodes[y], self.list_nodes[i], weight=weight)
     
-    def export_graph_to_csv(self):
-        nx.write_edgelist(self.G, "./dataset/30set.csv", delimiter=",", data=['weight'])
+    def export_graph_to_csv(self, path = "./dataset/graph_19k_3.5m.csv"):
+        nx.write_edgelist(self.G, path, delimiter=",", data=['weight'])
 
     def export_graph_to_csv_size(self, size):
 
@@ -234,13 +234,15 @@ class Matrix:
             with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
                 pickle.dump(communities[i], f)
 
-    def load_communities(self, algorithm : str, resolution = 1, threshold = 1e-07 , seed = 0, iter = 0):
+    def load_communities(self, algorithm : str, resolution = 1, threshold = 1e-07 , seed = 1, iter = 0) -> list:
 
         if algorithm == 'louvain':
             path = './dataset/outputs/' + algorithm + '/' + algorithm + '_'+ str(resolution) + '_' + str(threshold) + '_seed_' + str(seed) + '_iter_' + str(iter)
         
             with open(path, 'rb') as f:
                 return pickle.load(f)
+        
+        return []
 
     def load_all_communities(self, algorithm : str) -> list: 
         '''
@@ -400,19 +402,25 @@ if __name__ == '__main__':
     # m.sava_matrix_obj()
     print(m.G.number_of_edges())
 
-    communities = m.load_all_communities('louvain')
+    # communities = m.load_all_communities('louvain')
 
-    for i  in range(len(communities)):        
+    # for i  in range(len(communities)):        
 
-        community = communities[i]
+    #     community = communities[i]
 
-        sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
+    #     sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
 
-        data = m.nodes_in_communities(sorted_community)
+    #     data = m.nodes_in_communities(sorted_community)
 
-        m.save_dict_to_csv(data, 'louvain_1_1e-07_seed_1_iter_' + str(i))
+    #     m.save_dict_to_csv(data, 'louvain_1_1e-07_seed_1_iter_' + str(i))
 
-    #SG = m.create_sub_graph(sorted_community[0])
+    community = m.load_communities('louvain')
+
+    sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
+
+    SG = m.create_sub_graph(sorted_community[0])
+
+    nx.write_edgelist(SG, './dataset/outputs/graph/louvain_1_1e-07_seed_1_iter_0[2897].csv', delimiter=",", data=['weight'])
 
     #SG = m.add_degree_property(SG)
 
