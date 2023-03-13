@@ -445,6 +445,27 @@ class Matrix:
             for key, value in dict.items():
                 f.write(str(key) + ',' + str(value) + '\n')
 
+    def add_property(self, measure: str):
+
+        '''
+        This function is for add a property to the nodes of the graph.
+
+        Parameters
+        ----------
+        property : str
+            The name of the property to add.
+        '''
+
+        if measure == 'eigenvector_centrality':
+
+            data = nx.eigenvector_centrality(self.G)
+
+            data_weighted = nx.eigenvector_centrality(self.G, weight='weight') 
+
+            for node in self.G.nodes():
+                self.G.nodes[node][measure] = self.G.nodes[node][property]
+
+
 def save_all_communities_tocsv(algorithm: str, communities: list):
 
     '''
@@ -522,28 +543,29 @@ if __name__ == '__main__':
     #m.load_ady_matrix(30)    
     #m.insert_weighted_edges()
     # m.sava_matrix_obj()
-    #m.load_matrix_obj()
+    m.load_matrix_obj()
     print(m.G.number_of_edges())
+
+    print(datetime.datetime.now())
+    
 
     print(datetime.datetime.now())
 
     # run_and_save_algorithm(m, 'lpa', params= [], seed=[11, 20], n= 2)
 
-    # print(datetime.datetime.now())
+    # communities = m.load_all_communities('lpa')
 
-    communities = m.load_all_communities('lpa')
-
-    save_all_communities_tocsv('lpa', communities)
+    # save_all_communities_tocsv('lpa', communities)
 
     
 
-    for i  in range(len(communities)):        
+    # for i  in range(len(communities)):        
 
-        community = communities[i]
+    #     community = communities[i]
 
-        sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
+    #     sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
 
-        print(m.communities_length(sorted_community))
+    #     print(m.communities_length(sorted_community))
         
 
         #data = m.nodes_in_communities(sorted_community)
