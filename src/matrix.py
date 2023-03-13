@@ -459,14 +459,14 @@ def save_all_communities_tocsv(algorithm: str, communities: list):
     df = pd.read_csv('dataset/outputs/all.csv')
     
     df.set_index('id', inplace=True)
-    
+
     for i in range(len(communities)):
 
         for z in range(len(communities[i])):
             for _,value in enumerate(communities[i][z]):
                 df.loc[value, i] = z
 
-    df.to_csv('dataset/outputs/all_greedy.csv', index=False)
+    df.to_csv('dataset/outputs/all_greedy.csv')
                 
 def writter(lis, name):
 
