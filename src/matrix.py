@@ -157,11 +157,46 @@ class Matrix:
         import networkx.algorithms.community as nx_comm
         return list(nx_comm.asyn_lpa_communities(G, weight, seed))
 
-    def asyn_lpa_concurrent(self, G, weight = 'weight', seed = 1 , n = 10):
+    def asyn_lpa_concurrent(self, weight = 'weight', seed = None , n = 10):
         
+        '''  
+        This functiosn is for execute asyn_lpa algorithm in parallel.
 
-        with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-            communities = pool.starmap(self.lpa_wrapper, [(G, weight, seed) for _ in range(n)])
+        Parameters
+        ----------
+        G : Graph
+
+        weight : string
+            The edge attribute representing the weight of an edge.
+            If None, each edge is assumed to have weight one. In this
+            algorithm, the weight of an edge is used in determining the
+            frequency with which a label appears among the neighbors of a
+            node: a higher weight means the label appears more often.
+
+        seed : list(integer) with length = n , random_state, or None (default = 1)
+            Indicator of random number generation state.
+            See :ref:`Randomness<randomness>`.
+        
+        n :int, optional (default=10)
+            Number of times to execute the algorithm.
+
+        Returns
+        -------
+        communities : iterable
+            Iterable of communities given as sets of nodes.
+
+        Notes
+        -----
+        Edge weight attributes must be numerical.
+
+        '''
+
+        if seed:
+            with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+                communities = pool.starmap(self.lpa_wrapper, [(self.G, weight, seed[i]) for i in range(n)])
+        else:
+            with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+                communities = pool.starmap(self.lpa_wrapper, [(self.G, weight) for _ in range(n)])
         
 
         return [com for com in communities]
@@ -211,6 +246,8 @@ class Matrix:
             communities = pool.starmap(nx_comm.greedy_modularity_communities, [(self.G, weight ,resolution, cutoff,best_n) for _ in range(n)])
         return communities
     
+    # Tools for Algorithms
+
     def communities_length(self, communities):
 
         '''
@@ -414,6 +451,19 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
             print(m.communities_length(com))
 
         m.save_communities(communities, 'greedy', params=params )
+    
+    elif algorithm == 'lpa':
+
+        communities = m.asyn_lpa_concurrent(weight = 'weight', seed = seed , n = n)
+
+        for com in communities:
+            print(m.communities_length(com))
+
+        m.save_communities(communities, 'lpa', params=params, seed = seed )
+    
+
+   
+    
 
 
 if __name__ == '__main__':
