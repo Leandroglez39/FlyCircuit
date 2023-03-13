@@ -166,7 +166,7 @@ class Matrix:
 
         return [com for com in communities]
 
-    def greedy_modularity_concurrent(self, G, weight=None, resolution=1, cutoff=1, best_n=None, n = 10):
+    def greedy_modularity_concurrent(self, weight=None, resolution=1, cutoff=1, best_n=None, n = 10):
         
         '''
         This functiosn is for execute greedy modularity algorithm in parallel.
@@ -208,7 +208,7 @@ class Matrix:
         import networkx.algorithms.community as nx_comm
 
         with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-            communities = pool.starmap(nx_comm.greedy_modularity_communities, [(G, weight ,resolution, cutoff,best_n) for _ in range(n)])
+            communities = pool.starmap(nx_comm.greedy_modularity_communities, [(self.G, weight ,resolution, cutoff,best_n) for _ in range(n)])
         return communities
     
     def communities_length(self, communities):
@@ -224,15 +224,28 @@ class Matrix:
     
     def save_communities(self, communities, algorithm : str, params: list = [], seed = None):
 
-        if algorithm == 'louvain' and params == []:
-            params = [1, 1e-07, None]
+        if algorithm == 'louvain':
+            
+            if params == []:
+                params = [1, 1e-07, None]
 
-        for i in range(len(communities)):
-            params_name = ''.join(['_' + str(param) for param in params])
-            params_name += '_seed_' + str(seed[i]) if seed else ''
+            for i in range(len(communities)):
+                params_name = ''.join(['_' + str(param) for param in params])
+                params_name += '_seed_' + str(seed[i]) if seed else ''
 
-            with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
-                pickle.dump(communities[i], f)
+                with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
+                    pickle.dump(communities[i], f)
+
+        elif algorithm == 'greedy':
+
+            if params == []:
+                params = [1, 1, 0]
+
+            for i in range(len(communities)):
+                params_name = ''.join(['_' + str(param) for param in params])
+
+                with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
+                    pickle.dump(communities[i], f)
 
     def load_communities(self, algorithm : str, resolution = 1, threshold = 1e-07 , seed = 1, iter = 0) -> list:
 
@@ -379,14 +392,28 @@ def writter(lis, name):
         for (id, value) in lis:
             f.write(f'{id}, {value}\n')  
 
-def run_and_save_louvain():
+def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
 
-    communities = m.lovain_concurrent(seed= [1,2,3,4,5,6,7,8,9,10],  n=10)
+    if seed == []:
+        seed = [x for x in range(n)]
 
-    for com in communities:
-        print(m.communities_length(com))
+    if algorithm == 'louvain':
 
-    m.save_communities(communities, 'louvain', params=[1, 1e-07], seed= [1,2,3,4,5,6,7,8,9,10])
+        communities = m.lovain_concurrent(seed= seed,  n=10)
+
+        for com in communities:
+            print(m.communities_length(com))
+
+        m.save_communities(communities, 'louvain', params=params, seed= seed)
+    
+    elif algorithm == 'greedy':
+
+        communities = m.greedy_modularity_concurrent(resolution=2 , n=n)
+
+        for com in communities:
+            print(m.communities_length(com))
+
+        m.save_communities(communities, 'greedy', params=params )
 
 
 if __name__ == '__main__':
@@ -394,13 +421,16 @@ if __name__ == '__main__':
     m = Matrix([], {},[])
     #m.load_matrix_obj()
     #m.export_graph_to_adjlist()
-    m.insert_nodes()
+    #m.insert_nodes()
     #m.read_adym(path='data/adym_0.pkl')
-    m.read_adym(path='dataset/adym_30.pkl')
+    #m.read_adym(path='dataset/adym_30.pkl')
     #m.load_ady_matrix(30)    
-    m.insert_weighted_edges()
+    #m.insert_weighted_edges()
     # m.sava_matrix_obj()
+    m.load_matrix_obj()
     print(m.G.number_of_edges())
+
+    run_and_save_algorithm(m, 'greedy', params= [2, 1, 0], n= 8)
 
     # communities = m.load_all_communities('louvain')
 
@@ -414,13 +444,13 @@ if __name__ == '__main__':
 
     #     m.save_dict_to_csv(data, 'louvain_1_1e-07_seed_1_iter_' + str(i))
 
-    community = m.load_communities('louvain')
+    # community = m.load_communities('louvain')
 
-    sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
+    # sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
 
-    SG = m.create_sub_graph(sorted_community[0])
+    # SG = m.create_sub_graph(sorted_community[0])
 
-    nx.write_edgelist(SG, './dataset/outputs/graph/louvain_1_1e-07_seed_1_iter_0[2897].csv', delimiter=",", data=['weight'])
+    # nx.write_edgelist(SG, './dataset/outputs/graph/louvain_1_1e-07_seed_1_iter_0[2897].csv', delimiter=",", data=['weight'])
 
     #SG = m.add_degree_property(SG)
 
