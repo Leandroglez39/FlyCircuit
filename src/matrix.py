@@ -367,7 +367,33 @@ class Matrix:
                     communities.append(pickle.load(f))
             
             return communities
+        
+        if algorithm == 'greedy':
 
+            paths = os.listdir('./dataset/outputs/' + algorithm + '/')
+
+            communities = []
+
+            for path in paths:
+                with open('./dataset/outputs/' + algorithm + '/' + path, 'rb') as f:
+                    communities.append(pickle.load(f))
+        
+            
+            return communities
+
+        if algorithm == 'infomap':
+
+            paths = os.listdir('./dataset/outputs/' + algorithm + '/')
+
+            communities = []
+
+            for path in paths:
+                with open('./dataset/outputs/' + algorithm + '/' + path, 'rb') as f:
+                    communities.append(pickle.load(f))
+        
+            
+            return communities
+        
         return []    
 
     def compare_communities_limits(self, communities, limit: list = [1,1]):
@@ -586,6 +612,9 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
             print(m.communities_length(com))
 
         m.save_communities(communities, 'lpa', params=params, seed = seed )
+        
+    elif algorithm == 'infomap':
+
     
 
    
@@ -606,13 +635,13 @@ if __name__ == '__main__':
     #m.load_ady_matrix(30)    
     #m.insert_weighted_edges()
     # m.sava_matrix_obj()
-    m.load_matrix_obj(path='dataset/attributed_graph.pkl')
-    print(m.G.number_of_edges())
+    #m.load_matrix_obj(path='dataset/attributed_graph.pkl')
+    #print(m.G.number_of_edges())
 
     print(datetime.datetime.now())
     
     
-    m.save_attributed_graph()
+   
   
 
     print(datetime.datetime.now())
@@ -620,19 +649,19 @@ if __name__ == '__main__':
     
     # run_and_save_algorithm(m, 'lpa', params= [], seed=[11, 20], n= 2)
 
-    # communities = m.load_all_communities('lpa')
+    communities = m.load_all_communities('greedy')
 
     # save_all_communities_tocsv('lpa', communities)
 
     
 
-    # for i  in range(len(communities)):        
+    for i  in range(len(communities)):        
 
-    #     community = communities[i]
+        community = communities[i]
 
-    #     sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
+        sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
 
-    #     print(m.communities_length(sorted_community))
+        print(m.communities_length(sorted_community))
         
 
         #data = m.nodes_in_communities(sorted_community)
