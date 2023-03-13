@@ -97,7 +97,7 @@ class Matrix:
         with open(f'./dataset/adym_{count}.pkl', 'wb') as f:
             pickle.dump(self.ady_list, f)
    
-    def sava_matrix_obj(self, path = './dataset/graph_19k_3.5m.pkl'):
+    def save_matrix_obj(self, path = './dataset/graph_19k_3.5m.pkl'):
         
         with open(path, 'wb') as f:
             pickle.dump(self.G, f)
@@ -445,7 +445,7 @@ class Matrix:
             for key, value in dict.items():
                 f.write(str(key) + ',' + str(value) + '\n')
 
-    def add_property(self, measure: str):
+    def add_property(self, measure: list):
 
         '''
         This function is for add a property to the nodes of the graph.
@@ -456,14 +456,48 @@ class Matrix:
             The name of the property to add.
         '''
 
-        if measure == 'eigenvector_centrality':
+        if 'eigenvector_centrality' in measure:
 
             data = nx.eigenvector_centrality(self.G)
 
             data_weighted = nx.eigenvector_centrality(self.G, weight='weight') 
 
             for node in self.G.nodes():
-                self.G.nodes[node][measure] = self.G.nodes[node][property]
+                self.G.nodes[node][measure] = data[node]
+                self.G.nodes[node][measure + '_weighted'] = data_weighted[node]
+            
+            print('eigenvector_centrality added')
+        
+        if 'pagerank' in measure:
+
+            data = nx.pagerank(self.G)           
+
+            for node in self.G.nodes():
+                self.G.nodes[node][measure] = data[node]
+
+            print('pagerank added')
+        
+        if 'degree_centrality' in measure:
+
+            data = nx.degree_centrality(self.G)           
+
+            for node in self.G.nodes():
+                self.G.nodes[node][measure] = data[node]
+
+            print('degree_centrality added')
+        
+        if 'core_number' in measure:
+
+            data = nx.core_number(self.G)           
+
+            for node in self.G.nodes():
+                self.G.nodes[node][measure] = data[node]
+            
+            print('core_number added')
+        
+
+               
+
 
 
 def save_all_communities_tocsv(algorithm: str, communities: list):
@@ -548,8 +582,13 @@ if __name__ == '__main__':
 
     print(datetime.datetime.now())
     
+    measures = ['eigenvector_centrality', 'pagerank', 'degree_centrality', 'core_number']
+
+    m.add_property(measures)
 
     print(datetime.datetime.now())
+
+    m.save_matrix_obj(path='data/atributed_graph.pkl')
 
     # run_and_save_algorithm(m, 'lpa', params= [], seed=[11, 20], n= 2)
 
