@@ -463,8 +463,8 @@ class Matrix:
             data_weighted = nx.eigenvector_centrality(self.G, weight='weight') 
 
             for node in self.G.nodes():
-                self.G.nodes[node][measure] = data[node]
-                self.G.nodes[node][measure + '_weighted'] = data_weighted[node]
+                self.G.nodes[node]['eigenvector_centrality'] = data[node]
+                self.G.nodes[node]['eigenvector_centrality' + '_weighted'] = data_weighted[node]
             
             print('eigenvector_centrality added')
         
@@ -473,7 +473,7 @@ class Matrix:
             data = nx.pagerank(self.G)           
 
             for node in self.G.nodes():
-                self.G.nodes[node][measure] = data[node]
+                self.G.nodes[node]['pagerank'] = data[node]
 
             print('pagerank added')
         
@@ -482,7 +482,7 @@ class Matrix:
             data = nx.degree_centrality(self.G)           
 
             for node in self.G.nodes():
-                self.G.nodes[node][measure] = data[node]
+                self.G.nodes[node]['degree_centrality'] = data[node]
 
             print('degree_centrality added')
         
@@ -491,7 +491,7 @@ class Matrix:
             data = nx.core_number(self.G)           
 
             for node in self.G.nodes():
-                self.G.nodes[node][measure] = data[node]
+                self.G.nodes[node]['core_number'] = data[node]
             
             print('core_number added')
         
