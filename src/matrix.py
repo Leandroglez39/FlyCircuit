@@ -46,6 +46,9 @@ class Matrix:
                 self.G.add_edge(self.list_nodes[y], self.list_nodes[i], weight=weight)
     
     def export_graph_to_csv(self, path = "./dataset/graph_19k_3.5m.csv"):
+        '''
+        Export graph to csv file for Cosmos viewer
+        '''
         nx.write_edgelist(self.G, path, delimiter=",", data=['weight'])
 
     def export_graph_to_csv_size(self, size):
@@ -107,6 +110,29 @@ class Matrix:
     
     def read_adym(self, path = './dataset/adym_30.pkl'):
         self.ady_list = pickle.load(open(path, 'rb'))
+
+    def save_attributed_graph(self, path = './dataset/outputs/attributed_graph.csv'):
+        '''
+        Save the graph with the attributes of each node in csv file.
+        '''
+
+        with open(path, 'w') as f:
+            for node in self.G.nodes:
+                
+                f.write(f'{node},{str(nx.degree(self.G, node))},{str(self.G.in_degree[node])},{str(self.G.out_degree[node])},')
+                f.write(str(self.G.degree(node, weight='weight')) + ',')
+                f.write(str(self.G.in_degree(node, weight='weigth')) + ',')
+                f.write(str(self.G.out_degree(node, weight='weigth')) + ',')
+                f.write(str(self.G.nodes[node]['eigenvector_centrality']) + ',')
+                f.write(str(self.G.nodes[node]['eigenvector_centrality_weighted']) + ',')
+                f.write(str(self.G.nodes[node]['pagerank']) + ',')
+                f.write(str(self.G.nodes[node]['degree_centrality']) + ',')
+                f.write(str(self.G.nodes[node]['core_number']) + '\n')
+
+                
+                
+
+
 
 
     # ALGORITMOS DE COMUNIDADES
@@ -568,6 +594,9 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
 
 if __name__ == '__main__':
     
+
+    measures = ['eigenvector_centrality', 'pagerank', 'degree_centrality', 'core_number']
+
     m = Matrix([], {},[])
     #m.load_matrix_obj()
     #m.export_graph_to_adjlist()
@@ -577,19 +606,18 @@ if __name__ == '__main__':
     #m.load_ady_matrix(30)    
     #m.insert_weighted_edges()
     # m.sava_matrix_obj()
-    m.load_matrix_obj()
+    m.load_matrix_obj(path='dataset/attributed_graph.pkl')
     print(m.G.number_of_edges())
 
     print(datetime.datetime.now())
     
-    measures = ['eigenvector_centrality', 'pagerank', 'degree_centrality', 'core_number']
-
-    m.add_property(measures)
+    
+    m.save_attributed_graph()
+  
 
     print(datetime.datetime.now())
 
-    m.save_matrix_obj(path='data/atributed_graph.pkl')
-
+    
     # run_and_save_algorithm(m, 'lpa', params= [], seed=[11, 20], n= 2)
 
     # communities = m.load_all_communities('lpa')
