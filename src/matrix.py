@@ -7,6 +7,7 @@ import networkx.algorithms.community as nx_comm
 import matplotlib.pyplot as plt
 import multiprocessing
 import os
+import datetime
 
 
 @dataclass
@@ -284,6 +285,16 @@ class Matrix:
                 with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
                     pickle.dump(communities[i], f)
 
+        elif algorithm == 'lpa':
+
+            for i in range(len(communities)):
+
+                params_name = ''
+                params_name += '_seed_' + str(seed[i]) if seed else ''
+
+                with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
+                    pickle.dump(communities[i], f)
+
     def load_communities(self, algorithm : str, resolution = 1, threshold = 1e-07 , seed = 1, iter = 0) -> list:
 
         if algorithm == 'louvain':
@@ -480,7 +491,11 @@ if __name__ == '__main__':
     m.load_matrix_obj()
     print(m.G.number_of_edges())
 
-    run_and_save_algorithm(m, 'greedy', params= [2, 1, 0], n= 8)
+    print(datetime.datetime.now())
+
+    run_and_save_algorithm(m, 'lpa', params= [], seed=[11, 20], n= 2)
+
+    print(datetime.datetime.now())
 
     # communities = m.load_all_communities('louvain')
 
