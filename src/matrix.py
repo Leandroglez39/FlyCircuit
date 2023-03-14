@@ -635,8 +635,8 @@ if __name__ == '__main__':
     #m.load_ady_matrix(30)    
     #m.insert_weighted_edges()
     # m.sava_matrix_obj()
-    #m.load_matrix_obj(path='dataset/attributed_graph.pkl')
-    #print(m.G.number_of_edges())
+    m.load_matrix_obj(path='dataset/attributed_graph.pkl')
+    print(m.G.number_of_edges())
 
     print(datetime.datetime.now())
     
