@@ -276,6 +276,7 @@ class Matrix:
     
     def infomap_concurrent(self, seed = None, n = 10):
 
+        number_of_pool = n if n < multiprocessing.cpu_count() else multiprocessing.cpu_count()
         '''
         This functiosn is for execute infomap algorithm in parallel.
         Parameters
@@ -305,7 +306,7 @@ class Matrix:
         #     with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
         #         communities = pool.starmap(algorithms.infomap, [(self.G, seed[i]) for i in range(n)])
         # else:
-        with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+        with multiprocessing.Pool(number_of_pool) as pool:
             communities = pool.map(algorithms.infomap, [self.G for _ in range(n)])
 
         return communities
@@ -683,13 +684,14 @@ if __name__ == '__main__':
     print(datetime.datetime.now())
     
     
-    run_and_save_algorithm(m, 'infomap', params= [], n= 2)
-  
+    #run_and_save_algorithm(m, 'infomap', params= [], n= 1)
+    
+    communities = algorithms.infomap(m.G)
 
     print(datetime.datetime.now())   
     
 
-    communities = m.load_all_communities('infomap')
+    #communities = m.load_all_communities('infomap')
 
     # save_all_communities_tocsv('lpa', communities)
 
