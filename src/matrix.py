@@ -9,7 +9,7 @@ import multiprocessing
 import os
 import datetime
 from cdlib import algorithms
-from infomap import Infomap
+
 
 
 @dataclass
@@ -438,7 +438,7 @@ class Matrix:
 
             for path in paths:
                 with open('./dataset/outputs/' + algorithm + '/' + path, 'rb') as f:
-                    communities.append(pickle.load(f))
+                    communities.append((pickle.load(f), path))
         
             
             return communities
@@ -688,6 +688,22 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
 
         m.save_communities(communities, 'infomap', params=params, seed = seed )
       
+def small(communities: list):
+    
+    com = []
+    data = {}
+
+    for comm, path in communities:
+
+        data['communities'] = comm.communities
+        data['method_name'] = comm.method_name
+        data['method_parameters'] = comm.method_parameters
+        data['overlap'] = comm.overlap
+
+        com.append((data, path))
+        data = {}
+
+    return com
 
    
     
@@ -726,10 +742,17 @@ if __name__ == '__main__':
 
     communities = m.load_all_communities('infomap')
 
-    for com in communities:
-            print(m.communities_length(com.communities))
+    communities = small(communities)
 
-    save_all_communities_tocsv('infomap', communities)
+    for com,path in communities:
+         with open('./dataset/outputs/lpa' + path , 'wb+') as f:
+                    pickle.dump(com, f)
+
+
+    # for com in communities:
+    #         print(m.communities_length(com.communities))
+
+    # save_all_communities_tocsv('infomap', communities)
 
     
 
