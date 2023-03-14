@@ -9,6 +9,7 @@ import multiprocessing
 import os
 import datetime
 from cdlib import algorithms
+from infomap import Infomap
 
 
 @dataclass
@@ -302,12 +303,12 @@ class Matrix:
             overlap: Boolean, whether the partition is overlapping or not
         '''
                
-        # if seed:
-        #     with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
-        #         communities = pool.starmap(algorithms.infomap, [(self.G, seed[i]) for i in range(n)])
-        # else:
-        with multiprocessing.Pool(number_of_pool) as pool:
-            communities = pool.map(algorithms.infomap, [self.G for _ in range(n)])
+        if seed:
+            with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+                communities = pool.starmap(algorithms.infomap, [(self.G, '--seed ' + f'{seed[i]}') for i in range(n)])
+        else:
+            with multiprocessing.Pool(number_of_pool) as pool:
+                communities = pool.map(algorithms.infomap, [self.G for _ in range(n)])
 
         return communities
     # Tools for Algorithms
@@ -357,6 +358,17 @@ class Matrix:
 
                 with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
                     pickle.dump(communities[i], f)
+
+        elif algorithm == 'infomap':
+
+            for i in range(len(communities)):
+
+                params_name = ''
+                params_name += '_seed_' + str(seed[i]) if seed else ''
+
+                with open('./dataset/outputs/' + algorithm + '/' + algorithm + params_name + '_iter_' + str(i) , 'wb+') as f:
+                    pickle.dump(communities[i], f)
+
 
     def load_communities(self, algorithm : str, resolution = 1, threshold = 1e-07 , seed = 1, iter = 0) -> list:
 
@@ -604,13 +616,30 @@ def save_all_communities_tocsv(algorithm: str, communities: list):
     
     df.set_index('id', inplace=True)
 
-    for i in range(len(communities)):
+    if algorithm != 'infomap':
+    
 
-        for z in range(len(communities[i])):
-            for _,value in enumerate(communities[i][z]):
-                df.loc[value, i] = z
+        for i in range(len(communities)):
 
-    df.to_csv('dataset/outputs/all_greedy.csv')
+            for z in range(len(communities[i])):
+                for _,value in enumerate(communities[i][z]):
+                    df.loc[value, i] = z
+
+        for i in range(len(communities)):
+            df[i] = df[i].astype('Int64')
+    else:
+
+        for i in range(len(communities)):
+
+            for z in range(len(communities[i].communities)):
+                for _,value in enumerate(communities[i].communities[z]):
+                    df.loc[value, i] = z
+
+        for i in range(len(communities)):
+            df[i] = df[i].astype('Int64')
+
+    df.to_csv('dataset/outputs/all_' + algorithm + '.csv')
+    
                 
 def writter(lis, name):
 
@@ -652,10 +681,10 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
 
     elif algorithm == 'infomap':
 
-        communities = m.infomap_concurrent(seed = seed, n = n)
+        communities = m.infomap_concurrent(seed=seed, n = n)
 
         for com in communities:
-            print(m.communities_length(com))
+            print(m.communities_length(com.communities))
 
         m.save_communities(communities, 'infomap', params=params, seed = seed )
       
@@ -684,26 +713,33 @@ if __name__ == '__main__':
     print(datetime.datetime.now())
     
     
-    #run_and_save_algorithm(m, 'infomap', params= [], n= 1)
+    # run_and_save_algorithm(m, 'infomap', params= [], seed=[1,2,3,4,5,6,7,8,9,10], n= 10)
     
-    communities = algorithms.infomap(m.G).communities
+    # communities = algorithms.infomap(m.G, flags='--seed 23').communities
+
+    # sorted_community = sorted(communities, key=lambda x: len(x), reverse=True)
+
+    # print(m.communities_length(sorted_community))
 
     print(datetime.datetime.now())   
     
 
-    #communities = m.load_all_communities('infomap')
+    communities = m.load_all_communities('infomap')
 
-    # save_all_communities_tocsv('lpa', communities)
+    for com in communities:
+            print(m.communities_length(com.communities))
+
+    save_all_communities_tocsv('infomap', communities)
 
     
 
-    for i  in range(len(communities)):        
+    # for i  in range(len(communities)):        
 
-        community = communities[i]
+    #     community = communities[i]
 
-        sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
+    #     sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
 
-        print(m.communities_length(sorted_community))
+    #     print(m.communities_length(sorted_community))
         
 
         #data = m.nodes_in_communities(sorted_community)
