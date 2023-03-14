@@ -614,6 +614,7 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
         m.save_communities(communities, 'lpa', params=params, seed = seed )
         
     elif algorithm == 'infomap':
+        pass
 
     
 
@@ -640,28 +641,28 @@ if __name__ == '__main__':
 
     print(datetime.datetime.now())
     
-    
-   
-  
+    bResult = nx.betweenness_centrality(m.G)
+    with open("dataset/outputs", "wb") as f:
+        pickle.dump(bResult, f) 
 
     print(datetime.datetime.now())
 
     
     # run_and_save_algorithm(m, 'lpa', params= [], seed=[11, 20], n= 2)
 
-    communities = m.load_all_communities('greedy')
+    # communities = m.load_all_communities('greedy')
 
     # save_all_communities_tocsv('lpa', communities)
 
     
 
-    for i  in range(len(communities)):        
+    # for i  in range(len(communities)):        
 
-        community = communities[i]
+    #     community = communities[i]
 
-        sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
+    #     sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
 
-        print(m.communities_length(sorted_community))
+    #     print(m.communities_length(sorted_community))
         
 
         #data = m.nodes_in_communities(sorted_community)
