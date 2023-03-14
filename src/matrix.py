@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import multiprocessing
 import os
 import datetime
+from cdlib import algorithms
 
 
 @dataclass
@@ -273,6 +274,41 @@ class Matrix:
             communities = pool.starmap(nx_comm.greedy_modularity_communities, [(self.G, weight ,resolution, cutoff,best_n) for _ in range(n)])
         return communities
     
+    def infomap_concurrent(self, seed = None, n = 10):
+
+        '''
+        This functiosn is for execute infomap algorithm in parallel.
+        Parameters
+        ----------
+
+            G (networkx.Graph): Graph to be clustered.
+
+            n (int, optional): Number of times to execute the algorithm. Defaults to 10.
+
+            seed : list(integer) with length = n , random_state, or None (default = 1)
+            Indicator of random number generation state.
+            See :ref:`Randomness<randomness>`.
+
+        Returns:
+        ----
+            list (cdlib.classes.node_clustering.NodeClustering): List of communities.
+                
+        NodeClustering type Properties:
+            communities: List of communities
+            graph: A networkx/igraph object
+            method_name: Community discovery algorithm name
+            method_parameters: Configuration for the community discovery algorithm used
+            overlap: Boolean, whether the partition is overlapping or not
+        '''
+               
+        # if seed:
+        #     with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+        #         communities = pool.starmap(algorithms.infomap, [(self.G, seed[i]) for i in range(n)])
+        # else:
+        with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
+            communities = pool.map(algorithms.infomap, [self.G for _ in range(n)])
+
+        return communities
     # Tools for Algorithms
 
     def communities_length(self, communities):
@@ -612,10 +648,16 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
             print(m.communities_length(com))
 
         m.save_communities(communities, 'lpa', params=params, seed = seed )
-        
+
     elif algorithm == 'infomap':
 
-    
+        communities = m.infomap_concurrent(seed = seed, n = n)
+
+        for com in communities:
+            print(m.communities_length(com))
+
+        m.save_communities(communities, 'infomap', params=params, seed = seed )
+      
 
    
     
@@ -627,29 +669,27 @@ if __name__ == '__main__':
     measures = ['eigenvector_centrality', 'pagerank', 'degree_centrality', 'core_number']
 
     m = Matrix([], {},[])
-    #m.load_matrix_obj()
+    m.load_matrix_obj()
     #m.export_graph_to_adjlist()
-    #m.insert_nodes()
+    m.insert_nodes()
     #m.read_adym(path='data/adym_0.pkl')
     #m.read_adym(path='dataset/adym_30.pkl')
     #m.load_ady_matrix(30)    
-    #m.insert_weighted_edges()
+    m.insert_weighted_edges()
     # m.sava_matrix_obj()
     #m.load_matrix_obj(path='dataset/attributed_graph.pkl')
-    #print(m.G.number_of_edges())
+    print(m.G.number_of_edges())
 
     print(datetime.datetime.now())
     
     
-   
+    run_and_save_algorithm(m, 'infomap', params= [], n= 2)
   
 
-    print(datetime.datetime.now())
-
+    print(datetime.datetime.now())   
     
-    # run_and_save_algorithm(m, 'lpa', params= [], seed=[11, 20], n= 2)
 
-    communities = m.load_all_communities('greedy')
+    communities = m.load_all_communities('infomap')
 
     # save_all_communities_tocsv('lpa', communities)
 
