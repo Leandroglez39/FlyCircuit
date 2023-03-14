@@ -686,7 +686,7 @@ if __name__ == '__main__':
     
     #run_and_save_algorithm(m, 'infomap', params= [], n= 1)
     
-    communities = algorithms.infomap(m.G)
+    communities = algorithms.infomap(m.G).communities
 
     print(datetime.datetime.now())   
     
