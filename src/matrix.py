@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import multiprocessing
 import os
 import datetime
+import math
 
 
 @dataclass
@@ -616,10 +617,66 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
     elif algorithm == 'infomap':
         pass
 
-    
+def vertEdgeWithinComm(vi, si):
+    viAdj = [vj for vj in m.G.neighbors(vi)]
+    edgeWith = si.intersection(viAdj)
+    return edgeWith
 
-   
-    
+def degMeanByCommunity(si):
+    sum = 0
+    for vi in si:
+        edgeWith = vertEdgeWithinComm(vi, si)
+        sum += len(edgeWith)
+    return sum/len(si)
+
+def standDesvCommunity(si):
+    dMeanCi = degMeanByCommunity(si)
+    sum = 0 
+    for vi in si:
+        ki = len(vertEdgeWithinComm(vi, si))
+        sum += math.pow((ki - dMeanCi), 2)
+    desv = math.sqrt(sum/len(si))
+    return desv  
+
+def writterFileDictMeansWithin(dict, DictName):
+    with open('./dataset/outputs/' + DictName, 'w') as f:
+        for (id, value) in dict:
+            f.write(f'{id}, {value}\n')  
+
+def withinCommunityDegree():
+    file = open("", 'w')
+    vertexWithinDict = dict()
+    commList =  m.load_all_communities('louvain')
+    # iterate through all vertex
+    for vi in m.G.nodes:
+        print('vertex: ', vi)
+        # iterate through all runs
+        for ri in commList:
+            # iterate through all commnunities
+            for si in ri:
+                # identify the Ci 
+                if vi in si:
+                    desv = standDesvCommunity(si)
+                    ki = len(vertEdgeWithinComm(vi, si))
+                    degMeanCi = degMeanByCommunity(si)
+                    value = (ki - degMeanCi)/desv
+                    if vi not in vertexWithinDict:
+                        listTupleValue = []
+                        listTupleValue.append(value) 
+                        vertexWithinDict[vi] = listTupleValue
+                    else:
+                        vertexWithinDict[vi].append(value)
+                    break
+    writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
+
+    # create a binary pickle file 
+    f = open("withinDict.pkl","wb")
+
+    # write the python object (dict) to pickle file
+    pickle.dump(vertexWithinDict,f)
+
+    # close file
+    f.close()
 
 
 if __name__ == '__main__':
@@ -640,10 +697,14 @@ if __name__ == '__main__':
     print(m.G.number_of_edges())
 
     print(datetime.datetime.now())
+
+    # within community by degree.
+
+    withinCommunityDegree()
     
-    closCentResult = nx.closeness_centrality(m.G)
-    with open("dataset/outputs/closeness_centralityFile", "wb") as f:
-        pickle.dump(closCentResult, f)
+    # closCentResult = nx.closeness_centrality(m.G)
+    # with open("dataset/outputs/closeness_centralityFile", "wb") as f:
+    #     pickle.dump(closCentResult, f)
 
     print(datetime.datetime.now())
 
