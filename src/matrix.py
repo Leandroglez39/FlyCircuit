@@ -642,7 +642,7 @@ if __name__ == '__main__':
     print(datetime.datetime.now())
     
     valueAss = nx.degree_assortativity_coefficient(m.G, weight='weight')
-    with open("dataset/outputs/degree_assortativity_coefficient.txt", "wb") as f:
+    with open("dataset/outputs/degree_assortativity_coefficient.txt", "w") as f:
         f.write(str(valueAss))
 
     print(datetime.datetime.now())
