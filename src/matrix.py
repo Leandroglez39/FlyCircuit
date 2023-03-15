@@ -592,10 +592,47 @@ class Matrix:
             
             print('core_number added')
         
+    def participation_coefficient(self, communities: list):
 
-               
+        '''
+        This function is for calculate the participation coefficient of a community.
 
+        Parameters
+        ----------        
+        communities : list
+            A list of comunities.
+        
+        Returns
+        -------
+        result : dict
+            The participation coefficient of every node.
+        '''
 
+        data_nodes = {}
+        
+        for node in self.G.nodes():
+
+            k_i = self.G.degree(nbunch=node)
+
+            suma = 0
+            
+            neighbors = nx.neighbors(self.G, node)
+
+            for community in communities:
+
+                subgraph = nx.subgraph(self.G, community)
+                                
+                k_i_s = 0
+
+                for n in neighbors:
+                    if n in subgraph.nodes():
+                        k_i_s += 1
+
+                suma += (k_i_s / k_i) ** 2 # type: ignore
+
+            data_nodes[node] = 1 - suma
+
+        return data_nodes
 
 def save_all_communities_tocsv(algorithm: str, communities: list):
 
@@ -734,13 +771,18 @@ if __name__ == '__main__':
 
     # print(m.communities_length(sorted_community))
 
-    print(datetime.datetime.now())   
+    
     
 
     communities = m.load_all_communities('lpa')
     
+    data = m.participation_coefficient(communities[0])
+
+    print(sorted(data.items(), key=lambda x: x[1], reverse=True))
+
+    print(datetime.datetime.now())   
     
-    save_all_communities_tocsv('lpa', communities)
+    #save_all_communities_tocsv('lpa', communities)
 
     #communities = small(communities)
 
