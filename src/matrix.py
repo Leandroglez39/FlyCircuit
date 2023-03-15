@@ -634,6 +634,17 @@ class Matrix:
 
         return data_nodes
 
+    def apply_measures_to_communities(self,  communities: list, participation = False):
+        
+        if participation:
+
+            for community in communities:
+
+                data = self.participation_coefficient(community)
+
+                for node in community:
+                    self.G.nodes[node]['participation_coefficient'] = data[node]
+
 def save_all_communities_tocsv(algorithm: str, communities: list):
 
     '''
