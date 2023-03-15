@@ -618,6 +618,7 @@ def save_all_communities_tocsv(algorithm: str, communities: list):
         for i in range(len(communities)):
 
             for z in range(len(communities[i])):
+                
                 for _,value in enumerate(communities[i][z]):
                     df.loc[value, i] = z
 
@@ -738,24 +739,8 @@ if __name__ == '__main__':
 
     communities = m.load_all_communities('lpa')
     
-    # temp = []
-    # for com in communities:
-    #     sorted_community = sorted(com, key=lambda x: len(x), reverse=True)
-    #     temp.append(sorted_community)
-
-    # communities = temp
-
-    # paths = os.listdir('./dataset/outputs/' + 'lpa' + '/')
-
-    # for i in range(len(paths)):
-    #     with open('./dataset/outputs/' + 'lpa' + '/' + paths[i], 'wb+') as f:
-            #pickle.dump(communities[i], f)
-        
-
-    # for com in communities:
-    #     print(m.communities_length(com))
-
-    # save_all_communities_tocsv('lpa', communities)
+    
+    save_all_communities_tocsv('lpa', communities)
 
     #communities = small(communities)
 
