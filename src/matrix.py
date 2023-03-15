@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import multiprocessing
 import os
 import datetime
-from cdlib import algorithms
+
 
 
 
@@ -130,11 +130,6 @@ class Matrix:
                 f.write(str(self.G.nodes[node]['pagerank']) + ',')
                 f.write(str(self.G.nodes[node]['degree_centrality']) + ',')
                 f.write(str(self.G.nodes[node]['core_number']) + '\n')
-
-                
-                
-
-
 
 
     # ALGORITMOS DE COMUNIDADES
@@ -302,7 +297,8 @@ class Matrix:
             method_parameters: Configuration for the community discovery algorithm used
             overlap: Boolean, whether the partition is overlapping or not
         '''
-               
+        from cdlib import algorithms
+
         if seed:
             with multiprocessing.Pool(multiprocessing.cpu_count()) as pool:
                 communities = pool.starmap(algorithms.infomap, [(self.G, '--seed ' + f'{seed[i]}') for i in range(n)])
@@ -740,21 +736,32 @@ if __name__ == '__main__':
     print(datetime.datetime.now())   
     
 
-    communities = m.load_all_communities('infomap')
+    communities = m.load_all_communities('lpa')
+    
+    # temp = []
+    # for com in communities:
+    #     sorted_community = sorted(com, key=lambda x: len(x), reverse=True)
+    #     temp.append(sorted_community)
 
-    communities = small(communities)
+    # communities = temp
 
-    for com,path in communities:
-         with open('./dataset/outputs/lpa' + path , 'wb+') as f:
-                    pickle.dump(com, f)
+    # paths = os.listdir('./dataset/outputs/' + 'lpa' + '/')
 
+    # for i in range(len(paths)):
+    #     with open('./dataset/outputs/' + 'lpa' + '/' + paths[i], 'wb+') as f:
+            #pickle.dump(communities[i], f)
+        
 
     # for com in communities:
-    #         print(m.communities_length(com.communities))
+    #     print(m.communities_length(com))
 
-    # save_all_communities_tocsv('infomap', communities)
+    # save_all_communities_tocsv('lpa', communities)
 
-    
+    #communities = small(communities)
+
+    # for com,path in communities:
+    #      with open('./dataset/outputs/lpa' + path , 'wb+') as f:
+    #                 pickle.dump(com, f)
 
     # for i  in range(len(communities)):        
 
