@@ -644,12 +644,11 @@ def writterFileDictMeansWithin(dict, DictName):
             f.write(f'{id}, {value}\n')  
 
 def withinCommunityDegree():
-    file = open("", 'w')
     vertexWithinDict = dict()
     commList =  m.load_all_communities('louvain')
     # iterate through all vertex
     for vi in m.G.nodes:
-        print('vertex: ', vi)
+        print('vertex: ', vi, ' Begin')
         # iterate through all runs
         for ri in commList:
             # iterate through all commnunities
@@ -667,6 +666,11 @@ def withinCommunityDegree():
                     else:
                         vertexWithinDict[vi].append(value)
                     break
+        s = 0 
+        for v in vertexWithinDict[vi]:
+            s += v            
+        result = s/len(vertexWithinDict[vi])
+        print('vertex: ', vi, ' mean Within: ', result)
     writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
 
     # create a binary pickle file 
