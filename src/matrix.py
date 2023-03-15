@@ -641,8 +641,8 @@ if __name__ == '__main__':
 
     print(datetime.datetime.now())
     
-    bResult = nx.betweenness_centrality(m.G)
-    with open("dataset/outputs/vertex_betweenes", "wb") as f:
+    bResult = nx.edge_betweenness_centrality(m.G)
+    with open("dataset/outputs/edge_betweenes", "wb") as f:
         pickle.dump(bResult, f) 
 
     print(datetime.datetime.now())
