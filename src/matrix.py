@@ -641,9 +641,9 @@ if __name__ == '__main__':
 
     print(datetime.datetime.now())
     
-    cResult = nx.closeness_centrality(m.G)
-    with open("dataset/outputs/vertex_closenessCentrality", "wb") as f:
-        pickle.dump(cResult, f) 
+    valueAss = nx.degree_assortativity_coefficient(m.G, weight='weight')
+    with open("dataset/outputs/degree_assortativity_coefficient.txt", "wb") as f:
+        f.write(str(valueAss))
 
     print(datetime.datetime.now())
 
