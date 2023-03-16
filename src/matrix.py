@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import multiprocessing
 import os
 import datetime
+import math
 
 
 
@@ -560,8 +561,8 @@ class Matrix:
             data_weighted = nx.eigenvector_centrality(self.G, weight='weight') 
 
             for node in self.G.nodes():
-                self.G.nodes[node]['eigenvector_centrality'] = data[node]
-                self.G.nodes[node]['eigenvector_centrality' + '_weighted'] = data_weighted[node]
+                self.G.nodes[node]['eigenvector_centrality'] = data[node] # type: ignore
+                self.G.nodes[node]['eigenvector_centrality' + '_weighted'] = data_weighted[node] # type: ignore
             
             print('eigenvector_centrality added')
         
@@ -588,7 +589,7 @@ class Matrix:
             data = nx.core_number(self.G)           
 
             for node in self.G.nodes():
-                self.G.nodes[node]['core_number'] = data[node]
+                self.G.nodes[node]['core_number'] = data[node] # type: ignore
             
             print('core_number added')
         
@@ -644,6 +645,8 @@ class Matrix:
 
                 for node in community:
                     self.G.nodes[node]['participation_coefficient'] = data[node]
+    
+
 
 def save_all_communities_tocsv(algorithm: str, communities: list):
 
@@ -749,6 +752,69 @@ def small(communities: list):
         data = {}
 
     return com
+
+def edgeWithinComm(vi, si, w):
+    sugSi = nx.subgraph(m.G, si)
+    ki = sugSi.degree(vi, weight = w)
+    return ki
+
+def degMeanByCommunity(si, w):
+    sum = 0
+    for vi in si:
+        edgeWith = edgeWithinComm(vi, si, w)
+        sum += edgeWith
+    return sum/len(si)
+
+def standDesvCommunity(si, w):
+    dMeanCi = degMeanByCommunity(si, w)
+    sum = 0 
+    for vi in si:
+        ki = edgeWithinComm(vi, si, w)
+        sum += math.pow((ki - dMeanCi), 2)
+    desv = math.sqrt(sum/len(si))
+    return desv
+
+def writterFileDictMeansWithin(dict, DictName):
+    with open('./dataset/outputs/' + DictName, 'w') as f:
+        for id, value in dict.items():
+            f.write(f'{id}, {value}\n')
+
+def withinCommunityDegree(w, commList):
+    vertexWithinDict = dict()
+    # iterate through all vertex
+    for vi in m.G.nodes:
+        # iterate through all runs
+        for ri in commList:
+            # iterate through all commnunities
+            for si in ri:
+                # identify the Ci 
+                if vi in si:
+                    desv = standDesvCommunity(si, w)
+                    ki = edgeWithinComm(vi, si, w)
+                    degMeanCi = degMeanByCommunity(si, w)
+                    zi = (ki - degMeanCi)/desv
+                    if vi not in vertexWithinDict:
+                        listTupleValue = []
+                        listTupleValue.append(zi)
+                        vertexWithinDict[vi] = listTupleValue
+                    else:
+                        vertexWithinDict[vi].append(zi)
+                    break
+        # s = 0 
+        # for v in vertexWithinDict[vi]:
+        #     s += v            
+        # result = s/len(vertexWithinDict[vi])
+    print(vertexWithinDict)
+    # writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
+
+    # # create a binary pickle file 
+    # f = open("withinDict.pkl","wb")
+
+    # # write the python object (dict) to pickle file
+    # pickle.dump(vertexWithinDict,f)
+
+    # # close file
+    # f.close()
 
    
     
