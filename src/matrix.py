@@ -616,7 +616,7 @@ class Matrix:
 
             suma = 0
             
-            neighbors = nx.neighbors(self.G, node)
+            neighbors = list(nx.neighbors(self.G, node))
 
             for community in communities:
 
@@ -782,16 +782,23 @@ if __name__ == '__main__':
 
     # print(m.communities_length(sorted_community))
 
-    
-    
+    G = nx.fast_gnp_random_graph(6, 0.5, seed=1)
 
-    communities = m.load_all_communities('lpa')
+    print(nx.edges(G))
     
-    data = m.participation_coefficient(communities[0])
+    communities = [[0,1,3],[2,4,5]]
 
-    print(sorted(data.items(), key=lambda x: x[1], reverse=True))
+    m.G = G
 
-    print(datetime.datetime.now())   
+    # communities = m.load_all_communities('lpa')
+    
+    data = m.participation_coefficient(communities)
+
+    print(data)
+
+    # print(sorted(data.items(), key=lambda x: x[1], reverse=True))
+
+    # print(datetime.datetime.now())   
     
     #save_all_communities_tocsv('lpa', communities)
 
