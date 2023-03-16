@@ -610,6 +610,7 @@ class Matrix:
         '''
 
         data_nodes = {}
+        count = 0
         
         for node in self.G.nodes():
 
@@ -626,6 +627,12 @@ class Matrix:
                 k_i_s = 0
 
                 for n in neighbors:
+                    
+                    count += 1
+                    if count == 1000000:
+                        print('1M operations calculated in participation coefficient')
+                        count = 0
+
                     if n in subgraph.nodes():
                         k_i_s += 1
 
@@ -659,6 +666,8 @@ class Matrix:
         return desv
 
     def withinCommunityDegree(self, w, commList):
+        count = 0
+        itera = 0
         vertexWithinDict = dict()
         # iterate through all vertex
         for vi in self.G.nodes:
@@ -666,6 +675,9 @@ class Matrix:
             for ri in commList:
                 # iterate through all commnunities
                 for si in ri:
+                    if count == 1000000:
+                        print('1M operations calculated in withinCommunityDegree')
+                        count = 0
                     # identify the Ci 
                     if vi in si:
                         desv = self.standDesvCommunity(si, w)
@@ -679,12 +691,14 @@ class Matrix:
                         else:
                             vertexWithinDict[vi].append(zi)
                         break
+                print('Iteration: ' + str(itera) + ' of ' + str(len(commList)))
+                itera += 1
             # s = 0 
             # for v in vertexWithinDict[vi]:
             #     s += v            
             # result = s/len(vertexWithinDict[vi])
 
-        print(vertexWithinDict)
+        #print(vertexWithinDict)
         return vertexWithinDict
         # writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
 
@@ -705,27 +719,36 @@ class Matrix:
         
         
 
-        for i in range(len(communities)):
-
-            if algorithm == 'louvain':
+        for i in range(len(communities)):            
                 
                 
-                iter_number = i
-                iter_communities = communities[i]
-                data_participation = {}
-                community_number = 0
+            iter_number = i
+            iter_communities = communities[i]
+            data_participation = {}
+            community_number = 0
 
-                data_participation = self.participation_coefficient(iter_communities)
+            data_participation = self.participation_coefficient(iter_communities)
 
-                for k, v in data_participation.items():
+            print('Participation coefficient calculated for community ' + str(i) + ' of ' + str(len(communities)) + ' communities.')
 
-                    for j in range(len(iter_communities)):
-                        if k in iter_communities[j]:
-                            community_number = j
-                            break
-                    self.G.nodes['data'] = {(algorithm, str(iter_number), str(community_number)): {'participation_coefficient': v}} # type: ignore
+            for k, v in data_participation.items():
 
+                for j in range(len(iter_communities)):
+                    if k in iter_communities[j]:
+                        community_number = j
+                        break
+
+                if 'data' not in self.G.nodes[k].keys():
+                    self.G.nodes[k]['data'] = {(algorithm, str(iter_number), str(community_number)): {'participation_coefficient': v}} # type: ignore
+                else:
+                    if (algorithm, str(iter_number), str(community_number)) not in self.G.nodes[k]['data'].keys():
+                        self.G.nodes[k]['data'][(algorithm, str(iter_number), str(community_number))] = {'participation_coefficient': v} # type: ignore
+                    else:
+                        self.G.nodes[k]['data'][(algorithm, str(iter_number), str(community_number))]['participation_coefficient'] = v
+                    
         data_whiting_degree = self.withinCommunityDegree('None', communities)
+
+        
         data_withing_degree_weighted = self.withinCommunityDegree('weight', communities)
 
         
@@ -738,7 +761,14 @@ class Matrix:
                     if k in communities[j][i]:
                         community_number = i
                         break
-                self.G.nodes['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree': v[j]}} # type: ignore        
+                                
+                if 'data' not in self.G.nodes[k].keys():
+                    self.G.nodes[k]['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree': v[j]}} # type: ignore        
+                else:
+                    if (algorithm, str(j), str(community_number)) not in self.G.nodes[k]['data'].keys():
+                        self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))] = {'whiting_degree': v[j]}
+                    else:
+                        self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))]['whiting_degree'] = v[j]
 
         for k, v in data_withing_degree_weighted.items():
 
@@ -747,10 +777,14 @@ class Matrix:
                     if k in communities[j][i]:
                         community_number = i
                         break
-                self.G.nodes['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree_weight': v[j]}} # type: ignore        
-    
+                if 'data' not in self.G.nodes[k].keys():
+                    self.G.nodes[k]['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree_weighted': v[j]}} # type: ignore        
+                else:
+                    if (algorithm, str(j), str(community_number)) not in self.G.nodes[k]['data'].keys():
+                        self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))] = {'whiting_degree_weighted': v[j]}
+                    else:
+                        self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))]['whiting_degree_weighted'] = v[j]
 
-        
 
                     
                         
@@ -887,15 +921,16 @@ if __name__ == '__main__':
     measures = ['eigenvector_centrality', 'pagerank', 'degree_centrality', 'core_number']
 
     m = Matrix([], {},[])
-    m.load_matrix_obj()
+    #m.load_matrix_obj()
     #m.export_graph_to_adjlist()
-    m.insert_nodes()
+    #m.insert_nodes()
     #m.read_adym(path='data/adym_0.pkl')
     #m.read_adym(path='dataset/adym_30.pkl')
     #m.load_ady_matrix(30)    
-    m.insert_weighted_edges()
+    #m.insert_weighted_edges()
     # m.sava_matrix_obj()
-    #m.load_matrix_obj(path='dataset/attributed_graph.pkl')
+    m.load_matrix_obj(path='dataset/attributed_graph.pkl')
+
     print(m.G.number_of_edges())
 
     print(datetime.datetime.now())
@@ -909,19 +944,15 @@ if __name__ == '__main__':
 
     # print(m.communities_length(sorted_community))
 
-    G = nx.fast_gnp_random_graph(6, 0.5, seed=1)
+    communities = m.load_all_communities('louvain')
 
-    print(nx.edges(G))
+    m.apply_measures_to_communities_nodes('louvain', communities)
+
+    m.save_attributed_graph()
+
+    print(datetime.datetime.now())
     
-    communities = [[0,1,3],[2,4,5]]
-
-    m.G = G
-
-    # communities = m.load_all_communities('lpa')
     
-    data = m.participation_coefficient(communities)
-
-    print(data)
 
     # print(sorted(data.items(), key=lambda x: x[1], reverse=True))
 
