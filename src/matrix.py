@@ -674,13 +674,16 @@ class Matrix:
         
         count = 0
         start_time = datetime.datetime.now()
+        num_vert = 0
         
-        itera = 0
         vertexWithinDict = dict()
         # iterate through all vertex
         for vi in self.G.nodes:
             # iterate through all runs
             for ri in commList:
+
+                
+
                 # iterate through all commnunities
                 for si in ri:
                     if count == 10000000:
@@ -688,6 +691,8 @@ class Matrix:
                         print('Time for 10M operations: ' + str(datetime.datetime.now() - start_time))
                         start_time = datetime.datetime.now()
                         count = 0
+                    else:
+                        count += 1
                     # identify the Ci 
                     if vi in si:
                         desv = self.standDesvCommunity(si, w)
@@ -701,8 +706,9 @@ class Matrix:
                         else:
                             vertexWithinDict[vi].append(zi)
                         break
-                print('Iteration: ' + str(itera) + ' of ' + str(len(commList)))
-                itera += 1
+            num_vert += 1
+            if num_vert % 1000 == 0:
+                print('Number of vertex processed: ' + str(num_vert))    
             # s = 0 
             # for v in vertexWithinDict[vi]:
             #     s += v            
@@ -739,7 +745,7 @@ class Matrix:
 
             data_participation = self.participation_coefficient(iter_communities)
 
-            print('Participation coefficient calculated for community ' + str(i) + ' of ' + str(len(communities)) + ' communities.')
+            print('Participation coefficient calculated for community ' + str(i) + ' of ' + str(len(communities)) + ' run of ' + algorithm + ' algorithm')
             print('Time for participation coefficient: ' + str(datetime.datetime.now() - start_time))
 
             for k, v in data_participation.items():
@@ -765,6 +771,9 @@ class Matrix:
         data_withing_degree_weighted = self.withinCommunityDegree('weight', communities)
         print('Time for whiting degree weighted: ' + str(datetime.datetime.now() - start_time))
 
+        self.save_attributed_graph()
+        print('Graph saved with whiting degree and participation coefficient')
+        print('*******************************************************')
         
         community_number = 0
 
