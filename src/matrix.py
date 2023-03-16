@@ -617,71 +617,73 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
     elif algorithm == 'infomap':
         pass
 
-def vertEdgeWithinComm(vi, si):
-    viAdj = [vj for vj in m.G.neighbors(vi)]
-    edgeWith = si.intersection(viAdj)
-    return edgeWith
+# def vertEdgeWithinComm(vi, si):
+#     viAdj = [vj for vj in m.G.neighbors(vi)]
+#     edgeWith = si.intersection(viAdj)
+#     return edgeWith
 
-def degMeanByCommunity(si):
+def edgeWithinComm(vi, si, w):
+    sugSi = nx.subgraph(m.G, si)
+    ki = sugSi.degree(vi, weight = w)
+    return ki
+
+def degMeanByCommunity(si, w):
     sum = 0
     for vi in si:
-        edgeWith = vertEdgeWithinComm(vi, si)
-        sum += len(edgeWith)
+        edgeWith = edgeWithinComm(vi, si, w)
+        sum += edgeWith
     return sum/len(si)
 
-def standDesvCommunity(si):
-    dMeanCi = degMeanByCommunity(si)
+def standDesvCommunity(si, w):
+    dMeanCi = degMeanByCommunity(si, w)
     sum = 0 
     for vi in si:
-        ki = len(vertEdgeWithinComm(vi, si))
+        ki = edgeWithinComm(vi, si, w)
         sum += math.pow((ki - dMeanCi), 2)
     desv = math.sqrt(sum/len(si))
-    return desv  
+    return desv
 
 def writterFileDictMeansWithin(dict, DictName):
     with open('./dataset/outputs/' + DictName, 'w') as f:
         for id, value in dict.items():
             f.write(f'{id}, {value}\n')
 
-def withinCommunityDegree():
+def withinCommunityDegree(w, commList):
     vertexWithinDict = dict()
-    commList =  m.load_all_communities('louvain')
     # iterate through all vertex
     for vi in m.G.nodes:
-        print('vertex: ', vi, ' Begin')
         # iterate through all runs
         for ri in commList:
             # iterate through all commnunities
             for si in ri:
                 # identify the Ci 
                 if vi in si:
-                    desv = standDesvCommunity(si)
-                    ki = len(vertEdgeWithinComm(vi, si))
-                    degMeanCi = degMeanByCommunity(si)
-                    value = (ki - degMeanCi)/desv
+                    desv = standDesvCommunity(si, w)
+                    ki = edgeWithinComm(vi, si, w)
+                    degMeanCi = degMeanByCommunity(si, w)
+                    zi = (ki - degMeanCi)/desv
                     if vi not in vertexWithinDict:
                         listTupleValue = []
-                        listTupleValue.append(value) 
+                        listTupleValue.append(zi)
                         vertexWithinDict[vi] = listTupleValue
                     else:
-                        vertexWithinDict[vi].append(value)
+                        vertexWithinDict[vi].append(zi)
                     break
-        s = 0 
-        for v in vertexWithinDict[vi]:
-            s += v            
-        result = s/len(vertexWithinDict[vi])
-        print('vertex: ', vi, ' mean Within: ', result)
-    writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
+        # s = 0 
+        # for v in vertexWithinDict[vi]:
+        #     s += v            
+        # result = s/len(vertexWithinDict[vi])
+    print(vertexWithinDict)
+    # writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
 
-    # create a binary pickle file 
-    f = open("withinDict.pkl","wb")
+    # # create a binary pickle file 
+    # f = open("withinDict.pkl","wb")
 
-    # write the python object (dict) to pickle file
-    pickle.dump(vertexWithinDict,f)
+    # # write the python object (dict) to pickle file
+    # pickle.dump(vertexWithinDict,f)
 
-    # close file
-    f.close()
-
+    # # close file
+    # f.close()
 
 if __name__ == '__main__':
     
@@ -703,8 +705,18 @@ if __name__ == '__main__':
     print(datetime.datetime.now())
 
     # within community by degree.
+    GTest = nx.DiGraph()
 
-    withinCommunityDegree()
+    vertexList = [0,1,2,3,4,5]
+    edgeList = [(0, 1, 5), (0, 3, 7), (0, 4, 2), (1, 4, 1), (1, 5, 2), (2, 4, 9), (3, 4, 3), (4, 5, 8)]
+    GTest.add_nodes_from(vertexList)
+    GTest.add_weighted_edges_from(edgeList)
+    m.G = GTest
+
+    # commList =  m.load_all_communities('louvain')
+    commList =  [[{0,1,3},{2,4,5}]]
+
+    withinCommunityDegree('none', commList)
     
     # closCentResult = nx.closeness_centrality(m.G)
     # with open("dataset/outputs/closeness_centralityFile", "wb") as f:
