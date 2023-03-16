@@ -635,17 +635,141 @@ class Matrix:
 
         return data_nodes
 
-    def apply_measures_to_communities(self,  communities: list, participation = False):
+    # Begining of Horacio's Region
+
+    def edgeWithinComm(self, vi, si, w):
+        sugSi = nx.subgraph(self.G, si)
+        ki = sugSi.degree(vi, weight = w)
+        return ki
+
+    def degMeanByCommunity(self, si, w):
+        sum = 0
+        for vi in si:
+            edgeWith = self.edgeWithinComm(vi, si, w)
+            sum += edgeWith
+        return sum/len(si)
+
+    def standDesvCommunity(self, si, w):
+        dMeanCi = self.degMeanByCommunity(si, w)
+        sum = 0 
+        for vi in si:
+            ki = self.edgeWithinComm(vi, si, w)
+            sum += math.pow((ki - dMeanCi), 2)
+        desv = math.sqrt(sum/len(si))
+        return desv
+
+    def withinCommunityDegree(self, w, commList):
+        vertexWithinDict = dict()
+        # iterate through all vertex
+        for vi in self.G.nodes:
+            # iterate through all runs
+            for ri in commList:
+                # iterate through all commnunities
+                for si in ri:
+                    # identify the Ci 
+                    if vi in si:
+                        desv = self.standDesvCommunity(si, w)
+                        ki = self.edgeWithinComm(vi, si, w)
+                        degMeanCi = self.degMeanByCommunity(si, w)
+                        zi = (ki - degMeanCi)/desv
+                        if vi not in vertexWithinDict:
+                            listTupleValue = []
+                            listTupleValue.append(zi)
+                            vertexWithinDict[vi] = listTupleValue
+                        else:
+                            vertexWithinDict[vi].append(zi)
+                        break
+            # s = 0 
+            # for v in vertexWithinDict[vi]:
+            #     s += v            
+            # result = s/len(vertexWithinDict[vi])
+
+        print(vertexWithinDict)
+        return vertexWithinDict
+        # writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
+
+        # # create a binary pickle file 
+        # f = open("withinDict.pkl","wb")
+
+        # # write the python object (dict) to pickle file
+        # pickle.dump(vertexWithinDict,f)
+
+        # # close file
+        # f.close()
+
+
+
+    # End Horacio's Region
+
+    def apply_measures_to_communities_nodes(self, algorithm: str ,communities: list):
         
-        if participation:
+        
 
-            for community in communities:
+        for i in range(len(communities)):
 
-                data = self.participation_coefficient(community)
+            if algorithm == 'louvain':
+                
+                
+                iter_number = i
+                iter_communities = communities[i]
+                data_participation = {}
+                community_number = 0
 
-                for node in community:
-                    self.G.nodes[node]['participation_coefficient'] = data[node]
+                data_participation = self.participation_coefficient(iter_communities)
+
+                for k, v in data_participation.items():
+
+                    for j in range(len(iter_communities)):
+                        if k in iter_communities[j]:
+                            community_number = j
+                            break
+                    self.G.nodes['data'] = {(algorithm, str(iter_number), str(community_number)): {'participation_coefficient': v}} # type: ignore
+
+        data_whiting_degree = self.withinCommunityDegree('None', communities)
+        data_withing_degree_weighted = self.withinCommunityDegree('weight', communities)
+
+        
+        community_number = 0
+
+        for k, v in data_whiting_degree.items():
+
+            for j in range(len(v)):
+                for i in range(len(communities[j])):
+                    if k in communities[j][i]:
+                        community_number = i
+                        break
+                self.G.nodes['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree': v[j]}} # type: ignore        
+
+        for k, v in data_withing_degree_weighted.items():
+
+            for j in range(len(v)):
+                for i in range(len(communities[j])):
+                    if k in communities[j][i]:
+                        community_number = i
+                        break
+                self.G.nodes['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree_weight': v[j]}} # type: ignore        
     
+
+        
+
+                    
+                        
+
+    def apply_measures_to_communities(self, communities: list):                   
+        pass
+        # conductance_dict = {}
+
+        #     for ci in range(len(iter_communities)):
+
+        #         for cj in range(ci + 1, len(iter_communities)):
+
+        #             community_i = iter_communities[ci]
+        #             community_j = iter_communities[cj]
+
+        #             data_conductance = nx.conductance(self.G, community_i, community_j, weight='weight')
+                
+        #             conductance_dict[(ci, cj)] = data_conductance
+        
 
 
 def save_all_communities_tocsv(algorithm: str, communities: list):
@@ -752,69 +876,6 @@ def small(communities: list):
         data = {}
 
     return com
-
-def edgeWithinComm(vi, si, w):
-    sugSi = nx.subgraph(m.G, si)
-    ki = sugSi.degree(vi, weight = w)
-    return ki
-
-def degMeanByCommunity(si, w):
-    sum = 0
-    for vi in si:
-        edgeWith = edgeWithinComm(vi, si, w)
-        sum += edgeWith
-    return sum/len(si)
-
-def standDesvCommunity(si, w):
-    dMeanCi = degMeanByCommunity(si, w)
-    sum = 0 
-    for vi in si:
-        ki = edgeWithinComm(vi, si, w)
-        sum += math.pow((ki - dMeanCi), 2)
-    desv = math.sqrt(sum/len(si))
-    return desv
-
-def writterFileDictMeansWithin(dict, DictName):
-    with open('./dataset/outputs/' + DictName, 'w') as f:
-        for id, value in dict.items():
-            f.write(f'{id}, {value}\n')
-
-def withinCommunityDegree(w, commList):
-    vertexWithinDict = dict()
-    # iterate through all vertex
-    for vi in m.G.nodes:
-        # iterate through all runs
-        for ri in commList:
-            # iterate through all commnunities
-            for si in ri:
-                # identify the Ci 
-                if vi in si:
-                    desv = standDesvCommunity(si, w)
-                    ki = edgeWithinComm(vi, si, w)
-                    degMeanCi = degMeanByCommunity(si, w)
-                    zi = (ki - degMeanCi)/desv
-                    if vi not in vertexWithinDict:
-                        listTupleValue = []
-                        listTupleValue.append(zi)
-                        vertexWithinDict[vi] = listTupleValue
-                    else:
-                        vertexWithinDict[vi].append(zi)
-                    break
-        # s = 0 
-        # for v in vertexWithinDict[vi]:
-        #     s += v            
-        # result = s/len(vertexWithinDict[vi])
-    print(vertexWithinDict)
-    # writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
-
-    # # create a binary pickle file 
-    # f = open("withinDict.pkl","wb")
-
-    # # write the python object (dict) to pickle file
-    # pickle.dump(vertexWithinDict,f)
-
-    # # close file
-    # f.close()
 
    
     
