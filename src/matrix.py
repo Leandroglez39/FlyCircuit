@@ -610,6 +610,9 @@ class Matrix:
         '''
 
         data_nodes = {}
+        
+        start_time = datetime.datetime.now()
+
         count = 0
         
         for node in self.G.nodes():
@@ -629,9 +632,11 @@ class Matrix:
                 for n in neighbors:
                     
                     count += 1
-                    if count == 100000000:
-                        print('100M operations calculated in participation coefficient')
+                    if count == 10000000:
+                        print('10M operations calculated in participation coefficient')
+                        print('Time for 10M operations: ' + str(datetime.datetime.now() - start_time))
                         count = 0
+                        start_time = datetime.datetime.now()
 
                     if n in subgraph.nodes():
                         k_i_s += 1
@@ -666,7 +671,10 @@ class Matrix:
         return desv
 
     def withinCommunityDegree(self, w, commList):
+        
         count = 0
+        start_time = datetime.datetime.now()
+        
         itera = 0
         vertexWithinDict = dict()
         # iterate through all vertex
@@ -675,8 +683,10 @@ class Matrix:
             for ri in commList:
                 # iterate through all commnunities
                 for si in ri:
-                    if count == 100000000:
-                        print('100M operations calculated in withinCommunityDegree')
+                    if count == 10000000:
+                        print('10M operations calculated in withinCommunityDegree')
+                        print('Time for 10M operations: ' + str(datetime.datetime.now() - start_time))
+                        start_time = datetime.datetime.now()
                         count = 0
                     # identify the Ci 
                     if vi in si:
@@ -721,7 +731,7 @@ class Matrix:
 
         for i in range(len(communities)):            
                 
-                
+            start_time = datetime.datetime.now()
             iter_number = i
             iter_communities = communities[i]
             data_participation = {}
@@ -730,6 +740,7 @@ class Matrix:
             data_participation = self.participation_coefficient(iter_communities)
 
             print('Participation coefficient calculated for community ' + str(i) + ' of ' + str(len(communities)) + ' communities.')
+            print('Time for participation coefficient: ' + str(datetime.datetime.now() - start_time))
 
             for k, v in data_participation.items():
 
@@ -745,11 +756,14 @@ class Matrix:
                         self.G.nodes[k]['data'][(algorithm, str(iter_number), str(community_number))] = {'participation_coefficient': v} # type: ignore
                     else:
                         self.G.nodes[k]['data'][(algorithm, str(iter_number), str(community_number))]['participation_coefficient'] = v
-                    
-        data_whiting_degree = self.withinCommunityDegree('None', communities)
-
         
+        start_time = datetime.datetime.now()       
+        data_whiting_degree = self.withinCommunityDegree('None', communities)
+        print('Time for whiting degree: ' + str(datetime.datetime.now() - start_time))
+        
+        start_time = datetime.datetime.now()
         data_withing_degree_weighted = self.withinCommunityDegree('weight', communities)
+        print('Time for whiting degree weighted: ' + str(datetime.datetime.now() - start_time))
 
         
         community_number = 0
