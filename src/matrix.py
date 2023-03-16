@@ -640,8 +640,8 @@ def standDesvCommunity(si):
 
 def writterFileDictMeansWithin(dict, DictName):
     with open('./dataset/outputs/' + DictName, 'w') as f:
-        for (id, value) in dict:
-            f.write(f'{id}, {value}\n')  
+        for id, value in dict.items():
+            f.write(f'{id}, {value}\n')
 
 def withinCommunityDegree():
     vertexWithinDict = dict()
