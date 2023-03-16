@@ -705,19 +705,15 @@ if __name__ == '__main__':
     print(datetime.datetime.now())
 
     # within community by degree.
-    GTest = nx.DiGraph()
-
-    vertexList = [0,1,2,3,4,5]
-    edgeList = [(0, 1, 5), (0, 3, 7), (0, 4, 2), (1, 4, 1), (1, 5, 2), (2, 4, 9), (3, 4, 3), (4, 5, 8)]
-    GTest.add_nodes_from(vertexList)
-    GTest.add_weighted_edges_from(edgeList)
-    m.G = GTest
-
     # commList =  m.load_all_communities('louvain')
-    commList =  [[{0,1,3},{2,4,5}]]
+    # withinCommunityDegree('none', commList)
 
-    withinCommunityDegree('none', commList)
-    
+    # clustering coefficient
+    clusteringCoeffResult = nx.clustering(m.G, weight='weight')
+    with open("dataset/outputs/clustering_coefficient_File", "wb") as f:
+        pickle.dump(clusteringCoeffResult, f)
+
+
     # closCentResult = nx.closeness_centrality(m.G)
     # with open("dataset/outputs/closeness_centralityFile", "wb") as f:
     #     pickle.dump(closCentResult, f)
