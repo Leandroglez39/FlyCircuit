@@ -161,20 +161,30 @@ def infomap_concurrent(G, n = 10):
 if __name__ == '__main__':
     
 
-    import networkx.algorithms.community as nx_comm
-    import networkx as nx
+    data = pickle.load(open('dataset/outputs/vertex_betweenes', 'rb'))
     
-    #G = nx.karate_club_graph()
-    df = pd.DataFrame(columns=['source', 'target', 'weight'])
+    count = 0
+
+    for k,v in data.items():
+        print(k, v)
+        count += 1
+        if count == 10:
+            break
+
+    # import networkx.algorithms.community as nx_comm
+    # import networkx as nx
     
-    df = df.append({'source': 1, 'target': 2, 'weight': 1}, ignore_index=True)
-    df = df.append({'source': 2, 'target': 3, 'weight': 1}, ignore_index=True)
-    dff = df.set_index('source')
+    # #G = nx.karate_club_graph()
+    # df = pd.DataFrame(columns=['source', 'target', 'weight'])
+    
+    # df = df.append({'source': 1, 'target': 2, 'weight': 1}, ignore_index=True)
+    # df = df.append({'source': 2, 'target': 3, 'weight': 1}, ignore_index=True)
+    # dff = df.set_index('source')
 
-    dff.loc[1, 'val'] = "some value"
-    dff.loc[2, 'val'] = "perra"
+    # dff.loc[1, 'val'] = "some value"
+    # dff.loc[2, 'val'] = "perra"
 
-    print(dff)   
+    # print(dff)   
 
     '''Region Concurrent Communities Algorithms'''
     

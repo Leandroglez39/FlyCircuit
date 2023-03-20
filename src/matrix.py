@@ -647,6 +647,22 @@ class Matrix:
 
         return data_nodes
 
+    def insert_measure_dict(self, measure: str, dict: dict):
+
+        '''
+        This function is for insert a measure to the nodes of the graph.
+
+        Parameters
+        ----------
+        measure : str
+            The name of the measure.
+        dict : dict
+            A dict with the values of the measure.
+        '''
+
+        for node in self.G.nodes():
+            self.G.nodes[node][measure] = dict[node]
+    
     # Begining of Horacio's Region
 
     def edgeWithinComm(self, vi, si, w):
@@ -961,6 +977,18 @@ if __name__ == '__main__':
     print(datetime.datetime.now())
     
     
+    cc = pickle.load(open('dataset/outputs/closeness_centralityFile', 'rb'))
+    ccoe = pickle.load(open('dataset/outputs/clustering_coefficient_File', 'rb'))
+    vb = pickle.load(open('dataset/outputs/vertex_betweenes', 'rb'))
+
+    data = [cc, ccoe, vb]
+    name = ['closeness_centrality', 'clustering_coefficient', 'vertex_betweenes']
+
+    for i in range(len(data)):
+        m.insert_measure_dict(name[i], data[i])
+
+    print(m.G.nodes['104198-F-000008'])
+
     # run_and_save_algorithm(m, 'infomap', params= [], seed=[1,2,3,4,5,6,7,8,9,10], n= 10)
     
     # communities = algorithms.infomap(m.G, flags='--seed 23').communities
@@ -969,11 +997,11 @@ if __name__ == '__main__':
 
     # print(m.communities_length(sorted_community))
 
-    communities = m.load_all_communities('louvain')
+    #communities = m.load_all_communities('louvain')
 
-    m.apply_measures_to_communities_nodes('louvain', communities)
+    #m.apply_measures_to_communities_nodes('louvain', communities)
 
-    m.save_graph_obj(path='dataset/attributed_graph-1.1.pkl')
+    #m.save_graph_obj(path='dataset/attributed_graph-1.2.pkl')
 
     print(datetime.datetime.now())
     
