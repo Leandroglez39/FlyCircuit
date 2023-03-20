@@ -970,25 +970,13 @@ if __name__ == '__main__':
     #m.load_ady_matrix(30)    
     #m.insert_weighted_edges()
     # m.sava_matrix_obj()
-    m.load_matrix_obj(path='dataset/attributed_graph-1.1.pkl')
+    m.load_matrix_obj(path='dataset/attributed_graph-1.2.pkl')
 
     print(m.G.number_of_edges())
 
     print(datetime.datetime.now())
     
     
-    cc = pickle.load(open('dataset/outputs/closeness_centralityFile', 'rb'))
-    ccoe = pickle.load(open('dataset/outputs/clustering_coefficient_File', 'rb'))
-    vb = pickle.load(open('dataset/outputs/vertex_betweenes', 'rb'))
-
-    data = [cc, ccoe, vb]
-    name = ['closeness_centrality', 'clustering_coefficient', 'vertex_betweenes']
-
-    for i in range(len(data)):
-        m.insert_measure_dict(name[i], data[i])
-
-   
-
     # run_and_save_algorithm(m, 'infomap', params= [], seed=[1,2,3,4,5,6,7,8,9,10], n= 10)
     
     # communities = algorithms.infomap(m.G, flags='--seed 23').communities
@@ -997,11 +985,15 @@ if __name__ == '__main__':
 
     # print(m.communities_length(sorted_community))
 
-    #communities = m.load_all_communities('louvain')
+    communities = m.load_all_communities('louvain')
 
-    #m.apply_measures_to_communities_nodes('louvain', communities)
+    m.apply_measures_to_communities_nodes('greedy', communities)
 
-    m.save_graph_obj(path='dataset/attributed_graph-1.2.pkl')
+    m.apply_measures_to_communities_nodes('lpa', communities)
+
+    m.apply_measures_to_communities_nodes('infomap', communities)
+
+    m.save_graph_obj(path='dataset/attributed_graph-1.3.pkl')
 
     print(m.G.nodes['104198-F-000008'])
 
