@@ -103,7 +103,7 @@ class Matrix:
         with open(f'./dataset/adym_{count}.pkl', 'wb') as f:
             pickle.dump(self.ady_list, f)
    
-    def save_matrix_obj(self, path = './dataset/graph_19k_3.5m.pkl'):
+    def save_graph_obj(self, path = './dataset/graph-1.x.pkl'):
         
         with open(path, 'wb') as f:
             pickle.dump(self.G, f)
@@ -763,52 +763,54 @@ class Matrix:
                     else:
                         self.G.nodes[k]['data'][(algorithm, str(iter_number), str(community_number))]['participation_coefficient'] = v
         
-        start_time = datetime.datetime.now()       
-        data_whiting_degree = self.withinCommunityDegree('None', communities)
-        print('Time for whiting degree: ' + str(datetime.datetime.now() - start_time))
+        # Withing Region
+
+        # start_time = datetime.datetime.now()       
+        # data_whiting_degree = self.withinCommunityDegree('None', communities)
+        # print('Time for whiting degree: ' + str(datetime.datetime.now() - start_time))
         
-        start_time = datetime.datetime.now()
-        data_withing_degree_weighted = self.withinCommunityDegree('weight', communities)
-        print('Time for whiting degree weighted: ' + str(datetime.datetime.now() - start_time))
+        # start_time = datetime.datetime.now()
+        # data_withing_degree_weighted = self.withinCommunityDegree('weight', communities)
+        # print('Time for whiting degree weighted: ' + str(datetime.datetime.now() - start_time))
 
-        self.save_attributed_graph()
-        print('Graph saved with whiting degree and participation coefficient')
-        print('*******************************************************')
+        # self.save_attributed_graph()
+        # print('Graph saved with whiting degree and participation coefficient')
+        # print('*******************************************************')
         
-        community_number = 0
+        # community_number = 0
 
-        for k, v in data_whiting_degree.items():
+        # for k, v in data_whiting_degree.items():
 
-            for j in range(len(v)):
-                for i in range(len(communities[j])):
-                    if k in communities[j][i]:
-                        community_number = i
-                        break
+        #     for j in range(len(v)):
+        #         for i in range(len(communities[j])):
+        #             if k in communities[j][i]:
+        #                 community_number = i
+        #                 break
                                 
-                if 'data' not in self.G.nodes[k].keys():
-                    self.G.nodes[k]['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree': v[j]}} # type: ignore        
-                else:
-                    if (algorithm, str(j), str(community_number)) not in self.G.nodes[k]['data'].keys():
-                        self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))] = {'whiting_degree': v[j]}
-                    else:
-                        self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))]['whiting_degree'] = v[j]
+        #         if 'data' not in self.G.nodes[k].keys():
+        #             self.G.nodes[k]['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree': v[j]}} # type: ignore        
+        #         else:
+        #             if (algorithm, str(j), str(community_number)) not in self.G.nodes[k]['data'].keys():
+        #                 self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))] = {'whiting_degree': v[j]}
+        #             else:
+        #                 self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))]['whiting_degree'] = v[j]
 
-        for k, v in data_withing_degree_weighted.items():
+        # for k, v in data_withing_degree_weighted.items():
 
-            for j in range(len(v)):
-                for i in range(len(communities[j])):
-                    if k in communities[j][i]:
-                        community_number = i
-                        break
-                if 'data' not in self.G.nodes[k].keys():
-                    self.G.nodes[k]['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree_weighted': v[j]}} # type: ignore        
-                else:
-                    if (algorithm, str(j), str(community_number)) not in self.G.nodes[k]['data'].keys():
-                        self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))] = {'whiting_degree_weighted': v[j]}
-                    else:
-                        self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))]['whiting_degree_weighted'] = v[j]
+        #     for j in range(len(v)):
+        #         for i in range(len(communities[j])):
+        #             if k in communities[j][i]:
+        #                 community_number = i
+        #                 break
+        #         if 'data' not in self.G.nodes[k].keys():
+        #             self.G.nodes[k]['data'] = {(algorithm, str(j), str(community_number)): {'whiting_degree_weighted': v[j]}} # type: ignore        
+        #         else:
+        #             if (algorithm, str(j), str(community_number)) not in self.G.nodes[k]['data'].keys():
+        #                 self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))] = {'whiting_degree_weighted': v[j]}
+        #             else:
+        #                 self.G.nodes[k]['data'][(algorithm, str(j), str(community_number))]['whiting_degree_weighted'] = v[j]
 
-
+        # end Whiting Region
                     
                         
 
@@ -971,7 +973,7 @@ if __name__ == '__main__':
 
     m.apply_measures_to_communities_nodes('louvain', communities)
 
-    m.save_attributed_graph()
+    m.save_graph_obj()
 
     print(datetime.datetime.now())
     
