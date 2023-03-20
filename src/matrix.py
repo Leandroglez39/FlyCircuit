@@ -985,11 +985,15 @@ if __name__ == '__main__':
 
     # print(m.communities_length(sorted_community))
 
-    communities = m.load_all_communities('louvain')
+    communities = m.load_all_communities('greedy')
 
     m.apply_measures_to_communities_nodes('greedy', communities)
 
+    communities = m.load_all_communities('lpa')
+
     m.apply_measures_to_communities_nodes('lpa', communities)
+
+    communities = m.load_all_communities('infomap')
 
     m.apply_measures_to_communities_nodes('infomap', communities)
 
