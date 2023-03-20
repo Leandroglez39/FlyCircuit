@@ -165,9 +165,16 @@ if __name__ == '__main__':
     import networkx as nx
     
     #G = nx.karate_club_graph()
-    G = nx.complete_graph(10)
+    df = pd.DataFrame(columns=['source', 'target', 'weight'])
+    
+    df = df.append({'source': 1, 'target': 2, 'weight': 1}, ignore_index=True)
+    df = df.append({'source': 2, 'target': 3, 'weight': 1}, ignore_index=True)
+    dff = df.set_index('source')
 
-    G = nx.Graph()    
+    dff.loc[1, 'val'] = "some value"
+    dff.loc[2, 'val'] = "perra"
+
+    print(dff)   
 
     '''Region Concurrent Communities Algorithms'''
     
@@ -187,13 +194,13 @@ if __name__ == '__main__':
 
     ''' End Region Concurrent Communities Algorithms '''
 
-    from infomap import Infomap 
+    # from infomap import Infomap 
 
-    from cdlib import algorithms
+    # from cdlib import algorithms
 
-    nx_communities = algorithms.infomap(G)
+    # nx_communities = algorithms.infomap(G)
 
-    print(nx_communities.communities)
+    # print(nx_communities.communities)
 
     # numbers = [5000000 + x for x in range(20)]
 

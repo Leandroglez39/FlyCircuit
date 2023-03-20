@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="edge" attr.name="weight" attr.type="long" />
+  <graph edgedefault="directed">
+    <node id="Cha-F-400028" />
+    <node id="Cha-F-300274" />
+    <node id="VGlut-F-800293" />
+    <node id="Cha-F-800021" />
+    <node id="Cha-F-700157" />
+    <node id="Cha-F-100114" />
+    <node id="Cha-F-200002" />
+    <node id="Cha-F-300287" />
+    <node id="Cha-F-300155" />
+    <node id="Cha-F-700151" />
+    <node id="Cha-F-100011" />
+    <node id="VGlut-F-700583" />
+    <node id="Cha-F-100406" />
+    <node id="Cha-F-200164" />
+    <node id="Cha-F-200086" />
+    <node id="VGlut-F-000675" />
+    <node id="Cha-F-400113" />
+    <edge source="Cha-F-400028" target="Cha-F-200002">
+      <data key="d0">4</data>
+    </edge>
+    <edge source="Cha-F-400028" target="Cha-F-300274">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-400028" target="Cha-F-300287">
+      <data key="d0">18</data>
+    </edge>
+    <edge source="Cha-F-400028" target="Cha-F-400113">
+      <data key="d0">20</data>
+    </edge>
+    <edge source="Cha-F-400028" target="Cha-F-700151">
+      <data key="d0">30</data>
+    </edge>
+    <edge source="Cha-F-400028" target="VGlut-F-800293">
+      <data key="d0">10</data>
+    </edge>
+    <edge source="Cha-F-300274" target="Cha-F-200002">
+      <data key="d0">29</data>
+    </edge>
+    <edge source="Cha-F-300274" target="Cha-F-300287">
+      <data key="d0">44</data>
+    </edge>
+    <edge source="Cha-F-300274" target="Cha-F-400028">
+      <data key="d0">26</data>
+    </edge>
+    <edge source="Cha-F-300274" target="Cha-F-400113">
+      <data key="d0">20</data>
+    </edge>
+    <edge source="Cha-F-300274" target="Cha-F-700151">
+      <data key="d0">42</data>
+    </edge>
+    <edge source="Cha-F-300274" target="VGlut-F-800293">
+      <data key="d0">14</data>
+    </edge>
+    <edge source="VGlut-F-800293" target="Cha-F-100011">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="VGlut-F-800293" target="Cha-F-200002">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="VGlut-F-800293" target="Cha-F-300274">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="VGlut-F-800293" target="Cha-F-400028">
+      <data key="d0">26</data>
+    </edge>
+    <edge source="VGlut-F-800293" target="Cha-F-400113">
+      <data key="d0">6</data>
+    </edge>
+    <edge source="VGlut-F-800293" target="Cha-F-700151">
+      <data key="d0">21</data>
+    </edge>
+    <edge source="VGlut-F-800293" target="VGlut-F-700583">
+      <data key="d0">10</data>
+    </edge>
+    <edge source="Cha-F-800021" target="Cha-F-100114">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-800021" target="Cha-F-200002">
+      <data key="d0">19</data>
+    </edge>
+    <edge source="Cha-F-800021" target="Cha-F-200086">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-800021" target="Cha-F-300155">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-800021" target="Cha-F-300287">
+      <data key="d0">24</data>
+    </edge>
+    <edge source="Cha-F-800021" target="Cha-F-400028">
+      <data key="d0">7</data>
+    </edge>
+    <edge source="Cha-F-800021" target="Cha-F-400113">
+      <data key="d0">13</data>
+    </edge>
+    <edge source="Cha-F-800021" target="Cha-F-700151">
+      <data key="d0">35</data>
+    </edge>
+    <edge source="Cha-F-800021" target="VGlut-F-700583">
+      <data key="d0">23</data>
+    </edge>
+    <edge source="Cha-F-800021" target="VGlut-F-800293">
+      <data key="d0">11</data>
+    </edge>
+    <edge source="Cha-F-700157" target="Cha-F-200002">
+      <data key="d0">25</data>
+    </edge>
+    <edge source="Cha-F-700157" target="Cha-F-200086">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-700157" target="Cha-F-300287">
+      <data key="d0">21</data>
+    </edge>
+    <edge source="Cha-F-700157" target="Cha-F-400113">
+      <data key="d0">13</data>
+    </edge>
+    <edge source="Cha-F-700157" target="Cha-F-700151">
+      <data key="d0">12</data>
+    </edge>
+    <edge source="Cha-F-700157" target="VGlut-F-800293">
+      <data key="d0">13</data>
+    </edge>
+    <edge source="Cha-F-100114" target="Cha-F-100011">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-100114" target="Cha-F-200002">
+      <data key="d0">29</data>
+    </edge>
+    <edge source="Cha-F-100114" target="Cha-F-200086">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-100114" target="Cha-F-300274">
+      <data key="d0">9</data>
+    </edge>
+    <edge source="Cha-F-100114" target="Cha-F-300287">
+      <data key="d0">16</data>
+    </edge>
+    <edge source="Cha-F-100114" target="Cha-F-400028">
+      <data key="d0">8</data>
+    </edge>
+    <edge source="Cha-F-100114" target="Cha-F-400113">
+      <data key="d0">14</data>
+    </edge>
+    <edge source="Cha-F-100114" target="Cha-F-700151">
+      <data key="d0">47</data>
+    </edge>
+    <edge source="Cha-F-100114" target="VGlut-F-700583">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-100114" target="VGlut-F-800293">
+      <data key="d0">31</data>
+    </edge>
+    <edge source="Cha-F-200002" target="Cha-F-300155">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-200002" target="Cha-F-300274">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-200002" target="Cha-F-300287">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-300287" target="Cha-F-100011">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-300287" target="Cha-F-200002">
+      <data key="d0">26</data>
+    </edge>
+    <edge source="Cha-F-300287" target="Cha-F-300274">
+      <data key="d0">5</data>
+    </edge>
+    <edge source="Cha-F-300287" target="Cha-F-400028">
+      <data key="d0">31</data>
+    </edge>
+    <edge source="Cha-F-300287" target="Cha-F-400113">
+      <data key="d0">17</data>
+    </edge>
+    <edge source="Cha-F-300287" target="Cha-F-700151">
+      <data key="d0">30</data>
+    </edge>
+    <edge source="Cha-F-300287" target="VGlut-F-700583">
+      <data key="d0">12</data>
+    </edge>
+    <edge source="Cha-F-300287" target="VGlut-F-800293">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-300155" target="Cha-F-100011">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-300155" target="Cha-F-200002">
+      <data key="d0">43</data>
+    </edge>
+    <edge source="Cha-F-300155" target="Cha-F-300274">
+      <data key="d0">11</data>
+    </edge>
+    <edge source="Cha-F-300155" target="Cha-F-300287">
+      <data key="d0">34</data>
+    </edge>
+    <edge source="Cha-F-300155" target="Cha-F-400028">
+      <data key="d0">7</data>
+    </edge>
+    <edge source="Cha-F-300155" target="Cha-F-400113">
+      <data key="d0">20</data>
+    </edge>
+    <edge source="Cha-F-300155" target="Cha-F-700151">
+      <data key="d0">19</data>
+    </edge>
+    <edge source="Cha-F-300155" target="VGlut-F-800293">
+      <data key="d0">4</data>
+    </edge>
+    <edge source="Cha-F-700151" target="Cha-F-200086">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-700151" target="Cha-F-300155">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-700151" target="Cha-F-300287">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-100011" target="Cha-F-200002">
+      <data key="d0">11</data>
+    </edge>
+    <edge source="Cha-F-100011" target="Cha-F-200086">
+      <data key="d0">4</data>
+    </edge>
+    <edge source="Cha-F-100011" target="Cha-F-300274">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-100011" target="Cha-F-300287">
+      <data key="d0">16</data>
+    </edge>
+    <edge source="Cha-F-100011" target="Cha-F-400028">
+      <data key="d0">6</data>
+    </edge>
+    <edge source="Cha-F-100011" target="Cha-F-400113">
+      <data key="d0">20</data>
+    </edge>
+    <edge source="Cha-F-100011" target="Cha-F-700151">
+      <data key="d0">31</data>
+    </edge>
+    <edge source="Cha-F-100011" target="VGlut-F-800293">
+      <data key="d0">19</data>
+    </edge>
+    <edge source="VGlut-F-700583" target="Cha-F-200002">
+      <data key="d0">19</data>
+    </edge>
+    <edge source="VGlut-F-700583" target="Cha-F-200086">
+      <data key="d0">5</data>
+    </edge>
+    <edge source="VGlut-F-700583" target="Cha-F-300287">
+      <data key="d0">54</data>
+    </edge>
+    <edge source="VGlut-F-700583" target="Cha-F-400028">
+      <data key="d0">5</data>
+    </edge>
+    <edge source="VGlut-F-700583" target="Cha-F-400113">
+      <data key="d0">42</data>
+    </edge>
+    <edge source="VGlut-F-700583" target="Cha-F-700151">
+      <data key="d0">48</data>
+    </edge>
+    <edge source="VGlut-F-700583" target="VGlut-F-800293">
+      <data key="d0">32</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-100011">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-200002">
+      <data key="d0">11</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-200164">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-300155">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-300274">
+      <data key="d0">5</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-300287">
+      <data key="d0">16</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-400028">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-400113">
+      <data key="d0">4</data>
+    </edge>
+    <edge source="Cha-F-100406" target="Cha-F-700151">
+      <data key="d0">7</data>
+    </edge>
+    <edge source="Cha-F-100406" target="VGlut-F-000675">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="Cha-F-100406" target="VGlut-F-700583">
+      <data key="d0">5</data>
+    </edge>
+    <edge source="Cha-F-100406" target="VGlut-F-800293">
+      <data key="d0">17</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-100011">
+      <data key="d0">6</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-200002">
+      <data key="d0">40</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-200086">
+      <data key="d0">22</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-300155">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-300274">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-300287">
+      <data key="d0">31</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-400028">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-400113">
+      <data key="d0">25</data>
+    </edge>
+    <edge source="Cha-F-200164" target="Cha-F-700151">
+      <data key="d0">31</data>
+    </edge>
+    <edge source="Cha-F-200164" target="VGlut-F-700583">
+      <data key="d0">2</data>
+    </edge>
+    <edge source="Cha-F-200164" target="VGlut-F-800293">
+      <data key="d0">20</data>
+    </edge>
+    <edge source="Cha-F-200086" target="Cha-F-100011">
+      <data key="d0">6</data>
+    </edge>
+    <edge source="Cha-F-200086" target="Cha-F-200002">
+      <data key="d0">27</data>
+    </edge>
+    <edge source="Cha-F-200086" target="Cha-F-300287">
+      <data key="d0">14</data>
+    </edge>
+    <edge source="Cha-F-200086" target="Cha-F-400113">
+      <data key="d0">27</data>
+    </edge>
+    <edge source="Cha-F-200086" target="Cha-F-700151">
+      <data key="d0">15</data>
+    </edge>
+    <edge source="Cha-F-200086" target="VGlut-F-800293">
+      <data key="d0">3</data>
+    </edge>
+    <edge source="VGlut-F-000675" target="Cha-F-200002">
+      <data key="d0">18</data>
+    </edge>
+    <edge source="VGlut-F-000675" target="Cha-F-300287">
+      <data key="d0">7</data>
+    </edge>
+    <edge source="VGlut-F-000675" target="Cha-F-400028">
+      <data key="d0">1</data>
+    </edge>
+    <edge source="VGlut-F-000675" target="Cha-F-400113">
+      <data key="d0">6</data>
+    </edge>
+    <edge source="VGlut-F-000675" target="Cha-F-700151">
+      <data key="d0">22</data>
+    </edge>
+    <edge source="VGlut-F-000675" target="VGlut-F-800293">
+      <data key="d0">14</data>
+    </edge>
+    <edge source="Cha-F-400113" target="VGlut-F-700583">
+      <data key="d0">1</data>
+    </edge>
+  </graph>
+</graphml>
