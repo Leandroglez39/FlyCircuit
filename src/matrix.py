@@ -973,7 +973,7 @@ if __name__ == '__main__':
 
     m.apply_measures_to_communities_nodes('louvain', communities)
 
-    m.save_graph_obj()
+    m.save_graph_obj(path='dataset/attributed_graph-1.1.pkl')
 
     print(datetime.datetime.now())
     
