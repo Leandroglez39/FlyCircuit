@@ -399,7 +399,9 @@ class Matrix:
             communities = []
             for path in paths:
                 with open('./dataset/outputs/' + algorithm + '/' + path, 'rb') as f:
-                    communities.append(pickle.load(f))
+                    community = pickle.load(f)
+                    sorted_community = sorted(community, key = lambda x: len(x), reverse = True)
+                    communities.append(sorted_community)
 
             return communities
         if algorithm == 'lpa':
@@ -640,6 +642,7 @@ class Matrix:
 
                     if n in subgraph.nodes():
                         k_i_s += 1
+                        continue
 
                 suma += (k_i_s / k_i) ** 2 # type: ignore
 
@@ -970,7 +973,7 @@ if __name__ == '__main__':
     #m.load_ady_matrix(30)    
     #m.insert_weighted_edges()
     # m.sava_matrix_obj()
-    m.load_matrix_obj(path='dataset/attributed_graph-1.3.pkl')
+    m.load_matrix_obj(path='dataset/attributed_graph-1.3.fly')
 
     print(m.G.number_of_edges())
 
@@ -987,9 +990,8 @@ if __name__ == '__main__':
 
     # print(m.communities_length(sorted_community))
 
-    # communities = m.load_all_communities('louvain')
-
-    
+    communities = m.load_all_communities('louvain')
+        
     # community = communities[0]
 
     # sorted_community = sorted(community, key=lambda x: len(x), reverse=True)
