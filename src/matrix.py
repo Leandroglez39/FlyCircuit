@@ -978,6 +978,7 @@ if __name__ == '__main__':
     
     
     
+
     # run_and_save_algorithm(m, 'infomap', params= [], seed=[1,2,3,4,5,6,7,8,9,10], n= 10)
     
     # communities = algorithms.infomap(m.G, flags='--seed 23').communities
