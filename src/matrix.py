@@ -437,7 +437,7 @@ class Matrix:
 
             for path in paths:
                 with open('./dataset/outputs/' + algorithm + '/' + path, 'rb') as f:
-                    communities.append((pickle.load(f), path))
+                    communities.append(pickle.load(f))
         
             
             return communities
@@ -681,7 +681,7 @@ class Matrix:
         return sum/len(si)
 
     def standDesvCommunity(self, si, w):
-        dMeanCi = self.degMeanByCommunity(si, w)
+        dMeanCi = self. degMeanByCommunity(si, w)
         sum = 0 
         for vi in si:
             ki = self.edgeWithinComm(vi, si, w)
@@ -689,62 +689,93 @@ class Matrix:
         desv = math.sqrt(sum/len(si))
         return desv
 
+    def writterFileDictMeansWithin(self, dict, DictName):
+        with open('./dataset/outputs/' + DictName, 'w') as f:
+            for id, value in dict.items():
+                f.write(f'{id}, {value}\n')
+
     def withinCommunityDegree(self, w, commList):
-        
+        zi = dict()
+        run_community_mean = dict()
+        run_community_vi = dict()
+        run_community_desv = dict()
+
+        # iterate through all runs
+        for run_i in range(0, len(commList)):
+            clustering_i = commList[run_i]
+            # iterate through all commnunities
+            for c_j in range(0, len(clustering_i)):
+                sumMean = 0
+                key_RunComm = (run_i, c_j)
+                for vi in clustering_i[c_j]:
+                    key_RunCommVi = (run_i, c_j, vi)
+                    if key_RunCommVi not in run_community_vi:
+                        ki = self.edgeWithinComm(vi, clustering_i[c_j], w)
+                        run_community_vi[key_RunCommVi] = ki
+                        sumMean += ki
+                if key_RunComm not in run_community_mean:
+                    ciMean = sumMean/len(clustering_i[c_j])
+                    run_community_mean[key_RunComm] = ciMean
+        # ki, mean(si) -> DONE
+        print('ki, mean(si) -> DONE')
+
+        # iterate through all runs
+        for run_i in range(0, len(commList)):
+            clustering_i = commList[run_i]
+            # iterate through all commnunities
+            for c_j in range(0, len(clustering_i)):
+                sumDesv = 0
+                key_runC = (run_i, c_j)
+                meanCj = run_community_mean[key_runC]
+                for vi in clustering_i[c_j]:
+                    key_RunCVi = (run_i, c_j, vi)
+                    kVi = run_community_vi[key_RunCVi]
+                    sumDesv += math.pow((kVi - meanCj), 2)
+                if key_runC not in run_community_desv:
+                    desvCj = math.sqrt(sumDesv/len(clustering_i[c_j]))
+                    run_community_desv[key_runC] = desvCj
+        print('desviation -> DONE')
+        # print(run_community_vi)
+
+        # desviation(si) -> DONE
+
         count = 0
-        start_time = datetime.datetime.now()
-        num_vert = 0
-        
-        vertexWithinDict = dict()
         # iterate through all vertex
-        for vi in self.G.nodes:
+        for vi in m.G.nodes:
             # iterate through all runs
-            for ri in commList:
-
-                
-
+            for run_i in range(0, len(commList)):
+                clustering_i = commList[run_i]
                 # iterate through all commnunities
-                for si in ri:
-                    if count == 10000000:
-                        print('10M operations calculated in withinCommunityDegree')
-                        print('Time for 10M operations: ' + str(datetime.datetime.now() - start_time))
-                        start_time = datetime.datetime.now()
-                        count = 0
-                    else:
-                        count += 1
+                for c_j in range(0, len(clustering_i)):
                     # identify the Ci 
-                    if vi in si:
-                        desv = self.standDesvCommunity(si, w)
-                        ki = self.edgeWithinComm(vi, si, w)
-                        degMeanCi = self.degMeanByCommunity(si, w)
-                        zi = (ki - degMeanCi)/desv
-                        if vi not in vertexWithinDict:
+                    if vi in clustering_i[c_j]:
+                        desvSi = run_community_desv[(run_i, c_j)]
+                        meanSi = run_community_mean[(run_i, c_j)]
+                        ki = run_community_vi[(run_i, c_j, vi)]
+                        ziValue = (ki - meanSi)/desvSi
+                        if vi not in zi:
                             listTupleValue = []
-                            listTupleValue.append(zi)
-                            vertexWithinDict[vi] = listTupleValue
+                            listTupleValue.append(ziValue)
+                            zi[vi] = listTupleValue
                         else:
-                            vertexWithinDict[vi].append(zi)
+                            zi[vi].append(ziValue)
                         break
-            num_vert += 1
-            if num_vert % 1000 == 0:
-                print('Number of vertex processed: ' + str(num_vert))    
-            # s = 0 
-            # for v in vertexWithinDict[vi]:
-            #     s += v            
-            # result = s/len(vertexWithinDict[vi])
+        
+            # count+=1
+            # print('vertex: ', vi, ' Done', ' numbers of items: ', count)
+        print('zi -> DONE')
+        self.writterFileDictMeansWithin(zi, 'withinCommunityStrenghtByVertex_Directed')
 
-        #print(vertexWithinDict)
-        return vertexWithinDict
-        # writterFileDictMeansWithin(vertexWithinDict, 'withinDegreeMeanDictByVertex')
+        # create a binary pickle file 
+        f = open("withinDictStrenght_Directed.pkl","wb")
 
-        # # create a binary pickle file 
-        # f = open("withinDict.pkl","wb")
+        # write the python object (dict) to pickle file
+        pickle.dump(zi, f)
 
-        # # write the python object (dict) to pickle file
-        # pickle.dump(vertexWithinDict,f)
-
-        # # close file
-        # f.close()
+        # close file
+        f.close()
+            
+            
 
 
 
@@ -978,9 +1009,52 @@ if __name__ == '__main__':
     print(m.G.number_of_edges())
 
     print(datetime.datetime.now())
+
+    communities = m.load_all_communities('infomap')
+
+    print(communities[0]['communities'])
+        #print([len(x) for x in comm.communities])
+
+    # filters = []
+
+    # for node in m.G.nodes:
+    #     data = m.G.nodes[node]['data']
+    #     for k, v in data.items():
+    #         if k[0] == 'louvain':
+    #             filters.append((node, k))
+                
+
+    # for node, k in filters:
+    #     del m.G.nodes[node]['data'][k] 
+
+    # m.apply_measures_to_communities_nodes('louvain', communities)
+
     
     
+    # algorithm = 'louvain'
+
+    # data = pickle.load(open('dataset/outputs/withinDictStrenght_Directed.pkl', 'rb'))
+
+    # for k, v in data.items():
+    #     for i in range(len(v)):
+
+    #         community = communities[i]
+    #         community_number = 0
+
+    #         for j in range(len(community)):
+    #             if k in community[j]:
+    #                 community_number = j
+    #                 break
+            
+    #         key = (algorithm, str(i), str(community_number))
+    #         if key not in m.G.nodes[k]['data'].keys():
+    #             m.G.nodes[k]['data'][(algorithm, str(i), str(community_number))] = {'within_strenght_Directed': v[i]} # type: ignore
+    #         else:
+    #             m.G.nodes[k]['data'][(algorithm, str(i), str(community_number))]['within_strenght_Directed'] = v[i]
     
+    # m.save_graph_obj(path='dataset/attributed_graph-1.3.fly')
+    
+    # print(m.G.nodes['104198-F-000000'])
 
     # run_and_save_algorithm(m, 'infomap', params= [], seed=[1,2,3,4,5,6,7,8,9,10], n= 10)
     
@@ -990,7 +1064,6 @@ if __name__ == '__main__':
 
     # print(m.communities_length(sorted_community))
 
-    communities = m.load_all_communities('louvain')
         
     # community = communities[0]
 
