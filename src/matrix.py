@@ -738,6 +738,22 @@ def withinCommunityDegree(w, commList, algName, directed):
     # close file
     f.close()
 
+def calculateWithin(algList = ['louvain', 'greedy', 'lpa', 'infomap'], wegList = ['weight', 'none'], directList = [True, False]):
+    for alg_i in algList:
+        for weg_j in wegList:
+            for direct_k in directList:
+                commList =  m.load_all_communities(alg_i)
+                if alg_i == 'infomap':
+                    commListModified = []
+                    for ci in commList:
+                        commListModified.append(ci['communities'])
+                    withinCommunityDegree(weg_j, commListModified, alg_i, direct_k)
+                else:
+                    withinCommunityDegree(weg_j, commList, alg_i, direct_k)
+                print('finish Directed: ', direct_k)
+            print('finish Weight: ', weg_j)
+        print('finish Algorithm: ', alg_i)
+
 if __name__ == '__main__':
     
 
@@ -754,27 +770,11 @@ if __name__ == '__main__':
     # m.sava_matrix_obj()
     m.load_matrix_obj(path='dataset/attributed_graph.pkl')
     print(m.G.number_of_edges())
-    algList = ['greedy', 'infomap']
-    # algList = ['louvain', 'greedy', 'lpa', 'infomap']
-    wegList = ['weight', 'none']
-    directList = [True, False]
+
     print(datetime.datetime.now())
 
-    for alg_i in algList:
-        for weg_j in wegList:
-            for direct_k in directList:
-                commList =  m.load_all_communities(alg_i)
-                if alg_i == 'infomap':
-                    commListModified = []
-                    for ci in commList:
-                        commListModified.append(ci['communities'])
-                    withinCommunityDegree(weg_j, commListModified, alg_i, direct_k)
-                else:
-                    withinCommunityDegree(weg_j, commList, alg_i, direct_k)
-                print('finish Directed: ', direct_k)
-            print('finish Weight: ', weg_j)
-        print('finish Algorithm: ', alg_i)
-        
+    calculateWithin()
+
     print(datetime.datetime.now())
 
     
