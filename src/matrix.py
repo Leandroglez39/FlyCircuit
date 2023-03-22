@@ -624,9 +624,12 @@ def run_and_save_algorithm(m: Matrix, algorithm, params, n, seed = []) :
 #     edgeWith = si.intersection(viAdj)
 #     return edgeWith
 
-def edgeWithinComm(vi, si, w):
+def edgeWithinComm(vi, si, w, directed):
     sugSi = nx.subgraph(m.G, si)
-    ki = sugSi.degree(vi, weight = w)
+    if not directed:
+        ki = sugSi.degree(vi, weight = w)
+    else:
+        ki = sugSi.out_degree(vi, weight = w)
     return ki
 
 def degMeanByCommunity(si, w):
@@ -650,7 +653,7 @@ def writterFileDictMeansWithin(dict, DictName):
         for id, value in dict.items():
             f.write(f'{id}, {value}\n')
 
-def withinCommunityDegree(w, commList):
+def withinCommunityDegree(w, commList, algName, directed):
     zi = dict()
     run_community_mean = dict()
     run_community_vi = dict()
@@ -666,7 +669,7 @@ def withinCommunityDegree(w, commList):
             for vi in clustering_i[c_j]:
                 key_RunCommVi = (run_i, c_j, vi)
                 if key_RunCommVi not in run_community_vi:
-                    ki = edgeWithinComm(vi, clustering_i[c_j], w)
+                    ki = edgeWithinComm(vi, clustering_i[c_j], w, directed)
                     run_community_vi[key_RunCommVi] = ki
                     sumMean += ki
             if key_RunComm not in run_community_mean:
@@ -706,9 +709,11 @@ def withinCommunityDegree(w, commList):
                 # identify the Ci 
                 if vi in clustering_i[c_j]:
                     desvSi = run_community_desv[(run_i, c_j)]
-                    meanSi = run_community_mean[(run_i, c_j)]
-                    ki = run_community_vi[(run_i, c_j, vi)]
-                    ziValue = (ki - meanSi)/desvSi
+                    ziValue = 0
+                    if desvSi != 0:
+                        meanSi = run_community_mean[(run_i, c_j)]
+                        ki = run_community_vi[(run_i, c_j, vi)]
+                        ziValue = (ki - meanSi)/desvSi
                     if vi not in zi:
                         listTupleValue = []
                         listTupleValue.append(ziValue)
@@ -720,10 +725,12 @@ def withinCommunityDegree(w, commList):
         # count+=1
         # print('vertex: ', vi, ' Done', ' numbers of items: ', count)
     print('zi -> DONE')
-    writterFileDictMeansWithin(zi, 'withinCommunityStrenghtByVertex_Directed')
 
+    direct = 'directed_' if directed else 'notDirected_'
+    weg = 'weighted' if w == 'weight' else 'notWeighted'
+    nameFile = 'within_' + algName + '_' + direct + weg
     # create a binary pickle file 
-    f = open("withinDictStrenght_Directed.pkl","wb")
+    f = open('./dataset/outputs/' + nameFile ,"wb")
 
     # write the python object (dict) to pickle file
     pickle.dump(zi, f)
@@ -747,33 +754,27 @@ if __name__ == '__main__':
     # m.sava_matrix_obj()
     m.load_matrix_obj(path='dataset/attributed_graph.pkl')
     print(m.G.number_of_edges())
-
+    algList = ['greedy', 'infomap']
+    # algList = ['louvain', 'greedy', 'lpa', 'infomap']
+    wegList = ['weight', 'none']
+    directList = [True, False]
     print(datetime.datetime.now())
 
-    # within community by degree.
-    commList =  m.load_all_communities('louvain')
-    # grapTest = nx.DiGraph()
-    # vertextList = [0,1,2,3,4,5]
-    # edgesList = [(0,1,5), (2,0,6), (1,2,7), (3,0,1), (3,2,1), (3,4,7), (3,5,9), (4,2,1), (4,5,8), (5,2,1)]
-    # grapTest.add_nodes_from(vertextList)
-    # grapTest.add_weighted_edges_from(edgesList)
-    # commList = [[{0,1,2}, {3,4,5}]]
-    # m.G = grapTest
-    withinCommunityDegree('weight', commList)
-
-    # test = pickle.load('withinDictDegree_Directed.pkl')
-    # print(test.keys)
-
-    # # clustering coefficient
-    # clusteringCoeffResult = nx.clustering(m.G, weight='weight')
-    # with open("dataset/outputs/clustering_coefficient_File", "wb") as f:
-    #     pickle.dump(clusteringCoeffResult, f)
-
-
-    # closCentResult = nx.closeness_centrality(m.G)
-    # with open("dataset/outputs/closeness_centralityFile", "wb") as f:
-    #     pickle.dump(closCentResult, f)
-
+    for alg_i in algList:
+        for weg_j in wegList:
+            for direct_k in directList:
+                commList =  m.load_all_communities(alg_i)
+                if alg_i == 'infomap':
+                    commListModified = []
+                    for ci in commList:
+                        commListModified.append(ci['communities'])
+                    withinCommunityDegree(weg_j, commListModified, alg_i, direct_k)
+                else:
+                    withinCommunityDegree(weg_j, commList, alg_i, direct_k)
+                print('finish Directed: ', direct_k)
+            print('finish Weight: ', weg_j)
+        print('finish Algorithm: ', alg_i)
+        
     print(datetime.datetime.now())
 
     
